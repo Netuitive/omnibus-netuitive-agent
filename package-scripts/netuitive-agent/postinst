@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Perform necessary netuitive setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+/opt/netuitive-agent/embedded/bin/python /opt/netuitive-agent/netuitive/install
+
+echo "###################################"
+echo
+echo "Please add your API key to /opt/netuitive-agent/conf/handlers/NetuitiveHandler.conf before restarting."
+echo
+echo "Thank you for installing the Netuitive Agent!"
+echo
+exit 0

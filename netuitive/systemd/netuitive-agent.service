@@ -1,0 +1,10 @@
+[Unit]
+Description=netuitive-agent - A system statistics collector for netutive
+
+[Service]
+Environment="SENSORS_LIB=/opt/netuitive-agent/embedded/lib/libsensors.so"
+ExecStart=/opt/netuitive-agent/embedded/bin/python /opt/netuitive-agent/bin/netuitive-agent -c /opt/netuitive-agent/conf/netuitive-agent.conf  --log-stdout --foreground
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

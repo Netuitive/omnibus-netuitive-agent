@@ -1,0 +1,108 @@
+#!/bin/sh
+#
+# diamond	Start the diamond statistics collector
+#
+# chkconfig: 2345 25 75
+# description: Diamond is a daemon and toolset for gathering system statistics \
+#              and publishing them to Netuitive.
+# processname: python
+# config: /opt/netuitive-agent/conf/diamond.conf
+# pidfile: /opt/netuitive-agent/diamond.pid
+### BEGIN INIT INFO
+# Provides:          diamond
+# Required-Start:    $network $local_fs $remote_fs
+# Required-Stop:     $network $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: System statistics collector for Netuitive.
+# Description:       Diamond is a daemon and toolset for gathering system statistics
+#                    and publishing them to Netuitive.
+### END INIT INFO
+
+# Author: Sam Bashton <sam@bashton.com>
+NAME=netuitive-agent
+BASEPATH=/opt/netuitive-agent
+CONF=$BASEPATH/conf/netuitive-agent.conf
+DAEMON="$BASEPATH/embedded/bin/python $BASEPATH/bin/netuitive-agent"
+PIDFILE=$BASEPATH/netuitive-agent.pid
+
+DAEMON_ARGS="-p $PIDFILE -c $CONF"
+
+export SENSORS_LIB=/opt/netuitive-agent/embedded/lib/libsensors.so
+
+SCRIPTNAME=/etc/init.d/netuitive-agent
+LOCKDIR=/var/lock/subsys
+LOCKFILE=/var/lock/subsys/netuitive
+
+. /etc/rc.d/init.d/functions
+
+start() {
+  if [ -d "${LOCKDIR}" -a -w "${LOCKDIR}" ]
+  then
+    local pid
+    __pids_var_run $NAME || rm -f "${LOCKFILE}"
+    if ( set -o noclobber; echo "$$" > "${LOCKFILE}") 2> /dev/null;
+    then
+      true
+    else
+      echo "Failed to acquire lockfile: ${LOCKFILE}."
+      echo "Held by $(cat ${LOCKFILE})"
+      echo_failure
+      return 1
+    fi
+  fi
+
+  echo -n $"Starting $NAME: "
+  daemon --pidfile $PIDFILE $DAEMON $DAEMON_ARGS
+  retval=$?
+  if [ $retval -eq 0 ]; then
+    echo_success
+    echo
+  else
+    echo_failure
+    echo
+  fi
+  return $retval
+}
+
+stop() {
+  echo -n $"Stopping $NAME: "
+  killproc -p $PIDFILE $NAME
+  retval=$?
+  if [ $retval -ne 0 ];
+  then
+    killall -q diamond
+  fi
+  if [ -e "${LOCKFILE}" ]
+  then
+    rm -f "${LOCKFILE}"
+  fi
+  echo
+  return $retval
+}
+
+restart() {
+  stop
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+    status -p $PIDFILE $NAME
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status}"
+    exit 2
+    ;;
+esac
+
+exit $?

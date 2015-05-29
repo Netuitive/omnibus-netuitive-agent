@@ -1,0 +1,117 @@
+#!/opt/netuitive-agent/embedded/bin/python
+# coding=utf-8
+
+import os
+import re
+import platform
+import shutil
+
+
+def installfile(src, dst):
+    shutil.copy(src, dst)
+    os.chmod(dst, 0700)
+
+
+def check_lsb():
+    try:
+        _distributor_id_file_re = re.compile("(?:DISTRIB_ID\s*=)\s*(.*)", re.I)
+        _release_file_re = re.compile("(?:DISTRIB_RELEASE\s*=)\s*(.*)", re.I)
+        _codename_file_re = re.compile("(?:DISTRIB_CODENAME\s*=)\s*(.*)", re.I)
+        with open("/etc/lsb-release", "rU") as etclsbrel:
+            for line in etclsbrel:
+                m = _distributor_id_file_re.search(line)
+                if m:
+                    _u_distname = m.group(1).strip()
+                m = _release_file_re.search(line)
+                if m:
+                    _u_version = m.group(1).strip()
+                m = _codename_file_re.search(line)
+                if m:
+                    _u_id = m.group(1).strip()
+            if _u_distname and _u_version:
+                return (_u_distname, _u_version, _u_id)
+    except Exception as e:
+        return(None)
+
+if check_lsb() is None:
+    supported_dists = platform._supported_dists + ('system',)
+    dist = platform.linux_distribution(supported_dists=supported_dists)
+
+else:
+    dist = check_lsb()
+
+distname = dist[0]
+distver = dist[1]
+distid = dist[2]
+distmajorver = int(distver.split('.')[0])
+
+mypath = os.path.dirname(os.path.realpath(__file__))
+
+
+if distname.lower().startswith('ubuntu'):
+    if os.path.isfile('/bin/systemctl'):
+        installfile(mypath + '/systemd/netuitive-agent.service',
+                    '/lib/systemd/system/netuitive-agent.service')
+        os.system('/bin/systemctl daemon-reload')
+        os.system('/bin/systemctl enable netuitive-agent.service')
+
+    if os.path.isfile('/sbin/upstart-udev-bridge'):
+        installfile(mypath + '/upstart/netuitive-agent.conf',
+                    '/etc/init/netuitive-agent.conf')
+
+if distname.lower().startswith('debian'):
+    if os.path.isfile('/bin/systemctl'):
+        installfile(mypath + '/systemd/netuitive-agent.service',
+                    '/lib/systemd/system/netuitive-agent.service')
+        os.system('/bin/systemctl daemon-reload')
+        os.system('/bin/systemctl enable netuitive-agent.service')
+
+    if os.path.isfile('/sbin/upstart-file-bridge'):
+        installfile(mypath + '/upstart/netuitive-agent.conf',
+                    '/etc/init/netuitive-agent.conf')
+
+if distname.lower().startswith('centos'):
+    if distmajorver > 6:
+        installfile(mypath + '/systemd/netuitive-agent.service',
+                    '/usr/lib/systemd/system/netuitive-agent.service')
+        os.system('/bin/systemctl daemon-reload')
+        os.system('/bin/systemctl enable netuitive-agent.service')
+
+    else:
+        installfile(
+            mypath + '/init.d/netuitive-agent', '/etc/init.d/netuitive-agent')
+        os.system('/sbin/chkconfig --add netuitive-agent')
+        os.system('/sbin/chkconfig netuitive-agent on')
+
+if distname.lower().startswith('red hat'):
+    if distmajorver > 6:
+        installfile(mypath + '/systemd/netuitive-agent.service',
+                    '/usr/lib/systemd/system/netuitive-agent.service')
+        os.system('/bin/systemctl daemon-reload')
+        os.system('/bin/systemctl enable netuitive-agent.service')
+
+    else:
+        installfile(
+            mypath + '/init.d/netuitive-agent', '/etc/init.d/netuitive-agent')
+        os.system('/sbin/chkconfig --add netuitive-agent')
+        os.system('/sbin/chkconfig netuitive-agent on')
+
+if distname.lower().startswith('fedora'):
+    if distmajorver > 14:
+        installfile(mypath + '/systemd/netuitive-agent.service',
+                    '/usr/lib/systemd/system/netuitive-agent.service')
+        os.system('/bin/systemctl daemon-reload')
+        os.system('/bin/systemctl enable netuitive-agent.service')
+
+    else:
+        installfile(
+            mypath + '/init.d/netuitive-agent', '/etc/init.d/netuitive-agent')
+        os.system('/sbin/chkconfig --add netuitive-agent')
+        os.system('/sbin/chkconfig netuitive-agent on')
+
+
+if distname.lower().startswith('amazon'):
+    installfile(
+        mypath + '/init.d/netuitive-agent', '/etc/init.d/netuitive-agent')
+    os.system('/sbin/chkconfig --add netuitive-agent')
+    os.system('/sbin/chkconfig netuitive-agent on')
