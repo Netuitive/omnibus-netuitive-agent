@@ -8,7 +8,7 @@ homepage "http://www.netuitive.com"
 install_dir "#{default_root}/#{name}"
 
 build_version "0.0.1"
-build_iteration 2
+build_iteration 1
 
 # Creates required build directories
 dependency "preparation"
