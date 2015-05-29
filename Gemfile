@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # Install omnibus
 gem 'omnibus', '~> 4.0'
