@@ -43,16 +43,12 @@ build do
   # Diamond bin
   copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
-  copy "/vagrant/netuitive", "#{install_dir}"
+  copy "/var/cache/omnibus/netuitive", "#{install_dir}"
   # Configuration file
-  copy "/vagrant/netuitive/conf", "#{install_dir}"
+  copy "/var/cache/omnibus/netuitive/conf", "#{install_dir}"
 
   # Log directory
   mkdir "#{install_dir}/log"
-
-
-  # NetuitiveApi
-  copy "/vagrant/netuitive/src/netuitive", "#{install_dir}/embedded/lib/python2.7/site-packages"
 
   mkdir "#{install_dir}/handlers"
 
@@ -63,6 +59,8 @@ build do
 
   # Diamond Handlers
   mkdir "#{install_dir}/handlers"
-  copy "/vagrant/netuitive/src/handler/netuitive_cloud.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/handler/"
+  copy "/var/cache/omnibus/netuitive/src/handler/netuitive_cloud.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/handler/"
+    command "chmod 0775 " \
+          " /var/cache/omnibus/package-scripts/netuitive-agent/*", env: env
 
 end
