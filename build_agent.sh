@@ -10,13 +10,13 @@ source /etc/profile.d/rvm.sh
 
 rvm use --install 1.9.3
 
-gem install -v bundler
+gem install --verbose bundler
 
 rm -rf /var/cache/omnibus
 cp -rf /vagrant /var/cache/omnibus
 
 cd /var/cache/omnibus
-bundle install --binstubs
+time bundle install --verbose --binstubs --jobs 3
 bin/omnibus build netuitive-agent
 
 cp -f /var/cache/omnibus/pkg/* /vagrant/dist
