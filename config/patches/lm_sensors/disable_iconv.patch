@@ -1,0 +1,13 @@
+--- lm_sensors-3.3.5/prog/sensors/main.c.org    2015-05-29 18:54:47.194127185 +0000
++++ lm_sensors-3.3.5/prog/sensors/main.c    2015-05-29 18:55:05.897120134 +0000
+@@ -27,10 +27,6 @@
+ #include <locale.h>
+ #include <langinfo.h>
+
+-#ifndef __UCLIBC__
+-#include <iconv.h>
+-#define HAVE_ICONV
+-#endif
+
+ #include "lib/sensors.h"
+ #include "lib/error.h"

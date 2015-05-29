@@ -23,7 +23,7 @@ dependency "python-pyutmp"
 dependency "python-redis"
 dependency "python-psycopg2"
 dependency "python-boto"
-#dependency "python-pysensors"
+dependency "python-pysensors"
 
 # Sources may be URLs, git locations, or path locations
 #source git: "https://github.com/Netuitive/Diamond.git"

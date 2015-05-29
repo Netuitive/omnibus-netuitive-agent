@@ -21,13 +21,18 @@ version("3.3.5") { source md5: "da506dedceb41822e64865f6ba34828a" }
 
 source url: "http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-#{version}.tar.bz2"
 
+dependency "patch"
+
 relative_path "lm_sensors-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
-  command "make " \
-          " PREFIX=#{install_dir}/embedded", env: env
+
+    patch source: "disable_iconv.patch"
+
+  # command "make " \
+  #         " PREFIX=#{install_dir}/embedded", env: env
 
   make "-j #{workers} PREFIX=#{install_dir}/embedded", env: env
-  make "-j #{workers} PREFIX=#{install_dir}/embedded install_user", env: env
+  make "-j #{workers} PREFIX=#{install_dir}/embedded install", env: env
 end
