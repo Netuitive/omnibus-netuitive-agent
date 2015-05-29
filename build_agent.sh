@@ -10,7 +10,7 @@ source /etc/profile.d/rvm.sh
 
 rvm use --install 1.9.3
 
-gem --verbose install bundler
+gem install -vbundler
 
 rm -rf /var/cache/omnibus
 cp -rf /vagrant /var/cache/omnibus
