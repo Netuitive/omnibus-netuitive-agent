@@ -61,6 +61,6 @@ build do
   mkdir "#{install_dir}/handlers"
   copy "/var/cache/omnibus/netuitive/src/handler/netuitive_cloud.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/handler/"
     command "chmod 0775 " \
-          " /var/cache/omnibus/package-scripts/netuitive-agent/*", env: env
+          " /var/cache/omnibus/package-scripts/netuitive-agent/*"
 
 end
