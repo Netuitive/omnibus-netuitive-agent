@@ -1,8 +1,8 @@
 """
 handler to flush stats to [NetuitiveCloud](http://www.netuitive.com)
-#### Dependencies
+# Dependencies
 
-#### Configuration
+# Configuration
 Enable handler
 
   * handlers = diamond.handler.netuitive.NetuitiveHandler
@@ -45,25 +45,33 @@ def get_human_readable_size(num):
 
 
 def check_lsb():
-    try:
-        _distributor_id_file_re = re.compile("(?:DISTRIB_ID\s*=)\s*(.*)", re.I)
-        _release_file_re = re.compile("(?:DISTRIB_RELEASE\s*=)\s*(.*)", re.I)
-        _codename_file_re = re.compile("(?:DISTRIB_CODENAME\s*=)\s*(.*)", re.I)
-        with open("/etc/lsb-release", "rU") as etclsbrel:
-            for line in etclsbrel:
-                m = _distributor_id_file_re.search(line)
-                if m:
-                    _u_distname = m.group(1).strip()
-                m = _release_file_re.search(line)
-                if m:
-                    _u_version = m.group(1).strip()
-                m = _codename_file_re.search(line)
-                if m:
-                    _u_id = m.group(1).strip()
-            if _u_distname and _u_version:
-                return (_u_distname, _u_version, _u_id)
-    except Exception as e:
-        logging.debug(e)
+
+    if os.path.isfile("/etc/lsb-release"):
+        try:
+            _distributor_id_file_re = re.compile(
+                "(?:DISTRIB_ID\s*=)\s*(.*)", re.I)
+            _release_file_re = re.compile(
+                "(?:DISTRIB_RELEASE\s*=)\s*(.*)", re.I)
+            _codename_file_re = re.compile(
+                "(?:DISTRIB_CODENAME\s*=)\s*(.*)", re.I)
+            with open("/etc/lsb-release", "rU") as etclsbrel:
+                for line in etclsbrel:
+                    m = _distributor_id_file_re.search(line)
+                    if m:
+                        _u_distname = m.group(1).strip()
+                    m = _release_file_re.search(line)
+                    if m:
+                        _u_version = m.group(1).strip()
+                    m = _codename_file_re.search(line)
+                    if m:
+                        _u_id = m.group(1).strip()
+                if _u_distname and _u_version:
+                    return (_u_distname, _u_version, _u_id)
+        except Exception as e:
+            logging.debug(e)
+            return(None)
+
+    else:
         return(None)
 
 
@@ -219,12 +227,17 @@ class NetuitiveHandler(Handler):
         metricId = metric.getCollectorPath() + '.' + metric.getMetricPath()
 
         self.element.add_sample(
-            metricId, metric.timestamp * 1000, metric.value, metric.metric_type, host=metric.host)
+            metricId, metric.timestamp, metric.value, metric.metric_type, host=metric.host)
 
-        if len(self.element.metrics) >= self.batch_size:
+        logging.debug(
+            'lenght of self.element.samples: ' + str(len(self.element.samples)))
+
+        if len(self.element.samples) >= self.batch_size:
+            logging.debug('flushing data due to exceeding batch_size')
             self.flush()
 
     def flush(self):
+        logging.debug('sending data')
         try:
 
             # Don't let too many metrics back up
