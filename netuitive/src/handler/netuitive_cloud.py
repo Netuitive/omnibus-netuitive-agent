@@ -129,7 +129,7 @@ class NetuitiveHandler(Handler):
         config = super(NetuitiveHandler, self).get_default_config()
 
         config.update({
-            'url': 'https://api.app.netuitive.com',
+            'url': 'https://api.app.netuitive.com/ingest',
             'api_key': 'apikey',
             'tags': None,
             'batch': 100,
