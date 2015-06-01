@@ -164,9 +164,6 @@ class NetuitiveHandler(Handler):
                 else:
                     dist = check_lsb()
 
-                dist = platform.linux_distribution(
-                    platform.linux_distribution(supported_dists=supported_dists))
-
                 self.element.add_attribute('distribution_name', str(dist[0]))
                 self.element.add_attribute(
                     'distribution_version', str(dist[1]))
