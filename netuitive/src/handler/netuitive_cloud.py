@@ -5,7 +5,7 @@ handler to flush stats to [NetuitiveCloud](http://www.netuitive.com)
 # Configuration
 Enable handler
 
-  * handlers = diamond.handler.netuitive.NetuitiveHandler
+  * handlers = diamond.handler.netuitive_cloud.NetuitiveHandler
 
   * url = https://api.app.netuitive.com
   * api_key = NETUITIVE_API_KEY
