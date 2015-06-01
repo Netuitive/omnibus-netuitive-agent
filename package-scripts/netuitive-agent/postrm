@@ -4,26 +4,27 @@
 # after package is uninstalled.
 #
 
-if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
-        /bin/systemctl disenable netuitive-agent.service
-        rm -f /usr/lib/systemd/system/netuitive-agent.service
-        /bin/systemctl daemon-reload
+if [ $1 -eq 0 ]; then
+    if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
+            /bin/systemctl disenable netuitive-agent.service
+            rm -f /usr/lib/systemd/system/netuitive-agent.service
+            /bin/systemctl daemon-reload
+    fi
+
+    if [ -f "/etc/init/netuitive-agent.conf" ]; then
+            rm -f /etc/init/netuitive-agent.conf
+    fi
+
+    if [ -f "/etc/init.d/netuitive-agent" ]; then
+            /etc/init.d/netuitive-agent stop
+            rm -f /etc/init.d/netuitive-agent
+    fi
+
+    if [ -d "/opt/netuitive-agent" ]; then
+            rm -rf /opt/netuitive-agent
+    fi
+
+
+    echo "The Netuitive agent has been uninstalled!"
 fi
-
-if [ -f "/etc/init/netuitive-agent.conf" ]; then
-        rm -f /etc/init/netuitive-agent.conf
-fi
-
-if [ -f "/etc/init.d/netuitive-agent" ]; then
-        /etc/init.d/netuitive-agent stop
-        rm -f /etc/init.d/netuitive-agent
-fi
-
-if [ -d "/opt/netuitive-agent" ]; then
-        rm -rf /opt/netuitive-agent
-fi
-
-
-echo "The Netuitive agent has been uninstalled!"
-
 exit 0
