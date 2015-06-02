@@ -115,3 +115,7 @@ if distname.lower().startswith('amazon'):
         mypath + '/init.d/netuitive-agent', '/etc/init.d/netuitive-agent')
     os.system('/sbin/chkconfig --add netuitive-agent')
     os.system('/sbin/chkconfig netuitive-agent on')
+
+if os.path.isfile('/opt/netuitive-agent/conf/netuitive-agent.conf') is False:
+    shutil.copy('/opt/netuitive-agent/netuitive/conf/netuitive-agent.conf',
+                '/opt/netuitive-agent/conf/netuitive-agent.conf')
