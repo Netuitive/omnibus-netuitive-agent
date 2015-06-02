@@ -47,7 +47,7 @@ build do
 
   # Configuration file
   mkdir "#{install_dir}/conf"
-  copy "/var/cache/omnibus/netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
+  copy "netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
 
   # Log directory
   mkdir "#{install_dir}/log"
