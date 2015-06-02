@@ -16,7 +16,7 @@ function error_exit
 
 echo "###################################"
 echo
-echo "Please add your API key to /opt/netuitive-agent/conf/handlers/NetuitiveHandler.conf before restarting."
+echo "Please add your API key to the [[NetuitiveHandler]] section of /opt/netuitive-agent/conf/netuitive-agent.conf before starting the service."
 echo
 echo "Thank you for installing the Netuitive Agent!"
 echo

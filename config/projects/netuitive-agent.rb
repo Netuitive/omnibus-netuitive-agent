@@ -22,3 +22,7 @@ dependency "version-manifest"
 
 exclude "**/.git"
 exclude "**/bundler/git"
+exclude "**/.gitkeep"
+
+config_file "#{install_dir}/conf/netuitive-agent.conf"
+

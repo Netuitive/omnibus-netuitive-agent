@@ -44,15 +44,14 @@ build do
   copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
   copy "/var/cache/omnibus/netuitive", "#{install_dir}"
+
   # Configuration file
-  copy "/var/cache/omnibus/netuitive/conf", "#{install_dir}"
+  mkdir "#{install_dir}/conf"
+  copy "/var/cache/omnibus/netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
 
   # Log directory
   mkdir "#{install_dir}/log"
 
-  mkdir "#{install_dir}/handlers"
-
-  copy "src/collectors", "#{install_dir}"
 
   # Diamond
   copy "src/diamond", "#{install_dir}/embedded/lib/python2.7/site-packages"
