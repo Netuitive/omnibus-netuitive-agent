@@ -30,8 +30,9 @@ cleanup () {
 }
 
 if [ ! -f /etc/redhat-release -a ! -f /etc/fedora-release -a ! -f /etc/system-release ]; then
-  # not a redhat-ish RPM-based system
-  cleanup
+    if [ "$1" = "remove" ]; then
+      cleanup
+    fi
 elif [ "x$1" = "x0" ]; then
   # RPM-based system and we're deinstalling rather than upgrading
   cleanup
