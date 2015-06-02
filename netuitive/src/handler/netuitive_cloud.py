@@ -7,7 +7,7 @@ Enable handler
 
   * handlers = diamond.handler.netuitive_cloud.NetuitiveHandler
 
-  * url = https://api.app.netuitive.com
+  * url = https://api.app.netuitive.com/ingest/infrastructure
   * api_key = NETUITIVE_API_KEY
   * tags = tag1:tag1val, tag2:tag2val
 
@@ -137,7 +137,7 @@ class NetuitiveHandler(Handler):
         config = super(NetuitiveHandler, self).get_default_config()
 
         config.update({
-            'url': 'https://api.app.netuitive.com/ingest',
+            'url': 'https://api.app.netuitive.com/ingest/infrastructure',
             'api_key': 'apikey',
             'tags': None,
             'batch': 100,
