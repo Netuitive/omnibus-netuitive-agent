@@ -4,39 +4,51 @@
 # after package is uninstalled.
 #
 
+notify()
+{
+  echo "netuitive-agent remove: $1"
+}
+
 cleanup () {
 
-    if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
-            /bin/systemctl disenable netuitive-agent.service
-            rm -f /usr/lib/systemd/system/netuitive-agent.service
-            /bin/systemctl daemon-reload
-    fi
+  if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
+    /bin/systemctl disenable netuitive-agent.service
+    rm -f /usr/lib/systemd/system/netuitive-agent.service
+    /bin/systemctl daemon-reload
+  fi
 
-    if [ -f "/etc/init/netuitive-agent.conf" ]; then
-            rm -f /etc/init/netuitive-agent.conf
-    fi
+  if [ -f "/etc/init/netuitive-agent.conf" ]; then
+    rm -f /etc/init/netuitive-agent.conf
+  fi
 
-    if [ -f "/etc/init.d/netuitive-agent" ]; then
-            /etc/init.d/netuitive-agent stop
-            rm -f /etc/init.d/netuitive-agent
-    fi
+  if [ -f "/etc/init.d/netuitive-agent" ]; then
+    /sbin/chkconfig netuitive-agent off
+    rm -f /etc/init.d/netuitive-agent
+  fi
 
-    if [ -d "/opt/netuitive-agent" ]; then
-            rm -rf /opt/netuitive-agent
-    fi
+  if [ -d "/opt/netuitive-agent" ]; then
+    rm -rf /opt/netuitive-agent
+  fi
 
-    echo "The Netuitive agent has been uninstalled!"
+  notify "The Netuitive agent has been removed!"
 
 }
 
-if [ ! -f /etc/redhat-release -a ! -f /etc/fedora-release -a ! -f /etc/system-release ]; then
-    if [ "$1" = "remove" ]; then
-      cleanup
-    fi
-elif [ "x$1" = "x0" ]; then
-  # RPM-based system and we're deinstalling rather than upgrading
-  cleanup
-fi
+case "$1" in
+  0)
+    # Looks like an RPM remove
+    cleanup
+    ;;
+
+  remove)
+    # Looks like a DEB remove
+    cleanup
+    ;;
+
+  *)
+    # This is not a remove, nothing to do.
+    ;;
+esac
 
 
 

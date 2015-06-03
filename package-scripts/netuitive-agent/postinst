@@ -12,12 +12,66 @@ function error_exit
   exit 1
 }
 
-/opt/netuitive-agent/embedded/bin/python /opt/netuitive-agent/netuitive/install
+notify()
+{
+  echo "netuitive-agent: $1"
+}
 
-echo "###################################"
-echo
-echo "Please add your API key to the [[NetuitiveHandler]] section of /opt/netuitive-agent/conf/netuitive-agent.conf before starting the service."
-echo
-echo "Thank you for installing the Netuitive Agent!"
-echo
+print_welcome()
+{
+  notify
+  notify "Thank you for installing Netuitive's Agent!"
+  notify
+  notify "Please add your API key to the [[NetuitiveHandler]] section of the"
+  notify "/opt/netuitive-agent/conf/netuitive-agent.conf"
+  notify "file before restarting the service."
+  notify
+}
+
+
+init_scripts()
+{
+  if [ -f "/bin/systemctl" ]; then
+    cp /opt/netuitive-agent/netuitive/systemd/netuitive-agent.service /usr/lib/systemd/system/netuitive-agent.service
+    /bin/systemctl daemon-reload
+    /bin/systemctl enable netuitive-agent.service
+    /bin/systemctl restart netutiive-agent
+
+
+  elif [ -f "/etc/redhat-release" -o -f "/etc/fedora-release" -o -f "/etc/system-release" ]; then
+    cp /opt/netuitive-agent/netuitive/init.d/netuitive-agent /etc/init.d/netuitive-agent
+    /sbin/chkconfig --add netuitive-agent
+    /sbin/chkconfig netuitive-agent on
+    /sbin/service netuitive-agent restart
+
+  elif [ -f "/sbin/initctl" ]; then
+    cp /opt/netuitive-agent/netuitive/upstart/netuitive-agent.conf /etc/init/netuitive-agent.conf
+    /sbin/initctl restart netuitive-agent
+
+
+  fi
+}
+
+
+case "$1" in
+  2)
+    # Looks like an RPM upgrade
+    exit 0
+    ;;
+
+  configure)
+    # Looks like a DEB install. We don't know if it is a fresh install or an
+    # upgrade.
+    init_scripts
+    ;;
+
+  *)
+    if [ -x /bin/rpm ] ; then
+        init_scripts
+    fi
+    ;;
+esac
+
+print_welcome
+
 exit 0

@@ -4,4 +4,31 @@
 # before package is installed.
 #
 
-echo "installing the Netuitive agent..."
+upgrade()
+{
+  NOW=$(date +"%m%d%Y_%H%M%S")
+  notify "Backing up /opt/netuitive-agent/conf/netuitive-agent.conf"
+  cp /opt/netuitive-agent/conf/netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf.$NOW
+}
+
+notify()
+{
+  echo "netuitive-agent pre-upgrade: $1"
+}
+
+case "$1" in
+  2)
+    # Looks like an RPM upgrade
+    upgrade
+    ;;
+
+  upgrade)
+    # Looks like a DEB upgrade
+    upgrade
+    ;;
+
+  *)
+    # This is not an upgrade, nothing to do.
+    ;;
+
+esac
