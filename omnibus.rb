@@ -38,8 +38,8 @@ package_dir   '/vagrant/dist'
 # Customize compiler bits
 # ------------------------------
 # solaris_compiler 'gcc'
-# build_retries 5
-# fetcher_read_timeout 120
+build_retries 5
+fetcher_read_timeout 120
 
 # Load additional software
 # ------------------------------
