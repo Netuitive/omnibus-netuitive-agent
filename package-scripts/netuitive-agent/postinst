@@ -34,8 +34,9 @@ init_scripts()
   if [ -f "/bin/systemctl" ]; then
     cp /opt/netuitive-agent/netuitive/systemd/netuitive-agent.service /usr/lib/systemd/system/netuitive-agent.service
     /bin/systemctl daemon-reload
+    sleep 2
     /bin/systemctl enable netuitive-agent.service
-    # /bin/systemctl start netutiive-agent
+    # /bin/systemctl start netuitive-agent
 
 
   elif [ -f "/etc/redhat-release" -o -f "/etc/fedora-release" -o -f "/etc/system-release" ]; then
@@ -62,7 +63,9 @@ case "$1" in
   configure)
     # Looks like a DEB install. We don't know if it is a fresh install or an
     # upgrade.
-    init_scripts
+    if [ -z $2 ];
+      init_scripts
+    fi
     ;;
 
   *)
