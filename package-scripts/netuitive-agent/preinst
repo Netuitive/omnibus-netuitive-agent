@@ -6,9 +6,10 @@
 
 upgrade()
 {
-  NOW=$(date +"%m%d%Y_%H%M%S")
-  notify "Backing up /opt/netuitive-agent/conf/netuitive-agent.conf to /opt/netuitive-agent/conf/netuitive-agent.conf.${NOW}"
-  cp /opt/netuitive-agent/conf/netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf.${NOW}
+#  NOW=$(date +"%s")
+#  notify "Backing up /opt/netuitive-agent/conf/netuitive-agent.conf to /opt/netuitive-agent/conf/netuitive-agent.conf.${NOW}"
+#  cp /opt/netuitive-agent/conf/netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf.${NOW}
+  notify
   notify
   notify "Please remember to restart the service after the upgrade completes"
   notify
