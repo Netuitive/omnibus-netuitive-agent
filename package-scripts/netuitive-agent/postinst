@@ -32,6 +32,7 @@ print_welcome()
 init_scripts()
 {
   if [ -f "/bin/systemctl" ]; then
+    mkdir -p /usr/lib/systemd/system
     cp /opt/netuitive-agent/netuitive/systemd/netuitive-agent.service /usr/lib/systemd/system/netuitive-agent.service
     /bin/systemctl daemon-reload
     sleep 2
