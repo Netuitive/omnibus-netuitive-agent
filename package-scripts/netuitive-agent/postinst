@@ -35,18 +35,18 @@ init_scripts()
     cp /opt/netuitive-agent/netuitive/systemd/netuitive-agent.service /usr/lib/systemd/system/netuitive-agent.service
     /bin/systemctl daemon-reload
     /bin/systemctl enable netuitive-agent.service
-    /bin/systemctl restart netutiive-agent
+    # /bin/systemctl start netutiive-agent
 
 
   elif [ -f "/etc/redhat-release" -o -f "/etc/fedora-release" -o -f "/etc/system-release" ]; then
     cp /opt/netuitive-agent/netuitive/init.d/netuitive-agent /etc/init.d/netuitive-agent
     /sbin/chkconfig --add netuitive-agent
     /sbin/chkconfig netuitive-agent on
-    /sbin/service netuitive-agent restart
+    # /sbin/service netuitive-agent start
 
   elif [ -f "/sbin/initctl" ]; then
     cp /opt/netuitive-agent/netuitive/upstart/netuitive-agent.conf /etc/init/netuitive-agent.conf
-    /sbin/initctl restart netuitive-agent
+    # /sbin/initctl start netuitive-agent
 
 
   fi
