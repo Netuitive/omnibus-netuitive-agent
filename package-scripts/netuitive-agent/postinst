@@ -64,7 +64,7 @@ case "$1" in
   configure)
     # Looks like a DEB install. We don't know if it is a fresh install or an
     # upgrade.
-    if [ -z $2 ];
+    if [ -z $2 ]; then
       init_scripts
     fi
     ;;
