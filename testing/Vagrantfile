@@ -1,0 +1,70 @@
+Vagrant.configure(2) do |config|
+
+  config.vbguest.auto_update = false
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize [
+      "modifyvm", :id,
+      "--memory", "1024",
+      "--cpus", "1"
+    ]
+  end
+
+  config.vm.define "centos6-test", primary: true do |c|
+    c.vm.hostname = "centos6"
+    c.vm.box = "chef/centos-6.6"
+    config.vm.customize [ "modifyvm", :id, "--memory", "1024", "--cpus", "1" ]
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.rpm; do rpm -ivh $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "service netuitive-agent start"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+  config.vm.define "centos7-test", autostart: false do |c|
+    c.vm.hostname = "centos7"
+    c.vm.box = "chef/centos-7.0"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.rpm; do rpm -ivh $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "service netuitive-agent start"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+  config.vm.define "debian8-test", autostart: false do |c|
+    c.vm.hostname = "debian8"
+    c.vm.box = "debian/jessie64"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.deb; do dpkg -i $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "/bin/systemctl start netuitive-agent"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+  config.vm.define "ubuntu12-test", autostart: false do |c|
+    c.vm.hostname = "ubuntu12"
+    c.vm.box = "ubuntu/precise64"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.deb; do dpkg -i $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "/sbin/initctl start netuitive-agent"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+  config.vm.define "ubuntu14-test", autostart: false do |c|
+    c.vm.hostname = "ubuntu14"
+    c.vm.box = "ubuntu/trusty64"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.deb; do dpkg -i $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "/sbin/initctl start netuitive-agent"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+  config.vm.define "ubuntu15-test", autostart: false do |c|
+    c.vm.box = "ubuntu/vivid64"
+    # next 2 lines are aworkaround for https://github.com/mitchellh/vagrant/issues/5673
+    # c.vm.hostname = "ubuntu15"
+    c.vm.provision "shell", inline: "hostname ubuntu15"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.deb; do dpkg -i $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "/bin/systemctl start netuitive-agent"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+end

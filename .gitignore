@@ -9,6 +9,8 @@ pkg/*
 bin/*
 files/**/cache/
 vendor/cookbooks
-dist/*.json
-dist/*.rpm
-dist/*.deb
+*/dist/*.json
+*/dist/*.rpm
+*/dist/*.deb
+testing/*.log
+testing/*.pass
