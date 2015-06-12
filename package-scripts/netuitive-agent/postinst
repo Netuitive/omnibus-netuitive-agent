@@ -50,10 +50,23 @@ init_scripts()
     cp /opt/netuitive-agent/netuitive/upstart/netuitive-agent.conf /etc/init/netuitive-agent.conf
     # /sbin/initctl start netuitive-agent
 
+  elif [ `lsb_release -c -s` == "wheezy" ]; then
+    cp /opt/netuitive-agent/netuitive/init.d/netuitive-agent-lsb /etc/init.d/netuitive-agent
+    update-rc.d netuitive-agent defaults
+    # /sbin/service netuitive-agent start
+    wheezy_notice
 
   fi
 }
 
+wheezy_notice()
+{
+  notify
+  notify
+  notify "The Netuitive agent requires a newer version of GLIBC than is installed by default on Debian 7 (Wheezy)."
+  notify "Please refer to our on-line documentation for further installation instructions."
+  notify
+}
 
 case "$1" in
   2)

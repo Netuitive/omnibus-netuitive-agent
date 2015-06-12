@@ -28,6 +28,19 @@ Vagrant.configure(2) do |config|
     c.vm.provision "shell", inline: "/vagrant/testserver.py&"
   end
 
+  config.vm.define "debian7-test", autostart: false do |c|
+    c.vm.hostname = "debian7"
+    c.vm.box = "debian/wheezy64"
+    c.vm.provision "shell", inline: "for f in /vagrant/dist/*.deb; do dpkg -i $f; done"
+    c.vm.provision "shell", inline: "cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf"
+    c.vm.provision "shell", inline: "echo 'deb http://ftp.debian.org/debian experimental main' >> /etc/apt/sources.list"
+    c.vm.provision "shell", inline: "apt-get update"
+    c.vm.provision "shell", inline: "export DEBIAN_FRONTEND=noninteractive; apt-get -y -t experimental install libc6 libc6-dev libc6-dbg"
+    c.vm.provision "shell", inline: "service netuitive-agent start"
+    c.vm.provision "shell", inline: "/vagrant/testserver.py&"
+  end
+
+
   config.vm.define "debian8-test", autostart: false do |c|
     c.vm.hostname = "debian8"
     c.vm.box = "debian/jessie64"
