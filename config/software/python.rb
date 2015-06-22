@@ -16,7 +16,6 @@
 
 name "python"
 default_version "2.7.10"
-# default_version "2.7.9"
 
 dependency "ncurses"
 dependency "zlib"
@@ -25,7 +24,6 @@ dependency "bzip2"
 
 source url: "http://python.org/ftp/python/#{version}/Python-#{version}.tgz",
        md5: 'd7547558fd673bd9d38e2108c6b42521'
-#        md5: '5eebcaa0030dc4061156d3429657fb83'
 
 relative_path "Python-#{version}"
 

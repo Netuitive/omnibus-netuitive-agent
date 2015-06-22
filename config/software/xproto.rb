@@ -15,10 +15,10 @@
 #
 
 name "xproto"
-default_version "7.0.25"
+default_version "7.0.27"
 
 source url: "http://xorg.freedesktop.org/releases/individual/proto/xproto-#{version}.tar.gz",
-       md5: "a47db46cb117805bd6947aa5928a7436"
+       md5: "f04f535b090f3fd05073370740e99193"
 
 relative_path "xproto-#{version}"
 

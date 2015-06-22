@@ -16,12 +16,12 @@
 #
 
 name "pip"
-default_version "6.1.1"
+default_version "7.0.3"
 
 dependency "setuptools"
 
 source :url => "https://pypi.python.org/packages/source/p/pip/pip-#{version}.tar.gz",
-       :md5 => '6b19e0a934d982a5a4b798e957cb6d45'
+       :md5 => '54cbf5ae000fb3af3367345f5d299d1c'
 
 relative_path "pip-#{version}"
 

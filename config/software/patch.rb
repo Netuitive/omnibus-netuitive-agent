@@ -15,9 +15,9 @@
 #
 
 name "patch"
-default_version "2.7"
+default_version "2.7.5"
 
-version("2.7") { source md5: "1cbaa223ff4991be9fae8ec1d11fb5ab" }
+version("2.7.5") { source md5: "ed4d5674ef4543b4eb463db168886dc7" }
 
 source url: "http://ftp.gnu.org/gnu/patch/patch-#{version}.tar.gz"
 
