@@ -16,7 +16,7 @@ rm -rf /var/cache/omnibus
 cp -rf /vagrant /var/cache/omnibus
 
 cd /var/cache/omnibus
-time bundle install --verbose --binstubs --jobs `nproc --ignore=1`
-bin/omnibus build netuitive-agent
+time bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3
+time bin/omnibus build netuitive-agent
 
 cp -f /var/cache/omnibus/pkg/* /vagrant/dist
