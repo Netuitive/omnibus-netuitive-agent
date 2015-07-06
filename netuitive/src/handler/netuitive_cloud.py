@@ -184,11 +184,11 @@ class NetuitiveHandler(Handler):
                 f.close()
 
                 self.element.add_attribute(
-                    'agent', v.replace(' ', '_').lower())
+                    'agent', v.replace(' ', '_').lower().rstrip())
 
             else:
                 self.element.add_attribute(
-                    'agent', 'Diamond_' + get_diamond_version())
+                    'agent', 'Diamond_' + get_diamond_version().rstrip())
 
         except Exception as e:
             logging.info(e)
