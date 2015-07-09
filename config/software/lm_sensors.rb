@@ -15,9 +15,9 @@
 #
 
 name "lm_sensors"
-default_version "3.3.5"
+default_version "3.4.0"
 
-version("3.3.5") { source md5: "da506dedceb41822e64865f6ba34828a" }
+version("3.4.0") { source md5: "c03675ae9d43d60322110c679416901a" }
 
 source url: "http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-#{version}.tar.bz2"
 

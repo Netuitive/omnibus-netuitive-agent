@@ -1,5 +1,5 @@
 name "netuitive-diamond"
-default_version "3765ff5"
+default_version "a92472c"
 
 dependency "postgresql"
 dependency "mysql-client"
