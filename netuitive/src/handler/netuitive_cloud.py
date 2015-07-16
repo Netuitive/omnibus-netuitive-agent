@@ -33,6 +33,11 @@ try:
 except ImportError:
     netuitive = None
 
+try:
+    import docker
+except ImportError:
+    docker = None
+
 
 def get_human_readable_size(num):
     exp_str = [(0, 'B'), (10, 'KB'), (20, 'MB'),
@@ -106,6 +111,7 @@ class NetuitiveHandler(Handler):
 
             self._add_sys_meta()
             self._add_aws_meta()
+            self._add_docker_meta()
             self._add_config_tags()
 
             logging.debug(self.config)
@@ -193,6 +199,26 @@ class NetuitiveHandler(Handler):
         except Exception as e:
             logging.info(e)
             pass
+
+    def _add_docker_meta(self):
+        if docker:
+            try:
+
+                cc = docker.Client(
+                    base_url='unix://var/run/docker.sock', version='auto')
+                dockerver = cc.version()
+
+                for k, v in dockerver.items():
+                    logging.debug('docker_' + k + ' = ' + v)
+
+                    if type(v) is list:
+                        vl = ', '.join(v)
+                        v = vl
+                    self.element.add_attribute('docker_' + k, v)
+
+            except Exception as e:
+                logging.info(e)
+                pass
 
     def _add_aws_meta(self):
         url = 'http://169.254.169.254/latest/dynamic/instance-identity/document'

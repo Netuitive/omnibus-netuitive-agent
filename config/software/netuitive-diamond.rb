@@ -40,6 +40,9 @@ build do
   # Diamond collectors
   copy "src/collectors", "#{install_dir}"
 
+  # Netuitive collectors
+  copy "/var/cache/omnibus/netuitive/src/collectors/netuitivedocker", "#{install_dir}/collectors/"
+
   # Diamond bin
   copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
