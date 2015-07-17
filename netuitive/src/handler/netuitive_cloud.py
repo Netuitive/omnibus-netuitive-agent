@@ -217,7 +217,7 @@ class NetuitiveHandler(Handler):
                     self.element.add_attribute('docker_' + k, v)
 
             except Exception as e:
-                logging.info(e)
+                logging.debug(e)
                 pass
 
     def _add_aws_meta(self):
