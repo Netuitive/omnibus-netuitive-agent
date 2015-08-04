@@ -1,15 +1,15 @@
-netuitive-agent Release History
+Netuitive Agent Release History
 ===============================
 
-Version 0.1.6 - XXX XX XXXX
----------------------------
+Version 0.1.6 - Aug 4 2015
+--------------------------
 - reduce log level for docker attributes gathering errors
 - update setuptools to 18.1
 - update setproctititle to 1.1.9
 - update psutil to 3.1.1
 - update docker-py to 1.3.1
 - update mysql-client to 5.6.26
-- fix for network and memory collectors because psutil functions were renamed
+- fix for network and memory collectors because psutil functions were renamed in later versions
 
 Version 0.1.5 - Jul 16 2015
 ---------------------------
