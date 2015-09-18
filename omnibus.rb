@@ -40,6 +40,7 @@ s3_bucket      ENV['AWS_S3_BUCKET']
 # solaris_compiler 'gcc'
 build_retries 5
 fetcher_read_timeout 120
+append_timestamp false
 
 # Load additional software
 # ------------------------------

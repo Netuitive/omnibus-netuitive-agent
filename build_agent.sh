@@ -8,7 +8,7 @@ curl -sSL https://get.rvm.io | bash -s stable
 
 source /etc/profile.d/rvm.sh
 
-rvm use --install 1.9.3
+rvm use --install 2.2.3
 
 gem install --verbose bundler
 

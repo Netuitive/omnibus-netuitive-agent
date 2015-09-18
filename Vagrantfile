@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
     c.vm.provision "shell", inline: "apt-get install -y gnupg2"
     c.vm.provision "shell", inline: "apt-get install -y curl"
     c.vm.provision "shell", inline: "apt-get install -y git"
-    c.vm.provision "shell", inline: "apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex"
+    c.vm.provision "shell", inline: "apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev"
     c.vm.provision "shell", path: "build_agent.sh"
 
   end
