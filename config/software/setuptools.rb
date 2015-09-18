@@ -15,12 +15,12 @@
 #
 
 name "setuptools"
-default_version "18.1"
+default_version "18.3.1"
 
 dependency "python"
 
 source url: "https://pypi.python.org/packages/source/s/setuptools/setuptools-#{version}.tar.gz",
-       md5: 'f72e87f34fbf07f299f6cb46256a0b06'
+       md5: '748187b93152fa60287dfb896837fd7c'
 
 relative_path "setuptools-#{version}"
 
