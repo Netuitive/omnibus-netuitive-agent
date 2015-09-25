@@ -1,5 +1,19 @@
-Netuitive Agent Release History
+Netuitive Linux Agent Release History
 ===============================
+
+Version 0.1.7 - Sep 25 2015
+--------------------------
+- support latest omnibus
+- update Diamond with upstream
+- move to bento boxes for Vagrant
+- add cython dependency for pyutmp
+- reduce systemd logging
+- docker collector should send memory items as gauge
+- update cacerts to 2015.09.02
+- update pip to 7.1.2
+- update docker-py to 1.4.0
+- update psutil to 3.2.1
+- update setuptools to 18.3.1
 
 Version 0.1.6 - Aug 4 2015
 --------------------------
