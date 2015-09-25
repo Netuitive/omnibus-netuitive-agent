@@ -10,8 +10,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "centos6" do |c|
     c.vm.hostname = "centos6"
-    c.vm.box = "opscode_centos-6.5"
-    c.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
+    c.vm.box = "bento/centos-6.7"
     c.vm.provision "shell", inline: "sudo su"
     c.vm.provision "shell", inline: "yum -y update"
     c.vm.provision "shell", inline: "yum groupinstall -y development"
@@ -22,8 +21,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "ubuntu14" do |c|
     c.vm.hostname = "ubuntu14"
-    c.vm.box = "opscode_ubuntu-14.04"
-    c.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box"
+    c.vm.box = "bento/ubuntu-14.04"
     c.vm.provision "shell", inline: "sudo su"
     c.vm.provision "shell", inline: "apt-get update"
     c.vm.provision "shell", inline: "apt-get install -y build-essential"
