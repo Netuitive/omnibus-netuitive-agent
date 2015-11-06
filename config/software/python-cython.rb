@@ -1,5 +1,5 @@
 name "cython"
-default_version "0.23.2"
+default_version "0.23.4"
 
 dependency "python"
 dependency "pip"
