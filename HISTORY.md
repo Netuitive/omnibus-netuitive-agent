@@ -1,6 +1,20 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.1.8 - Nov 6 2015
+--------------------------
+- update docker-py to 1.5.0
+- update cacerts to 2015.10.28
+- update mysql-client to 5.6.27
+- update postgresql to 9.4.5
+- update cython to 0.23.4
+- update netuitive to 0.0.8
+- update psutil to 3.2.2
+- update pymongo to 3.1
+- update redis to 2.10.5
+- update setuptools to 18.5
+- remove fix for network and memory collectors (fixed upstream)
+
 Version 0.1.7 - Sep 25 2015
 --------------------------
 - support latest omnibus
