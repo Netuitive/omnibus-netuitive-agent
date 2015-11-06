@@ -42,8 +42,6 @@ build do
 
   # Netuitive collectors
   copy "/var/cache/omnibus/netuitive/src/collectors/netuitivedocker", "#{install_dir}/collectors/"
-  copy "/var/cache/omnibus/netuitive/src/collectors/memory/memory.py", "#{install_dir}/collectors/memory/memory.py"
-  copy "/var/cache/omnibus/netuitive/src/collectors/network/network.py", "#{install_dir}/collectors/network/network.py"
 
 
   # Diamond bin
