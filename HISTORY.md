@@ -1,6 +1,13 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.1.9 - Nov 24 2015
+---------------------------
+- update netuitive cloud handler for more precise human readable values
+- update Diamond with upstream
+- update pymongo to 3.1.1
+
+
 Version 0.1.8 - Nov 6 2015
 --------------------------
 - update docker-py to 1.5.0
