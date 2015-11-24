@@ -39,14 +39,12 @@ except ImportError:
     docker = None
 
 
-def get_human_readable_size(num):
-    exp_str = [(0, 'B'), (10, 'KB'), (20, 'MB'),
-               (30, 'GB'), (40, 'TB'), (50, 'PB'), ]
-    i = 0
-    while i + 1 < len(exp_str) and num >= (2 ** exp_str[i + 1][0]):
-        i += 1
-        rounded_val = round(float(num) / 2 ** exp_str[i][0], 2)
-    return '%s %s' % (int(rounded_val), exp_str[i][1])
+def get_human_readable_size(num, suffix='B'):
+    for unit in ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z']:
+        if abs(num) < 1024.0:
+            return(("%3.2f %s%s" % (num, unit, suffix)).strip())
+        num /= 1024.0
+    return(("%.2f %s%s" % (num, 'Y', suffix)).strip())
 
 
 def check_lsb():
