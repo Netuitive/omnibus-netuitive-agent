@@ -1,5 +1,5 @@
-name "python-statsd"
-default_version "1.7.2"
+name "statsd"
+default_version "3.2.1"
 
 dependency "python"
 dependency "pip"
