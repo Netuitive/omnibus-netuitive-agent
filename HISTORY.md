@@ -1,12 +1,21 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.0 - DEC 2 2015
+--------------------------
+- update Diamond with upstream
+- update docker-py to 1.6.0
+- update psutil to 3.3.0
+- update setuptools to 18.7
+- replace python-statsd module with statsd
+- add new metric_queue_size setting
+- change log file name to netuitive-agent.log
+
 Version 0.1.9 - Nov 24 2015
 ---------------------------
 - update netuitive cloud handler for more precise human readable values
 - update Diamond with upstream
 - update pymongo to 3.1.1
-
 
 Version 0.1.8 - Nov 6 2015
 --------------------------
