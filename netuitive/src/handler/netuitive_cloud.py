@@ -94,8 +94,10 @@ class NetuitiveHandler(Handler):
             Handler.__init__(self, config)
 
             logging.debug("initialize Netuitive handler")
-            self.api = netuitive.Client(
-                self.config['url'], self.config['api_key'])
+
+            self.version = self._get_version
+            self.api = netuitive.Client(self.config['url'], self.config[
+                                        'api_key'], self.version)
 
             self.element = netuitive.Element()
 
@@ -153,10 +155,27 @@ class NetuitiveHandler(Handler):
     def __del__(self):
         pass
 
+    def _get_version(self):
+        """
+        Return version string
+        """
+
+        if os.path.isfile('/opt/netuitive-agent/version-manifest.txt'):
+            with open('/opt/netuitive-agent/version-manifest.txt', 'r') as f:
+                v = f.readline()
+
+            f.close()
+
+            return(v.replace(' ', '_').lower().rstrip())
+
+        else:
+            return('Diamond_' + get_diamond_version().rstrip())
+
     def _add_sys_meta(self):
         try:
 
             self.element.add_attribute('platform', platform.system())
+            self.element.add_attribute('agent', self.version)
 
             if psutil:
                 self.element.add_attribute('cpus', psutil.cpu_count())
@@ -180,19 +199,6 @@ class NetuitiveHandler(Handler):
                 self.element.add_attribute(
                     'distribution_version', str(dist[1]))
                 self.element.add_attribute('distribution_id', str(dist[2]))
-
-            if os.path.isfile('/opt/netuitive-agent/version-manifest.txt'):
-                with open('/opt/netuitive-agent/version-manifest.txt', 'r') as f:
-                    v = f.readline()
-
-                f.close()
-
-                self.element.add_attribute(
-                    'agent', v.replace(' ', '_').lower().rstrip())
-
-            else:
-                self.element.add_attribute(
-                    'agent', 'Diamond_' + get_diamond_version().rstrip())
 
         except Exception as e:
             logging.info(e)
@@ -231,6 +237,19 @@ class NetuitiveHandler(Handler):
                     vl = ', '.join(v)
                     v = vl
                 self.element.add_attribute(k, v)
+
+                if k.lower() == 'instanceid':
+                    instanceid = v
+
+                if k.lower() == 'region':
+                    region = v
+
+            try:
+                child = '{0}:{1}'.format(region, instanceid)
+                self.element.add_relation(child)
+
+            except Exception as e:
+                pass
 
         except Exception as e:
             logging.debug(e)
