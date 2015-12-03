@@ -51,13 +51,25 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             # This URL will trigger our sample function and send what it
             # returns back to the browser
             content_len = int(self.headers.getheader('content-length', 0))
+
             body = self.rfile.read(content_len)
             j = json.loads(body)
-            if j[0]['name'] == hostname:
-                open(passfile, 'a').close()
+            logging.warning(json.dumps(j, indent=2, sort_keys=True))
+            logging.warning("\n")
 
-                logging.warning(
-                    '#################### TEST PASS ####################')
+            if j[0]['name'] == hostname:
+                logging.warning("j[0]['name'] == hostname")
+                if j[0]['tags'][0]['value'] == 'tag1val':
+                    logging.warning("j[0]['tags'][0]['value'] == 'tag1val'")
+
+                    if j[0]['relations'][0]['fqn'] == 'element1':
+                        logging.warning(
+                            "j[0]['relations'][0]['fqn'] == 'element1'")
+
+                        open(passfile, 'a').close()
+
+                        logging.warning(
+                            '#################### TEST PASS ####################')
             else:
                 if os.path.isfile(passfile):
                     os.remove(passfile)
@@ -65,8 +77,6 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 logging.warning(
                     '#################### TEST FAILED ####################')
 
-            logging.warning(json.dumps(j, indent=2, sort_keys=True))
-            logging.warning("\n")
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
