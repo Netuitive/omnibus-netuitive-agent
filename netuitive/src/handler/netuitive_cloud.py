@@ -95,7 +95,7 @@ class NetuitiveHandler(Handler):
 
             logging.debug("initialize Netuitive handler")
 
-            self.version = self._get_version
+            self.version = self._get_version()
             self.api = netuitive.Client(self.config['url'], self.config[
                                         'api_key'], self.version)
 
@@ -160,16 +160,16 @@ class NetuitiveHandler(Handler):
         Return version string
         """
 
+        ret = 'Diamond_' + get_diamond_version().rstrip()
         if os.path.isfile('/opt/netuitive-agent/version-manifest.txt'):
             with open('/opt/netuitive-agent/version-manifest.txt', 'r') as f:
                 v = f.readline()
 
             f.close()
 
-            return(v.replace(' ', '_').lower().rstrip())
+            ret = v.replace(' ', '_').lower().rstrip()
 
-        else:
-            return('Diamond_' + get_diamond_version().rstrip())
+        return(ret)
 
     def _add_sys_meta(self):
         try:
