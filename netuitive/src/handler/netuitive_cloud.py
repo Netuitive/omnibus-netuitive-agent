@@ -113,6 +113,7 @@ class NetuitiveHandler(Handler):
             self._add_aws_meta()
             self._add_docker_meta()
             self._add_config_tags()
+            self._add_config_relations()
 
             logging.debug(self.config)
 
@@ -128,7 +129,8 @@ class NetuitiveHandler(Handler):
         config.update({
             'url': 'NetuitiveCloud url to send data to',
             'api_key': 'Datasource api key',
-            'tag': 'Netuitive Tags',
+            'tags': 'Netuitive Tags',
+            'relations': 'Netuitive child Element',
             'batch': 'How many to store before sending to the graphite server',
             'max_backlog_multiplier': 'how many batches to store before trimming',
             'trim_backlog_multiplier': 'Trim down how many batches',
@@ -146,6 +148,7 @@ class NetuitiveHandler(Handler):
             'url': 'https://api.app.netuitive.com/ingest/infrastructure',
             'api_key': 'apikey',
             'tags': None,
+            'relations': None,
             'batch': 100,
             'max_backlog_multiplier': 5,
             'trim_backlog_multiplier': 4,
@@ -265,6 +268,17 @@ class NetuitiveHandler(Handler):
 
             if type(tags) is str:
                 self.element.add_tag(tags.split(":")[0], tags.split(":")[1])
+
+    def _add_config_relations(self):
+        relations = self.config.get('relations')
+
+        if relations is not None:
+            if type(relations) is list:
+                for r in relations:
+                    self.element.add_relation(r.strip())
+
+            if type(relations) is str:
+                self.element.add_relation(relations.strip())
 
     def process(self, metric):
         metricId = metric.getCollectorPath() + '.' + metric.getMetricPath()
