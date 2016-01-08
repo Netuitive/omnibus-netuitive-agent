@@ -15,7 +15,7 @@
 #
 
 name "python"
-default_version "2.7.10"
+default_version "2.7.11"
 
 dependency "ncurses"
 dependency "zlib"
