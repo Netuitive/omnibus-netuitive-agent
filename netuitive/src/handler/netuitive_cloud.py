@@ -1,5 +1,5 @@
 """
-handler to flush stats to [NetuitiveCloud](http://www.netuitive.com)
+handler to flush stats to [Netuitive](http://www.netuitive.com)
 # Dependencies
 
 # Configuration
@@ -99,7 +99,8 @@ class NetuitiveHandler(Handler):
             self.api = netuitive.Client(self.config['url'], self.config[
                                         'api_key'], self.version)
 
-            self.element = netuitive.Element()
+            self.element = netuitive.Element(
+                location=self.config.get('location'))
 
             self.batch_size = int(self.config['batch'])
 
@@ -131,6 +132,7 @@ class NetuitiveHandler(Handler):
             'api_key': 'Datasource api key',
             'tags': 'Netuitive Tags',
             'relations': 'Netuitive child Element',
+            'location': 'the location of this Element',
             'batch': 'How many to store before sending to the graphite server',
             'max_backlog_multiplier': 'how many batches to store before trimming',
             'trim_backlog_multiplier': 'Trim down how many batches',
@@ -149,6 +151,7 @@ class NetuitiveHandler(Handler):
             'api_key': 'apikey',
             'tags': None,
             'relations': None,
+            'location': None,
             'batch': 100,
             'max_backlog_multiplier': 5,
             'trim_backlog_multiplier': 4,
@@ -201,7 +204,8 @@ class NetuitiveHandler(Handler):
                 self.element.add_attribute('distribution_name', str(dist[0]))
                 self.element.add_attribute(
                     'distribution_version', str(dist[1]))
-                self.element.add_attribute('distribution_id', str(dist[2]))
+                if dist[2] != '':
+                    self.element.add_attribute('distribution_id', str(dist[2]))
 
         except Exception as e:
             logging.info(e)

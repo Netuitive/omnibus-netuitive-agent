@@ -1,5 +1,5 @@
 name "netuitive"
-default_version "0.0.9"
+default_version "0.1.0"
 
 dependency "python"
 dependency "pip"
