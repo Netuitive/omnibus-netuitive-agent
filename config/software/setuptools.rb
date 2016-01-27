@@ -20,7 +20,7 @@ default_version "19.2"
 dependency "python"
 
 source url: "https://pypi.python.org/packages/source/s/setuptools/setuptools-#{version}.tar.gz",
-       md5: '295d7aaef2da7d6ff10b522581da0cf9'
+       md5: '78353b1f80375ca5e088f4b4627ffe03'
 
 relative_path "setuptools-#{version}"
 
