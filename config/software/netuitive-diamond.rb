@@ -24,6 +24,7 @@ dependency "python-redis"
 dependency "python-psycopg2"
 dependency "python-boto"
 dependency "python-pysensors"
+dependency "python-pysnmp"
 
 # Sources may be URLs, git locations, or path locations
 #source git: "https://github.com/Netuitive/Diamond.git"
@@ -42,6 +43,9 @@ build do
 
   # Netuitive collectors
   copy "/var/cache/omnibus/netuitive/src/collectors/netuitivedocker", "#{install_dir}/collectors/"
+
+  # Fixed SNMP collectors https://github.com/python-diamond/Diamond/pull/63
+  copy "/var/cache/omnibus/netuitive/src/collectors/snmp", "#{install_dir}/collectors/"
 
 
   # Diamond bin
