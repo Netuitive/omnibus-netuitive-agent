@@ -56,6 +56,8 @@ restart diamond.
 import re
 import socket
 import warnings
+import traceback
+import logging
 
 # pysnmp packages on debian 6.0 use sha and md5 which are deprecated
 # packages. there is nothing to be done about it until pysnmp
@@ -69,9 +71,14 @@ IntegerType = None
 try:
     # Note only here for safety. The collector will log if this fails to load
     import pysnmp.entity.rfc3413.oneliner.cmdgen as cmdgen
+    from pysnmp.error import PySnmpError
+    from pysnmp import debug
     from pyasn1.type.univ import Integer as IntegerType
 except ImportError:
     pass
+
+if logging.getLogger().isEnabledFor(logging.DEBUG):
+    debug.setLogger(debug.Debug('all'))
 
 warnings.showwarning = old_showwarning
 
@@ -211,7 +218,12 @@ class SNMPCollector(diamond.collector.Collector):
         :returns: list of SNMP (name, value) tuples
         """
         # Run the SNMP GET query
-        result = self.cmdgen.getCmd(auth, transport, self._to_oid_tuple(oid))
+        result = self.cmdgen.getCmd(
+            auth, transport, self._to_oid_tuple(oid))
+
+        if result[0]:
+            self.log.error(result[0])
+            return []
 
         try:
             return result[3]
@@ -233,12 +245,17 @@ class SNMPCollector(diamond.collector.Collector):
         :returns: list of SNMP (name, value) tuples
         """
         # Run the SNMP WALK query
-        result = self.cmdgen.nextCmd(auth, transport, self._to_oid_tuple(oid))
+        result = self.cmdgen.nextCmd(
+            auth, transport, self._to_oid_tuple(oid))
+
+        if result[0]:
+            self.log.error(result[0])
+            return []
 
         try:
             return [item[0] for item in result[3]]
         except IndexError:
-            self.log.debug(
+            self.log.warning(
                 "SNMP WALK '{0}' on host '{1}' returned no data".format(
                     oid, transport.transportAddr[0]
                 )

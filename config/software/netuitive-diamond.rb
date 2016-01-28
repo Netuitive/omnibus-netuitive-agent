@@ -46,7 +46,7 @@ build do
 
   # Fixed SNMP collectors https://github.com/python-diamond/Diamond/pull/63
   copy "/var/cache/omnibus/netuitive/src/collectors/snmp", "#{install_dir}/collectors/"
-
+  copy "/var/cache/omnibus/netuitive/src/collectors/snmpinterface", "#{install_dir}/collectors/"
 
   # Diamond bin
   copy "bin/diamond", "#{install_dir}/bin"
