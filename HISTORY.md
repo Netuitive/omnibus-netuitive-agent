@@ -1,6 +1,22 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.2 - Jan 29 2016
+---------------------------
+- update python to 2.7.11
+- update mysql to 5.6.28
+- update openssl to 1.0.1r
+- update pymongo to 3.2
+- update setuptool to 19.2
+- update pip to 8.0.2
+- update cacerts to 2016.01.20
+- update boto to 2.39.0
+- update psutil to 3.4.2
+- update setuptools to 19.6.1
+- update Diamond with upstream
+- add SNMP support
+- add location support
+
 Version 0.2.1 - Dec 3 2015
 --------------------------
 - update Diamond with upstream
