@@ -285,7 +285,9 @@ class SNMPCollector(diamond.collector.Collector):
         :param community: community auth string
         :returns: pysnmp CommunityData
         """
-        return cmdgen.CommunityData('agent', community)
+
+        # https://github.com/python-diamond/Diamond/pull/386
+        return cmdgen.CommunityData('agent-{0}'.format(community), community)
 
     def collect_snmp(self, device, host, port, community):
         """
