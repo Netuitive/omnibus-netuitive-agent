@@ -1,108 +1,101 @@
 #!/bin/sh
 #
-# diamond	Start the diamond statistics collector
+# Netuitive-agent start script
 #
 # chkconfig: 2345 25 75
-# description: Diamond is a daemon and toolset for gathering system statistics \
-#              and publishing them to Netuitive.
+# description: Netuitive-agent start script
 # processname: python
-# config: /opt/netuitive-agent/conf/diamond.conf
-# pidfile: /opt/netuitive-agent/diamond.pid
+# config: /opt/netuitive-agent/conf/supervisord.conf
+# pidfile: /opt/netuitive-agent/supervisord.pid
 ### BEGIN INIT INFO
-# Provides:          diamond
+# Provides:          netuitive-agent
 # Required-Start:    $network $local_fs $remote_fs
 # Required-Stop:     $network $local_fs $remote_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: System statistics collector for Netuitive.
-# Description:       Diamond is a daemon and toolset for gathering system statistics
-#                    and publishing them to Netuitive.
+# Short-Description: Netuitive-agent start script.
+# Description:       Netuitive-agent start script
 ### END INIT INFO
 
-# Author: Sam Bashton <sam@bashton.com>
-NAME=netuitive-agent
-BASEPATH=/opt/netuitive-agent
-CONF=$BASEPATH/conf/netuitive-agent.conf
-DAEMON="$BASEPATH/embedded/bin/python $BASEPATH/bin/netuitive-agent"
-PIDFILE=$BASEPATH/netuitive-agent.pid
+# Path to the supervisorctl script, server binary,
+# and short-form for messages.
 
-DAEMON_ARGS="-p $PIDFILE -c $CONF"
-
-export SENSORS_LIB=/opt/netuitive-agent/embedded/lib/libsensors.so
-
-SCRIPTNAME=/etc/init.d/netuitive-agent
-LOCKDIR=/var/lock/subsys
-LOCKFILE=/var/lock/subsys/netuitive
-
+# Source function library
 . /etc/rc.d/init.d/functions
 
-start() {
-  if [ -d "${LOCKDIR}" -a -w "${LOCKDIR}" ]
-  then
-    local pid
-    __pids_var_run $NAME || rm -f "${LOCKFILE}"
-    if ( set -o noclobber; echo "$$" > "${LOCKFILE}") 2> /dev/null;
-    then
-      true
-    else
-      echo "Failed to acquire lockfile: ${LOCKFILE}."
-      echo "Held by $(cat ${LOCKFILE})"
-      echo_failure
-      return 1
-    fi
-  fi
+supervisorctl=/opt/netuitive-agent/bin/supervisorctl
+supervisord=/opt/netuitive-agent/bin/supervisord
+prog=supervisord
+pidfile=/opt/netuitive-agent/supervisord.pid
+lockfile=/opt/netuitive-agent/supervisord.lck
+STOP_TIMEOUT=${STOP_TIMEOUT-60}
+OPTIONS="-c /opt/netuitive-agent/conf/supervisor.conf"
+RETVAL=0
 
-  echo -n $"Starting $NAME: "
-  daemon --pidfile $PIDFILE $DAEMON $DAEMON_ARGS
-  retval=$?
-  if [ $retval -eq 0 ]; then
-    echo_success
+start() {
+    echo -n $"Starting $prog: "
+    daemon --pidfile=${pidfile} $supervisord $OPTIONS
+    RETVAL=$?
     echo
-  else
-    echo_failure
-    echo
-  fi
-  return $retval
+    if [ $RETVAL -eq 0 ]; then
+        touch ${lockfile}
+        $supervisorctl $OPTIONS status
+    fi
+    return $RETVAL
 }
 
 stop() {
-  echo -n $"Stopping $NAME: "
-  killproc -p $PIDFILE $NAME
-  retval=$?
-  if [ $retval -ne 0 ];
-  then
-    killall -q diamond
-  fi
-  if [ -e "${LOCKFILE}" ]
-  then
-    rm -f "${LOCKFILE}"
-  fi
-  echo
-  return $retval
+    echo -n $"Stopping $prog: "
+    killproc -p ${pidfile} -d ${STOP_TIMEOUT} $supervisord
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -rf ${lockfile} ${pidfile}
+}
+
+reload() {
+    echo -n $"Reloading $prog: "
+    LSB=1 killproc -p $pidfile $supervisord -HUP
+    RETVAL=$?
+    echo
+    if [ $RETVAL -eq 7 ]; then
+        failure $"$prog reload"
+    else
+        $supervisorctl $OPTIONS status
+    fi
 }
 
 restart() {
-  stop
-  start
+    stop
+    start
 }
 
 case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  status)
-    status -p $PIDFILE $NAME
-    ;;
-  restart)
-    restart
-    ;;
-  *)
-    echo "Usage: $0 {start|stop|status}"
-    exit 2
-    ;;
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status -p ${pidfile} $supervisord
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && $supervisorctl $OPTIONS status
+        ;;
+    restart)
+        restart
+        ;;
+    condrestart|try-restart)
+        if status -p ${pidfile} $supervisord >&/dev/null; then
+          stop
+          start
+        fi
+        ;;
+    force-reload|reload)
+        reload
+        ;;
+    *)
+        echo $"Usage: $prog {start|stop|restart|condrestart|try-restart|force-reload|reload}"
+        RETVAL=2
 esac
 
-exit $?
+exit $RETVAL

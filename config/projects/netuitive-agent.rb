@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.2.2'
+build_version '0.2.3beta'
 build_iteration 1
 
 # Creates required build directories
@@ -16,6 +16,9 @@ dependency "preparation"
 
 # netuitive diamond agent
 dependency "netuitive-diamond"
+
+# netuitive statsd
+dependency "netuitive-statsd"
 
 # Version manifest file
 dependency "version-manifest"

@@ -18,4 +18,5 @@ testing/runtest.sh
 testing/dist/*.json
 testing/dist/*.rpm
 testing/dist/*.deb
+manual_testing
 local.sh

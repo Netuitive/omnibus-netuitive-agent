@@ -25,6 +25,7 @@ dependency "python-psycopg2"
 dependency "python-boto"
 dependency "python-pysensors"
 dependency "python-pysnmp"
+dependency "python-supervisor"
 
 # Sources may be URLs, git locations, or path locations
 #source git: "https://github.com/Netuitive/Diamond.git"
@@ -56,6 +57,8 @@ build do
   # Configuration file
   mkdir "#{install_dir}/conf"
   copy "/var/cache/omnibus/netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
+  copy "/var/cache/omnibus/netuitive/conf/supervisor.conf", "#{install_dir}/conf/supervisor.conf"
+
 
   # Log directory
   mkdir "#{install_dir}/log"
@@ -63,6 +66,9 @@ build do
 
   # Diamond
   copy "src/diamond", "#{install_dir}/embedded/lib/python2.7/site-packages"
+
+  # fix Diamond logging
+  copy "/var/cache/omnibus/netuitive/src/log.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/utils/log.py"
 
   # Diamond Handlers
   mkdir "#{install_dir}/handlers"

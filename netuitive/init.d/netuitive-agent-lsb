@@ -1,50 +1,24 @@
 #!/bin/sh
 #
-# diamond	Start the diamond statistics collector
+# Netuitive-agent start script
 #
 # chkconfig: 2345 25 75
-# description: Diamond is a daemon and toolset for gathering system statistics \
-#              and publishing them to Netuitive.
+# description: Netuitive-agent start script
 # processname: python
-# config: /opt/netuitive-agent/conf/diamond.conf
-# pidfile: /opt/netuitive-agent/diamond.pid
+# config: /opt/netuitive-agent/conf/supervisord.conf
+# pidfile: /opt/netuitive-agent/supervisord.pid
 ### BEGIN INIT INFO
-# Provides:          diamond
+# Provides:          netuitive-agent
 # Required-Start:    $network $local_fs $remote_fs
 # Required-Stop:     $network $local_fs $remote_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: System statistics collector for Netuitive.
-# Description:       Diamond is a daemon and toolset for gathering system statistics
-#                    and publishing them to Netuitive.
+# Short-Description: Netuitive-agent start script.
+# Description:       Netuitive-agent start script
 ### END INIT INFO
 
-# Author: Sam Bashton <sam@bashton.com>
-NAME=netuitive-agent
-BASEPATH=/opt/netuitive-agent
-CONF=$BASEPATH/conf/netuitive-agent.conf
-DAEMON="$BASEPATH/embedded/bin/python $BASEPATH/bin/netuitive-agent"
-PIDFILE=$BASEPATH/netuitive-agent.pid
-
-DAEMON_ARGS="-p $PIDFILE -c $CONF"
-
-export SENSORS_LIB=/opt/netuitive-agent/embedded/lib/libsensors.so
-
-SCRIPTNAME=/etc/init.d/netuitive-agent
-LOCKDIR=/var/lock/subsys
-LOCKFILE=/var/lock/subsys/netuitive
-
-# Exit if the package is not installed
-[ -x $BASEPATH/embedded/bin/python ] || exit 0
-
-# Read configuration variable file if it is present
-[ -r /etc/default/$NAME ] && . /etc/default/$NAME
-
-# Checking for a config file in place
-if [  ! -e $CONF ]; then
-   echo "/etc/diamond/diamond.conf not found. Please see /etc/diamond/diamond.conf.example"
-   exit 2
-fi
+# Path to the supervisorctl script, server binary,
+# and short-form for messages.
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
@@ -53,10 +27,20 @@ fi
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
 
+SCRIPTNAME=/etc/init.d/netuitive-agent
+NAME=netuitive-agent
+supervisorctl=/opt/netuitive-agent/bin/supervisorctl
+DAEMON=/opt/netuitive-agent/bin/supervisord
+prog=supervisord
+PIDFILE=/opt/netuitive-agent/supervisord.pid
+LOCKDIR=/opt/netuitive-agent
+LOCKFILE=/opt/netuitive-agent/supervisord.lck
+STOP_TIMEOUT=${STOP_TIMEOUT-60}
+DAEMON_ARGS="-c /opt/netuitive-agent/conf/supervisor.conf"
+NAME=netuitive-agent
+RETVAL=0
 
-#
-# Function that starts the daemon/service
-#
+
 do_start()
 {
     # Return
