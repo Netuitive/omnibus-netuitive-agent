@@ -18,6 +18,7 @@ import logging
 import re
 import platform
 import datetime
+import time
 import os
 import json
 import urllib2
@@ -115,6 +116,8 @@ class NetuitiveHandler(Handler):
             self._add_docker_meta()
             self._add_config_tags()
             self._add_config_relations()
+
+            self.flush_time = 0
 
             logging.debug(self.config)
 
@@ -291,7 +294,7 @@ class NetuitiveHandler(Handler):
             metricId, metric.timestamp, metric.value, metric.metric_type, host=metric.host)
 
         logging.debug(
-            'lenght of self.element.samples: ' + str(len(self.element.samples)))
+            'length of self.element.samples: ' + str(len(self.element.samples)))
 
         if len(self.element.samples) >= self.batch_size:
             logging.debug('flushing data due to exceeding batch_size')
@@ -299,21 +302,28 @@ class NetuitiveHandler(Handler):
 
     def flush(self):
         logging.debug('sending data')
+
         try:
 
             # Don't let too many metrics back up
             if len(self.element.metrics) >= (
                     self.batch_size * self.max_backlog_multiplier):
-                trim_offset = (self.batch_size
-                               * self.trim_backlog_multiplier * -1)
-                logging.warn('NetuitiveHandler: Trimming backlog. Removing'
-                             + ' oldest %d and keeping newest %d metrics',
+                trim_offset = (self.batch_size *
+                               self.trim_backlog_multiplier * -1)
+                logging.warn('NetuitiveHandler: Trimming backlog. Removing' +
+                             ' oldest %d and keeping newest %d metrics',
                              len(self.element.metrics) - abs(trim_offset),
                              abs(trim_offset))
                 self.element.metrics = self.element.metrics[trim_offset:]
 
             self.api.post(self.element)
             self.element.clear_samples()
+
+            elapsed = int(time.time()) - self.flush_time
+            if elapsed > 900 or self.flush_time == 0:
+                self.flush_time = int(time.time())
+                logging.warn('NetuitiveHandler: Element Post Successfully. ' +
+                             'Next log message in 15 minutes.')
 
         except Exception as e:
             logging.exception('NetuitiveHandler: flush - %s', str(e))
