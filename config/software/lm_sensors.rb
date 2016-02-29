@@ -19,7 +19,10 @@ default_version "3.4.0"
 
 version("3.4.0") { source md5: "c03675ae9d43d60322110c679416901a" }
 
-source url: "http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-#{version}.tar.bz2"
+# the original site seems to be dead
+# source url: "http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-#{version}.tar.bz2"
+
+source url: "http://s3.shawnbutts.com/lm_sensors/lm_sensors-#{version}.tar.bz2"
 
 dependency "patch"
 
