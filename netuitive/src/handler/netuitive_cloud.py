@@ -322,7 +322,7 @@ class NetuitiveHandler(Handler):
             elapsed = int(time.time()) - self.flush_time
             if elapsed > 900 or self.flush_time == 0:
                 self.flush_time = int(time.time())
-                logging.warn('NetuitiveHandler: Element Post Successfully. ' +
+                logging.info('NetuitiveHandler: Data posted successfully. ' +
                              'Next log message in 15 minutes.')
 
         except Exception as e:
