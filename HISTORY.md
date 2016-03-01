@@ -4,6 +4,7 @@ Netuitive Linux Agent Release History
 
 Version 0.2.3 - XXX XX 2016
 ---------------------------
+- update openssl to 1.0.1s
 - update mysql to 5.6.29
 - update postgresql to 9.4.6
 - update pip to 8.0.3
