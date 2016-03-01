@@ -1,5 +1,5 @@
 name "netuitive-statsd"
-default_version "sbutts1"
+default_version "master"
 
 dependency "python"
 dependency "pip"
