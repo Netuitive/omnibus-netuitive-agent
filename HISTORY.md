@@ -2,8 +2,8 @@ Netuitive Linux Agent Release History
 ===============================
 
 
-Version 0.2.3 - XXX XX 2016
----------------------------
+Version 0.2.3 - Mar 1 2016
+--------------------------
 - update openssl to 1.0.1s
 - update mysql to 5.6.29
 - update postgresql to 9.4.6
@@ -12,10 +12,10 @@ Version 0.2.3 - XXX XX 2016
 - update pymongo to 3.2.1
 - update mysnmp to 4.3.2
 - upgrade setuptools to 20.2.2
-- add "heartbeat" log message
-- add netuitive-statsd
 - update dependency links to xorg.freedesktop.org
 - update Diamond with upstream
+- add "heartbeat" log message
+- add netuitive-statsd
 - switch to using master branch on Netuitive/Diamond
 
 Version 0.2.2 - Jan 29 2016
