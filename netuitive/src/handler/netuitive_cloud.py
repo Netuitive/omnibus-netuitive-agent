@@ -212,7 +212,7 @@ class NetuitiveHandler(Handler):
 
         except Exception as e:
             logging.info(e)
-            pass
+            pass 
 
     def _add_docker_meta(self):
         if docker:
@@ -304,6 +304,10 @@ class NetuitiveHandler(Handler):
         logging.debug('sending data')
 
         try:
+            toff = self.api.check_time_offset()
+            if toff not in range(-300, 300):
+                logging.error('local time is {0} seconds out '
+                              'of sync with the server'.format(toff))
 
             # Don't let too many metrics back up
             if len(self.element.metrics) >= (
