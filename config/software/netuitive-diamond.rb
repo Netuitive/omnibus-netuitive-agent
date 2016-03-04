@@ -52,7 +52,7 @@ build do
   # Diamond bin
   copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
-  copy "/var/cache/omnibus/netuitive", "#{install_dir}"
+  copy "/var/cache/omnibus/netuitive", "#{install_dir}/.install"
 
   # Configuration file
   mkdir "#{install_dir}/conf"
