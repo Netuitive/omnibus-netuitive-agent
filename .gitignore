@@ -1,4 +1,7 @@
 *.gem
+*.gz
+*.bz2
+*.wal
 .bundle
 .DS_Store
 .kitchen/
