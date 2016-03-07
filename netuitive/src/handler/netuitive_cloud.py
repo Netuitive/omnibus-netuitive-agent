@@ -211,8 +211,8 @@ class NetuitiveHandler(Handler):
                     self.element.add_attribute('distribution_id', str(dist[2]))
 
         except Exception as e:
-            logging.info(e)
-            pass 
+            logging.debug(e)
+            pass
 
     def _add_docker_meta(self):
         if docker:
