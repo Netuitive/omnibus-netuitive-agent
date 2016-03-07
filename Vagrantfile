@@ -19,9 +19,9 @@ Vagrant.configure(2) do |config|
   end
 
 
-  config.vm.define "ubuntu14" do |c|
-    c.vm.hostname = "ubuntu14"
-    c.vm.box = "bento/ubuntu-14.04"
+  config.vm.define "debian7" do |c|
+    c.vm.hostname = "debian7"
+    c.vm.box = "bento/debian-7.9"
     c.vm.provision "shell", inline: "sudo su"
     c.vm.provision "shell", inline: "apt-get update"
     c.vm.provision "shell", inline: "apt-get install -y build-essential"

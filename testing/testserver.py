@@ -41,6 +41,7 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         logging.warning("======= HEAD STARTED =======")
 
         self.send_response(200)
+        return
 
     def do_GET(self):
         logging.warning("======= GET STARTED =======")

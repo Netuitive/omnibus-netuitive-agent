@@ -17,6 +17,7 @@ dist/*.rpm
 dist/*.deb
 testing/*.log
 testing/*.pass
+testing/*.out
 testing/runtest.sh
 testing/dist/*.json
 testing/dist/*.rpm
