@@ -37,6 +37,12 @@ logger.addHandler(
 
 class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
+    def do_HEAD(self):
+        logging.warning("======= HEAD STARTED =======")
+
+        self.send_response(200)
+        return
+
     def do_GET(self):
         logging.warning("======= GET STARTED =======")
         logging.warning(self.headers)

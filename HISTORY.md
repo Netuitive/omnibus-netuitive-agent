@@ -1,6 +1,13 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.4 - Mar 8 2016
+--------------------------
+- add time offset check
+- move temp directory for install
+- update Diamond with upstream
+- update netuitive-python-client to 0.1.1
+- build deb packages on debian 7 (libc fix)
 
 Version 0.2.3 - Mar 1 2016
 --------------------------
