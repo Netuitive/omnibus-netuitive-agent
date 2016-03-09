@@ -87,7 +87,7 @@ init_scripts()
     cp /opt/netuitive-agent/.install/init.d/netuitive-agent-lsb /etc/init.d/netuitive-agent
     update-rc.d netuitive-agent defaults
     # /sbin/service netuitive-agent start
-    wheezy_notice
+    # wheezy_notice
 
   fi
 }
