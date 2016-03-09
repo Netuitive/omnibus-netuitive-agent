@@ -304,10 +304,6 @@ class NetuitiveHandler(Handler):
         logging.debug('sending data')
 
         try:
-            toff = self.api.check_time_offset()
-            if toff not in range(-300, 300):
-                logging.error('local time is {0} seconds out '
-                              'of sync with the server'.format(toff))
 
             # Don't let too many metrics back up
             if len(self.element.metrics) >= (
@@ -325,6 +321,12 @@ class NetuitiveHandler(Handler):
 
             elapsed = int(time.time()) - self.flush_time
             if elapsed > 900 or self.flush_time == 0:
+
+                toff = self.api.check_time_offset()
+                if toff not in range(-300, 300):
+                    logging.error('local time is {0} seconds out '
+                                  'of sync with the server'.format(toff))
+
                 self.flush_time = int(time.time())
                 logging.info('NetuitiveHandler: Data posted successfully. ' +
                              'Next log message in 15 minutes.')
