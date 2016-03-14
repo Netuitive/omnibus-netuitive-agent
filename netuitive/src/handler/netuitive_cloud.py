@@ -303,6 +303,10 @@ class NetuitiveHandler(Handler):
     def flush(self):
         logging.debug('sending data')
 
+        if self.element.id is None:
+            logging.info('element id not set. nothing to post.')
+            return
+
         try:
 
             # Don't let too many metrics back up
