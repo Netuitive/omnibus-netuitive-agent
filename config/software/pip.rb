@@ -16,7 +16,7 @@
 #
 
 name "pip"
-default_version "8.0.3"
+default_version "8.1.0"
 
 dependency "setuptools"
 
