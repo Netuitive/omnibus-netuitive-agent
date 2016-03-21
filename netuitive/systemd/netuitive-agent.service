@@ -2,7 +2,6 @@
 Description=netuitive-agent - A system statistics collector for Netuitive
 
 [Service]
-Environment="SENSORS_LIB=/opt/netuitive-agent/embedded/lib/libsensors.so"
 ExecStart=/opt/netuitive-agent/bin/supervisord -n -c /opt/netuitive-agent/conf/supervisor.conf
 ExecStop=/opt/netuitive-agent/bin/supervisorctl -c /opt/netuitive-agent/conf/supervisor.conf $OPTIONS shutdown
 ExecReload=/opt/netuitive-agent/bin/supervisorctl -c /opt/netuitive-agent/conf/supervisor.conf $OPTIONS reload

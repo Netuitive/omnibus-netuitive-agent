@@ -1,6 +1,15 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.5 - Mar 21 2016
+---------------------------
+- add mysql and httpd collector default configs
+- don't post if we don't have enough metrics
+- fix for agent restarts on some Ubuntu systems
+- fix python path in netuitive-agent script
+- update pip to 8.1.1
+- update netuitive-python-client to the latest
+
 Version 0.2.4 - Mar 8 2016
 --------------------------
 - add time offset check
