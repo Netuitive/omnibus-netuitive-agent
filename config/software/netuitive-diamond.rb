@@ -50,8 +50,10 @@ build do
   copy "/var/cache/omnibus/netuitive/src/collectors/snmpinterface", "#{install_dir}/collectors/"
 
   # Diamond bin
-  copy "bin/diamond", "#{install_dir}/bin"
+  # copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
+  command "sed -i -e s:'/usr/bin/env python':'/opt/netuitive-agent/embedded/bin/python':g #{install_dir}/bin/netuitive-agent"
+
   copy "/var/cache/omnibus/netuitive", "#{install_dir}/.install"
 
   # Configuration file
