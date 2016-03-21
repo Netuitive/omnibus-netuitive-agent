@@ -1,10 +1,12 @@
 name "netuitive"
-default_version "0.1.3"
+default_version "master"
 
 dependency "python"
 dependency "pip"
 
+source git: "https://github.com/Netuitive/netuitive-client-python.git"
+
 build do
-  command "#{install_dir}/embedded/bin/pip install -I --install-option=\"--install-scripts=#{install_dir}/bin\" #{name}==#{version}"
+  command "#{install_dir}/embedded/bin/python setup.py install"
 end
 
