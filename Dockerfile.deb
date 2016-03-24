@@ -1,0 +1,13 @@
+# time docker build --rm=true -t agent-builder-deb -f Dockerfile.deb .
+# time docker run -i --name agent-builder-deb -v `pwd`:/vagrant agent-builder-deb
+FROM      debian:7
+
+RUN apt-get update \
+  && apt-get install -y build-essential \
+  && apt-get install -y gnupg2 \
+  && apt-get install -y curl \
+  && apt-get install -y git \
+  && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
+
+VOLUME ["/vagrant"]
+CMD ["/bin/bash","/vagrant/build_agent.sh"]

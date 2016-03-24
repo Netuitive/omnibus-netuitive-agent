@@ -1,0 +1,15 @@
+# time docker build --rm=true -t agent-builder-rpm -f Dockerfile.rpm .
+# time docker run -i --name agent-builder-rpm -v `pwd`:/vagrant agent-builder-rpm
+#
+# debugging:
+# docker run -it -v `pwd`:/vagrant agent-builder-rpm bash
+
+FROM      centos:6
+
+RUN yum -y update \
+  && yum groupinstall -y development \
+  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen
+
+
+VOLUME ["/vagrant"]
+CMD ["/bin/bash","/vagrant/build_agent.sh"]
