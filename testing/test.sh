@@ -27,35 +27,52 @@ elif [ `hostname` == "debian7" ]; then
     service netuitive-agent start
 
 elif [ `hostname` == "debian8" ]; then
+    apt-get update
+    apt-get -y install python
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.out 2>&1 &
     for f in /vagrant/dist/*.deb; do dpkg -i $f; done
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
-    systemctl start netuitive-agent
+    /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
 
 elif [ `hostname` == "ubuntu12" ]; then
+    apt-get update
+    apt-get -y install python
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.out 2>&1 &
     for f in /vagrant/dist/*.deb; do dpkg -i $f; done
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
-    initctl start netuitive-agent
+    /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
 
 elif [ `hostname` == "ubuntu14" ]; then
+    apt-get update
+    apt-get -y install python
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.out 2>&1 &
     for f in /vagrant/dist/*.deb; do dpkg -i $f; done
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
-    initctl start netuitive-agent
+    /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
 
 elif [ `hostname` == "ubuntu15" ]; then
+    apt-get update
+    apt-get -y install python
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.out 2>&1 &
     for f in /vagrant/dist/*.deb; do dpkg -i $f; done
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
-    systemctl start netuitive-agent
+    /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
+
+elif [ `hostname` == "ubuntu16" ]; then
+    apt-get update
+    apt-get -y install python
+    nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.out 2>&1 &
+    for f in /vagrant/dist/*.deb; do dpkg -i $f; done
+    cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
+    /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
+
 
 else
     echo "ERROR unsupported option"
 fi
 
-echo "Waiting 60 seconds"
-sleep 60
+echo "Waiting 30 seconds"
+sleep 30
 
 
 
