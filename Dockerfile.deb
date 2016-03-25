@@ -1,5 +1,8 @@
 # time docker build --rm=true -t agent-builder-deb -f Dockerfile.deb .
 # time docker run -i --name agent-builder-deb -v `pwd`:/vagrant agent-builder-deb
+# debugging:
+# docker run -it -v `pwd`:/vagrant agent-builder-deb bash
+
 FROM      debian:7
 
 RUN apt-get update \
