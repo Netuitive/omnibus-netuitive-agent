@@ -2,8 +2,12 @@
 
 export PATH=/usr/local/sbin:/usr/local/sbin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/aws/bin:/root/bin
 
+rm -f /vagrant/`hostname`.log
+rm -f /vagrant/`hostname`.pass
+
 
 if [ `hostname` == "centos6" ]; then
+
     yum install -y initscripts
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.log 2>&1 &
     for f in /vagrant/dist/*.rpm; do rpm -ivh $f; done
@@ -71,11 +75,9 @@ elif [ `hostname` == "ubuntu16" ]; then
     /bin/systemctl start netuitive-agent
 
 else
-    echo "ERROR unsupported option"
+    echo "ERROR: `hostname` is unsupported distribution"
+    exit 1
 fi
 
-echo "Waiting 30 seconds"
-sleep 30
-shutdown -h now
 
 

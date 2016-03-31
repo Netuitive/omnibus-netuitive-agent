@@ -13,4 +13,4 @@ RUN apt-get update \
   && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
 
 VOLUME ["/vagrant"]
-CMD ["/bin/bash","/vagrant/build_agent.sh"]
+CMD ["/bin/bash","/vagrant/build/build_agent.sh"]

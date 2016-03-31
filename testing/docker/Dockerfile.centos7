@@ -10,7 +10,7 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-COPY install-agent.service /usr/lib/systemd/system/install-agent.service
+COPY docker/install-agent.service /usr/lib/systemd/system/install-agent.service
 RUN systemctl enable install-agent.service
 
 VOLUME [ "/sys/fs/cgroup" ]

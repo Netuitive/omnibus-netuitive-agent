@@ -1,6 +1,10 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.6 - XX XX 2016
+---------------------------
+- move to a docker for build/testing solution
+
 Version 0.2.5 - Mar 21 2016
 ---------------------------
 - add mysql and httpd collector default configs

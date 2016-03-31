@@ -6,7 +6,7 @@ FROM ubuntu:12.04
 # we're going to want this bad boy installed so we can connect :)
 RUN apt-get update
 
-ADD init-fake.conf /etc/init/fake-container-events.conf
+ADD docker/init-fake.conf /etc/init/fake-container-events.conf
 
 # undo some leet hax of the base image
 RUN rm /usr/sbin/policy-rc.d; \
@@ -40,7 +40,7 @@ RUN /usr/sbin/update-rc.d -f ondemand remove; \
 ENV container docker
 
 
-COPY install-agent.conf /etc/init/install-agent.conf
+COPY docker/install-agent.conf /etc/init/install-agent.conf
 
 # pepare for takeoff
 CMD ["/sbin/init"]

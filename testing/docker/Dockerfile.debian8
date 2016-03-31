@@ -36,7 +36,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN apt-get -y install ssh \
     && sed -i 's/Port 22/Port 2222/' /etc/ssh/sshd_config
 RUN systemctl set-default multi-user.target
-COPY install-agent.service /usr/lib/systemd/system/install-agent.service
+COPY docker/install-agent.service /usr/lib/systemd/system/install-agent.service
 RUN systemctl enable install-agent.service
 
 

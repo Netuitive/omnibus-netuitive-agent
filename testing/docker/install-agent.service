@@ -2,7 +2,7 @@
 Description=install netuitive-agent
 
 [Service]
-ExecStart=/vagrant/test.sh
+ExecStart=/vagrant/docker/test.sh
 
 [Install]
 WantedBy=multi-user.target

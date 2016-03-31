@@ -12,4 +12,4 @@ RUN yum -y update \
 
 
 VOLUME ["/vagrant"]
-CMD ["/bin/bash","/vagrant/build_agent.sh"]
+CMD ["/bin/bash","/vagrant/build/build_agent.sh"]
