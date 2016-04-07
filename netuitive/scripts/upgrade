@@ -1,0 +1,36 @@
+#!/opt/netuitive-agent/embedded/bin/python
+# coding=utf-8
+
+import os
+import configobj
+
+
+N_CONFIG = "/opt/netuitive-agent/conf/netuitive-agent.conf"
+
+DEL_FILES = ['/opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/handler/netuitive_cloud.pyc',
+             '/opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/handler/netuitive_cloud.py']
+
+if __name__ == "__main__":
+    print("Upgrading " + N_CONFIG + " .....")
+
+    config = configobj.ConfigObj(N_CONFIG)
+
+    handlers = config['server']['handlers']
+
+    if isinstance(handlers, str):
+        new_handlers = handlers.replace('netuitive_cloud', 'netuitive')
+
+    if isinstance(handlers, list):
+        new_handlers = []
+        for h in handlers:
+            new_handlers.append(h.replace('netuitive_cloud', 'netuitive'))
+
+    config['server']['handlers'] = new_handlers
+
+    config.write()
+
+    for f in DEL_FILES:
+        try:
+            os.remove(f)
+        except OSError:
+            pass
