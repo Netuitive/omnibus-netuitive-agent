@@ -50,7 +50,7 @@ build do
 
   # Configuration file
   mkdir "#{install_dir}/conf"
-  command "copy -R /var/cache/omnibus/netuitive/conf/collectors #{install_dir}/conf/collectors"
+  command "cp -R /var/cache/omnibus/netuitive/conf/collectors #{install_dir}/conf/collectors"
   copy "/var/cache/omnibus/netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
   copy "/var/cache/omnibus/netuitive/conf/supervisor.conf", "#{install_dir}/conf/supervisor.conf"
 
