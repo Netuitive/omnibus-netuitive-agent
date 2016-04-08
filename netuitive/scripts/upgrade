@@ -2,7 +2,7 @@
 # coding=utf-8
 
 import os
-import configobj
+import shutil
 
 
 N_CONFIG = "/opt/netuitive-agent/conf/netuitive-agent.conf"
@@ -13,21 +13,16 @@ DEL_FILES = ['/opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/
 if __name__ == "__main__":
     print("Upgrading " + N_CONFIG + " .....")
 
-    config = configobj.ConfigObj(N_CONFIG)
+    shutil.copyfile(N_CONFIG, N_CONFIG + ".bak")
+    f = open(N_CONFIG + ".bak", 'r')
+    filedata = f.read()
+    f.close()
 
-    handlers = config['server']['handlers']
+    newdata = filedata.replace("netuitive_cloud", "netuitive_handler")
 
-    if isinstance(handlers, str):
-        new_handlers = handlers.replace('netuitive_cloud', 'netuitive')
-
-    if isinstance(handlers, list):
-        new_handlers = []
-        for h in handlers:
-            new_handlers.append(h.replace('netuitive_cloud', 'netuitive'))
-
-    config['server']['handlers'] = new_handlers
-
-    config.write()
+    f = open(N_CONFIG, 'w')
+    f.write(newdata)
+    f.close()
 
     for f in DEL_FILES:
         try:
