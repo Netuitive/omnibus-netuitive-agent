@@ -6,11 +6,14 @@ This project creates full-stack platform-specific packages for
 
 Usage
 -----
+
+
 # Build
 
-     ./build.sh all # or rpm or deb
+    make build # build rpm & deb package
 
-If all goes well, you will have rpm and deb packages in dist/
+
+If all goes well, you will have rpm and deb packages in dist/ & testing/dist/
 
 ### Omnibus S3 Dependence Cache
 If you want to use the S3 Dependency Cache create a ```local.sh``` in the root project
@@ -24,9 +27,9 @@ directory that has your AWS access/id Keys and bucket name.
 
 # Testing
 
-    cd testing
-     ./runtest.sh all # or centos6 or debian8, etc
+    make test # test packages generated from the build step with the support distros
 
+# Other commands
 
-If all goes well, you will have < distro >.pass files in the testing directory
+    make clean # clean up after builds & tests
 
