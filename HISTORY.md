@@ -1,9 +1,22 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.2.6 - XX XX 2016
+Version 0.2.6 - Apr XX XXXX
 ---------------------------
+- change handler to netuitive instead of netuitive_cloud
 - move to a docker for build/testing solution
+- move our customizations to our diamond fork
+- add upgrade script
+- move MySQL and Httpd collector example configs to /opt/netuitive-agent/conf/collectors
+- update netuitive-python-client to the latest
+- update postgresql to 9.4.7
+- update cython to 0.24
+- update docker-py to 1.8.0
+- update psutil to 4.1.0
+- update pymongo to 3.2.2
+- update supervisor to 3.2.3
+- update setuptools to 20.6.7
+
 
 Version 0.2.5 - Mar 21 2016
 ---------------------------
