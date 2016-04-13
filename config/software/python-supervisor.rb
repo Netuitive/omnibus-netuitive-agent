@@ -1,5 +1,5 @@
 name "supervisor"
-default_version "3.2.1"
+default_version "3.2.3"
 
 dependency "python"
 dependency "pip"

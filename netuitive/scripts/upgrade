@@ -1,0 +1,31 @@
+#!/opt/netuitive-agent/embedded/bin/python
+# coding=utf-8
+
+import os
+import shutil
+
+
+N_CONFIG = "/opt/netuitive-agent/conf/netuitive-agent.conf"
+
+DEL_FILES = ['/opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/handler/netuitive_cloud.pyc',
+             '/opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/handler/netuitive_cloud.py']
+
+if __name__ == "__main__":
+    print("Upgrading " + N_CONFIG + " .....")
+
+    shutil.copyfile(N_CONFIG, N_CONFIG + ".bak")
+    f = open(N_CONFIG + ".bak", 'r')
+    filedata = f.read()
+    f.close()
+
+    newdata = filedata.replace("netuitive_cloud", "netuitive_handler")
+
+    f = open(N_CONFIG, 'w')
+    f.write(newdata)
+    f.close()
+
+    for f in DEL_FILES:
+        try:
+            os.remove(f)
+        except OSError:
+            pass

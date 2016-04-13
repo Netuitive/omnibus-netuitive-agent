@@ -42,15 +42,7 @@ build do
   # Diamond collectors
   copy "src/collectors", "#{install_dir}"
 
-  # Netuitive collectors
-  copy "/var/cache/omnibus/netuitive/src/collectors/netuitivedocker", "#{install_dir}/collectors/"
-
-  # Fixed SNMP collectors https://github.com/python-diamond/Diamond/pull/63
-  copy "/var/cache/omnibus/netuitive/src/collectors/snmp", "#{install_dir}/collectors/"
-  copy "/var/cache/omnibus/netuitive/src/collectors/snmpinterface", "#{install_dir}/collectors/"
-
   # Diamond bin
-  # copy "bin/diamond", "#{install_dir}/bin"
   copy "bin/diamond", "#{install_dir}/bin/netuitive-agent"
   command "sed -i -e s:'/usr/bin/env python':'/opt/netuitive-agent/embedded/bin/python':g #{install_dir}/bin/netuitive-agent"
 
@@ -58,6 +50,7 @@ build do
 
   # Configuration file
   mkdir "#{install_dir}/conf"
+  command "cp -R /var/cache/omnibus/netuitive/conf/collectors #{install_dir}/conf/collectors"
   copy "/var/cache/omnibus/netuitive/conf/netuitive-agent.conf", "#{install_dir}/conf/netuitive-agent.conf"
   copy "/var/cache/omnibus/netuitive/conf/supervisor.conf", "#{install_dir}/conf/supervisor.conf"
 
@@ -65,17 +58,12 @@ build do
   # Log directory
   mkdir "#{install_dir}/log"
 
-
   # Diamond
   copy "src/diamond", "#{install_dir}/embedded/lib/python2.7/site-packages"
 
-  # fix Diamond logging
-  copy "/var/cache/omnibus/netuitive/src/log.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/utils/log.py"
-
-  # Diamond Handlers
-  mkdir "#{install_dir}/handlers"
-  copy "/var/cache/omnibus/netuitive/src/handler/netuitive_cloud.py", "#{install_dir}/embedded/lib/python2.7/site-packages/diamond/handler/"
     command "chmod 0775 " \
           " /var/cache/omnibus/package-scripts/netuitive-agent/*"
+
+    command "chmod 700 #{install_dir}/.install/scripts/*"
 
 end
