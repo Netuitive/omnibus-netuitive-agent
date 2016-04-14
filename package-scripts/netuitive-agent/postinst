@@ -36,6 +36,12 @@ cleanup_old_files()
 
 }
 
+upgrade_scripts()
+{
+  /opt/netuitive-agent/.install/scripts/upgrade
+  rm -f /opt/netuitive-agent/embedded/lib/python2.7/site-packages/diamond/handler/netuitive_cloud.*
+}
+
 init_scripts()
 {
 
@@ -87,24 +93,15 @@ init_scripts()
     cp /opt/netuitive-agent/.install/init.d/netuitive-agent-lsb /etc/init.d/netuitive-agent
     update-rc.d netuitive-agent defaults
     # /sbin/service netuitive-agent start
-    # wheezy_notice
 
   fi
-}
-
-wheezy_notice()
-{
-  notify
-  notify
-  notify "The Netuitive agent requires a newer version of GLIBC than is installed by default on Debian 7 (Wheezy)."
-  notify "Please refer to our on-line documentation for further installation instructions."
-  notify
 }
 
 case "$1" in
   [2-9])
     # Looks like an RPM upgrade
     init_scripts
+    upgrade_scripts
     exit 0
     ;;
 
@@ -113,12 +110,14 @@ case "$1" in
     # upgrade.
     if [ -z $2 ]; then
       init_scripts
+      upgrade_scripts
     fi
     ;;
 
   *)
     if [ -x /bin/rpm ] ; then
         init_scripts
+        upgrade_scripts
     fi
     ;;
 esac
