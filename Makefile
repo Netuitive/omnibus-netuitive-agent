@@ -7,7 +7,7 @@ help:
 	@echo "test - test RPM & DEB packages"
 
 
-clean: clean-test-files
+clean: clean-test-files clean-dist
 
 clean-test-files:
 	rm -f testing/*.log
@@ -19,15 +19,14 @@ clean-dist:
 	rm -f dist/*
 
 
-build: build-rpm build-deb
+build: rpm deb
 
 
-build-deb:
-
+deb:
 	./build.sh deb
 
 
-build-rpm:
+rpm:
 	./build.sh rpm
 
 
