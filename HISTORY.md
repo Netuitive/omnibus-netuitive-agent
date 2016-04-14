@@ -1,9 +1,10 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.2.6 - Apr XX XXXX
+Version 0.2.6 - Apr 14 2016
 ---------------------------
-- change handler to netuitive instead of netuitive_cloud
+- update Diamond from our upstream repo
+- change handler to netuitive_handler instead of netuitive_cloud
 - move to a docker for build/testing solution
 - move our customizations to our diamond fork
 - add upgrade script
