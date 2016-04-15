@@ -50,7 +50,7 @@ if [ "$1" == "ubuntu14" ] ||  [ "$1" == "all" ]; then
     echo "Running ubuntu14 test..."
     docker build --rm -t local/u14-upstart-test -f docker/Dockerfile.ubuntu14 .
     docker run --rm --name ubuntu14-test -v `pwd`:/vagrant -h ubuntu14 local/u14-upstart-test&
-    sleep 30
+    sleep 60
     docker stop ubuntu14-test
 fi
 
