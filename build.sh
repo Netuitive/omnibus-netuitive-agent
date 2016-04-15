@@ -13,7 +13,7 @@ if [ "$1" == "deb" ] ||  [ "$1" == "all" ]; then
     sleep 1
 
     echo "Running container..."
-    docker run -i --rm=true --name agent-builder-deb -v `pwd`:/vagrant agent-builder-deb
+    docker run --rm=true --name agent-builder-deb -v `pwd`:/vagrant agent-builder-deb
 
 fi
 
@@ -24,6 +24,6 @@ if [ "$1" == "rpm" ] ||  [ "$1" == "all" ]; then
     sleep 1
 
     echo "Running container..."
-    docker run -i --rm=true --name agent-builder-rpm -v `pwd`:/vagrant agent-builder-rpm
+    docker run --rm=true --name agent-builder-rpm -v `pwd`:/vagrant agent-builder-rpm
 
 fi
