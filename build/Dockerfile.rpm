@@ -8,7 +8,7 @@ FROM      centos:6
 
 RUN yum -y update \
   && yum groupinstall -y development \
-  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen
+  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which
 
 
 VOLUME ["/vagrant"]
