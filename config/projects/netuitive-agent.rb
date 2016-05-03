@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.2.6'
+build_version '0.2.7'
 build_iteration 1
 
 # Creates required build directories
@@ -27,5 +27,12 @@ exclude "**/.git"
 exclude "**/bundler/git"
 exclude "**/.gitkeep"
 
+# main config
 config_file "#{install_dir}/conf/netuitive-agent.conf"
+
+# default collector configs
+config_file "#{install_dir}/conf/collectors/HttpdCollector.conf"
+config_file "#{install_dir}/conf/collectors/MySQLCollector.conf"
+config_file "#{install_dir}/conf/collectors/HttpCodeCollector.conf"
+
 
