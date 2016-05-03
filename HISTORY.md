@@ -1,6 +1,12 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.7 - May 03 2016
+---------------------------
+- update Diamond from our upstream repo
+- add more example collector conf files
+- update openssl to 1.0.1t
+
 Version 0.2.6 - Apr 14 2016
 ---------------------------
 - update Diamond from our upstream repo
