@@ -1,0 +1,45 @@
+FROM debian:jessie
+
+ENV container docker
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+
+# Install packages
+RUN apt-get -y update \
+    && apt-get -y install \
+    curl python sudo
+
+# Misc settings
+RUN mkdir /var/run/sshd && mkdir -p /root/.ssh && chmod 700 /root/.ssh
+RUN sed -i '/Defaults.*requiretty/d' /etc/sudoers
+
+# Download and setup vagrant key
+RUN curl -L https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub \
+    > /root/.ssh/authorized_keys \
+    && chmod 600 /root/.ssh/authorized_keys
+
+# Got a lot of help from https://github.com/docker/docker/issues/3629
+# and https://github.com/dockerimages/docker-systemd
+RUN cd /lib/systemd/system/sysinit.target.wants/; \
+    ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
+    rm -f /lib/systemd/system/multi-user.target.wants/*; \
+    rm -f /etc/systemd/system/*.wants/*; \
+    rm -f /lib/systemd/system/local-fs.target.wants/*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+    rm -f /lib/systemd/system/basic.target.wants/*;\
+    rm -f /lib/systemd/system/anaconda.target.wants/*; \
+    rm -f /lib/systemd/system/plymouth*; \
+    rm -f /lib/systemd/system/systemd-update-utmp*;
+VOLUME [ "/sys/fs/cgroup" ]
+
+RUN apt-get -y install ssh \
+    && sed -i 's/Port 22/Port 2222/' /etc/ssh/sshd_config
+RUN systemctl set-default multi-user.target
+COPY docker/install-agent.service /usr/lib/systemd/system/install-agent.service
+RUN systemctl enable install-agent.service
+
+
+CMD ["/lib/systemd/systemd", "--system"]
+
+
