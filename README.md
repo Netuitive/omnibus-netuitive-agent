@@ -1,22 +1,24 @@
-Netuitive Linux Agent Omnibus project
+Netuitive Linux Agent Omnibus
 ===============================
-This project creates full-stack platform-specific packages for
-`netuitive-agent`!
 
+The Omnibus creates full-stack platform-specific packages for use with the Netuitive Linux Agent. The agent itself provides a quick way deploy and collect metrics with a richer set of metadata out of the box. The agent also is compatible with a large number of collectors that help [Netuitive](https://www.netuitive.com) integrate with many different products running on a Linux OS.
 
-Usage
------
+For more information on the [Netuitive Linux Agent](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/new_netuitive_datasource.htm), see our help docs, or contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
 
+Building the Omnibus<a name="build"></a>
+---------------------
 
-# Build
+`make build` builds RPM and Debian packages. If it builds properly, you will have RPM and Debian packages in `dist/` and `testing/dist/`.
 
-    make build # build rpm & deb package
+Additional Information
+-----------------------
 
+### Testing
 
-If all goes well, you will have rpm and deb packages in dist/ & testing/dist/
+`make test` tests packages generated from the [build step](#build) with the support distros.
 
 ### Omnibus S3 Dependence Cache
-If you want to use the S3 Dependency Cache create a ```local.sh``` in the root project
+If you want to use the S3 Dependency Cache, create a `local.sh` in the root project
 directory that has your AWS access/id Keys and bucket name.
 
     # example local.sh
@@ -24,12 +26,7 @@ directory that has your AWS access/id Keys and bucket name.
     export AWS_SECRET_ACCESS_KEY=my-aws-secret-key
     export AWS_S3_BUCKET=my-s3-bucket
 
+### Other commands
 
-# Testing
-
-    make test # test packages generated from the build step with the support distros
-
-# Other commands
-
-    make clean # clean up after builds & tests
+`make clean` cleans up after builds and tests.
 
