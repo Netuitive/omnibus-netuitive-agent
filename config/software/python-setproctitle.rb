@@ -1,5 +1,5 @@
 name "setproctitle"
-default_version "1.1.9"
+default_version "1.1.10"
 
 dependency "python"
 dependency "pip"
