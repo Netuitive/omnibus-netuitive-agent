@@ -15,7 +15,7 @@
 #
 
 name "postgresql"
-default_version "9.4.7"
+default_version "9.4.8"
 
 dependency "zlib"
 dependency "openssl"
@@ -24,8 +24,8 @@ dependency "ncurses"
 dependency "libossp-uuid"
 
 
-version "9.4.7" do
-  source md5: "8bf119bbac1bbb566397d606861695a9"
+version "9.4.8" do
+  source md5: "a1a2e8014b2b4c49fc58fe2e2fe83681"
 end
 
 source url: "https://ftp.postgresql.org/pub/source/v#{version}/postgresql-#{version}.tar.bz2"
