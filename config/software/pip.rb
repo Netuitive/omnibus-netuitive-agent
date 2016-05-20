@@ -20,7 +20,7 @@ default_version "8.1.2"
 
 dependency "setuptools"
 
-source :url => "https://pypi.python.org/packages/source/p/pip/pip-#{version}.tar.gz",
+source :url => "https://pypi.python.org/packages/e7/a8/7556133689add8d1a54c0b14aeff0acb03c64707ce100ecd53934da1aa13/pip-8.1.2.tar.gz",
        :md5 => '87083c0b9867963b29f7aba3613e8f4a'
 
 relative_path "pip-#{version}"

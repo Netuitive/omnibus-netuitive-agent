@@ -17,7 +17,7 @@
 name "xproto"
 default_version "7.0.29"
 
-source url: "http://www.x.org/archive/individual/proto/xproto-#{version}.tar.gz",
+source url: "https://www.x.org/archive/individual/proto/xproto-#{version}.tar.gz",
        md5: "16a78dd2c5ad73011105c96235f6a0af"
 
 relative_path "xproto-#{version}"

@@ -19,8 +19,8 @@ default_version "21.1.0"
 
 dependency "python"
 
-source url: "https://pypi.python.org/packages/source/s/setuptools/setuptools-#{version}.tar.gz",
-       md5: '45d6110f3ec14924e44c33411db64fe6'
+source url: "https://pypi.python.org/packages/f0/32/99ead2d74cba43bd59aa213e9c6e8212a9d3ed07805bb66b8bf9affbb541/setuptools-#{version}.tar.gz",
+       md5: '8fd8bdbf05c286063e1052be20a5bd98'
 
 relative_path "setuptools-#{version}"
 
