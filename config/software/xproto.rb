@@ -15,10 +15,10 @@
 #
 
 name "xproto"
-default_version "7.0.28"
+default_version "7.0.29"
 
 source url: "http://www.x.org/archive/individual/proto/xproto-#{version}.tar.gz",
-       md5: "0b42843b99aee3e4f6a9cc7710143f86"
+       md5: "16a78dd2c5ad73011105c96235f6a0af"
 
 relative_path "xproto-#{version}"
 
