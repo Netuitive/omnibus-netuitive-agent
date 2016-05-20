@@ -15,12 +15,12 @@
 #
 
 name "pkg-config"
-default_version "0.28"
+default_version "0.29.1"
 
 dependency "libiconv"
 
-version "0.28" do
-  source md5: "aa3c86e67551adc3ac865160e34a2a0d"
+version "0.29.1" do
+  source md5: "f739a28cae4e0ca291f82d1d41ef107d"
 end
 
 source url: "http://pkgconfig.freedesktop.org/releases/pkg-config-#{version}.tar.gz"
