@@ -1,6 +1,22 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.9 - May 20 2016
+---------------------------
+- update cacerts to 2016.04.20
+- update mysql to 5.6.30
+- update pip to 8.1.2
+- update pkg-config to 0.29.1
+- update postgresql to 9.4.8
+- update boto to 2.40.0
+- update docker-py to 1.8.1
+- update psutil to 4.2.0
+- update setproctititle to 1.1.10
+- update supervisor to 3.3.0
+- update setuptools to 21.1.0
+- update xproto to 7.0.29
+- update netuitive-python-client to the latest
+
 Version 0.2.8 - May 11 2016
 ---------------------------
 - update netuitive-statsd to 0.0.6
