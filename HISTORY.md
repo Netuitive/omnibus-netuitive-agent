@@ -1,6 +1,12 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.2.10 - Jun 08 2016
+----------------------------
+- update netuitive-statsd to 0.0.8
+- update mysql to 5.6.31
+- update setuptools to 22.0.5
+
 Version 0.2.9 - May 20 2016
 ---------------------------
 - update cacerts to 2016.04.20
