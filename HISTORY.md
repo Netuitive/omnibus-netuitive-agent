@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 
 Version 0.2.10 - Jun 08 2016
 ----------------------------
+- update Diamond from our upstream repo
 - update netuitive-statsd to 0.0.8
 - update mysql to 5.6.31
 - update setuptools to 22.0.5
