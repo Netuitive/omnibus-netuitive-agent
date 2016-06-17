@@ -19,8 +19,8 @@ default_version "23.0.0"
 
 dependency "python"
 
-source url: "https://pypi.python.org/packages/90/7a/b64d5804b6d1aebed1892e4df1c21bcb4f8480095ba8004e48999601119d/setuptools-#{version}.tar.gz",
-       md5: '869f3029dcc66a64ba39875e2a2f044a'
+source url: "https://pypi.python.org/packages/45/5e/79ca67a0d6f2f42bfdd9e467ef97398d6ad87ee2fa9c8cdf7caf3ddcab1e/setuptools-#{version}.tar.gz",
+       md5: '100a90664040f8ff232fbac02a4c5652'
 
 relative_path "setuptools-#{version}"
 
