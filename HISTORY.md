@@ -1,6 +1,12 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.3.0 - Jun 17 2016
+----------------------------
+- update netuitive-statsd to 0.1.0
+    - Change the way SUM is calculated for counter types. SUM will now be calculated as sum the input values instead of the sum of incremental updated counter value for each time period.
+- update setuptools to 23.0.0
+
 Version 0.2.10 - Jun 08 2016
 ----------------------------
 - update Diamond from our upstream repo
