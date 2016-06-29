@@ -31,8 +31,17 @@ exclude "**/.gitkeep"
 config_file "#{install_dir}/conf/netuitive-agent.conf"
 
 # default collector configs
-config_file "#{install_dir}/conf/collectors/HttpdCollector.conf"
-config_file "#{install_dir}/conf/collectors/MySQLCollector.conf"
+config_file "#{install_dir}/conf/collectors/CassandraJolokiaCollector.conf"
 config_file "#{install_dir}/conf/collectors/HttpCodeCollector.conf"
-
+config_file "#{install_dir}/conf/collectors/HttpdCollector.conf"
+config_file "#{install_dir}/conf/collectors/JolokiaCollector.conf"
+config_file "#{install_dir}/conf/collectors/MongoDBCollector.conf"
+config_file "#{install_dir}/conf/collectors/MySQLCollector.conf"
+config_file "#{install_dir}/conf/collectors/NginxCollector.conf"
+config_file "#{install_dir}/conf/collectors/PostgresqlCollector.conf"
+config_file "#{install_dir}/conf/collectors/ProcessResourcesCollector.conf"
+config_file "#{install_dir}/conf/collectors/RabbitMQCollector.conf"
+config_file "#{install_dir}/conf/collectors/RedisCollector.conf"
+config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
+config_file "#{install_dir}/conf/collectors/SNMPInterfaceCollector.conf"
 
