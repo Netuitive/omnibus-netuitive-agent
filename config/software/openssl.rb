@@ -21,10 +21,10 @@ dependency "cacerts"
 dependency "makedepend" unless aix?
 dependency "patch" if solaris2?
 
-default_version "1.0.1t"
+default_version "1.0.2h"
 
 source url: "https://www.openssl.org/source/openssl-#{version}.tar.gz",
-       md5: "9837746fcf8a6727d46d22ca35953da1"
+       md5: "9392e65072ce4b614c1392eefc1f23d0"
 
 relative_path "openssl-#{version}"
 
@@ -146,13 +146,13 @@ build do
   # openssl build process uses a `makedepend` tool that we build inside the bundle.
   env["PATH"] = "#{install_dir}/embedded/bin" + File::PATH_SEPARATOR + ENV["PATH"]
 
-  if aix?
-    patch_env = env.dup
-    patch_env['PATH'] = "/opt/freeware/bin:#{env['PATH']}"
-    patch source: "openssl-1.0.1f-do-not-build-docs.patch", env: patch_env
-  else
-    patch source: "openssl-1.0.1f-do-not-build-docs.patch"
-  end
+  # if aix?
+  #   patch_env = env.dup
+  #   patch_env['PATH'] = "/opt/freeware/bin:#{env['PATH']}"
+  #   patch source: "openssl-1.0.1f-do-not-build-docs.patch", env: patch_env
+  # else
+  #   patch source: "openssl-1.0.1f-do-not-build-docs.patch"
+  # end
 
   command configure_command, env: env
   make "depend", env: env
