@@ -1,6 +1,19 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.3.1 - Jun 30 2016
+----------------------------
+- update Netuitive Diamond
+    - add Kafka Consumer Lag Collector
+    - add reserved tag for enabled collectors
+- update python to 2.7.12
+- upgrade openssl to 1.0.2h
+- update gmp to 6.1.1
+- update libedit to 20160618-3.1
+- update boto to 2.41.0
+- update psutil to 4.3.0
+- update setuptools to 23.1.0
+
 Version 0.3.0 - Jun 17 2016
 ----------------------------
 - update netuitive-statsd to 0.1.0
