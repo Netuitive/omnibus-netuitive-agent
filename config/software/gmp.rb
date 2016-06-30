@@ -16,10 +16,10 @@
 #
 
 name "gmp"
-default_version "6.1.0"
+default_version "6.1.1"
 
 source :url => "https://gmplib.org/download/gmp/gmp-#{version}.tar.bz2",
-       :md5 => "86ee6e54ebfc4a90b643a65e402c4048"
+       :md5 => "4c175f86e11eb32d8bf9872ca3a8e11d"
 
 relative_path "#{name}-#{version}"
 

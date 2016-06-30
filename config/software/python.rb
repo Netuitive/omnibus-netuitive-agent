@@ -15,7 +15,7 @@
 #
 
 name "python"
-default_version "2.7.11"
+default_version "2.7.12"
 
 dependency "ncurses"
 dependency "zlib"
@@ -23,7 +23,7 @@ dependency "openssl"
 dependency "bzip2"
 
 source url: "http://python.org/ftp/python/#{version}/Python-#{version}.tgz",
-       md5: '6b6076ec9e93f05dd63e47eb9c15728b'
+       md5: '88d61f82e3616a4be952828b3694109d'
 
 relative_path "Python-#{version}"
 
