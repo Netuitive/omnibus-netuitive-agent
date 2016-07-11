@@ -1,6 +1,13 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.3.2 - Jul 11 2016
+----------------------------
+- update Netuitive Diamond
+- update netuitive-statsd to 0.1.1
+    - fix tag processing bug
+
+
 Version 0.3.1 - Jun 30 2016
 ----------------------------
 - update Netuitive Diamond
