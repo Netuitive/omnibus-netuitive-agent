@@ -30,3 +30,10 @@ directory that has your AWS access/id Keys and bucket name.
 
 `make clean` cleans up after builds and tests.
 
+
+### Build debugging
+
+
+    docker build --rm=true -t agent-builder-rpm -f build/Dockerfile.rpm .
+    docker run -it --rm=true --name agent-builder-rpm -v `pwd`:/vagrant agent-builder-rpm /bin/bash
+    [root@fbf041d69267 /]# cat /vagrant/build/build_agent.sh
