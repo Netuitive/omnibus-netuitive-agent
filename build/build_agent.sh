@@ -18,7 +18,7 @@ bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3
 if [ -f "/var/cache/omnibus/local.sh" ]; then
     source /var/cache/omnibus/local.sh
     echo "populating cache..."
-    time bin/omnibus cache populate
+    bin/omnibus cache populate
 fi
 
 bin/omnibus build netuitive-agent
