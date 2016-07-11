@@ -27,7 +27,11 @@ source url: "http://www.mirrorservice.org/sites/ftp.ossp.org/pkg/lib/uuid/uuid-#
 relative_path "uuid-#{version}"
 
 build do
-  env = with_standard_compiler_flags(with_embedded_path)
+env = {
+  "LDFLAGS" => "-L#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib64 -I#{install_dir}/embedded/include",
+  "CPPFLAGS" => "-L#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib64 -I#{install_dir}/embedded/include",
+  "LD_RUN_PATH" => "#{install_dir}/embedded/lib"
+}
 
   command "./configure" \
           " --prefix=#{install_dir}/embedded", env: env

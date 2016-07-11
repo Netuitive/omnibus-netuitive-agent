@@ -10,7 +10,7 @@ RUN apt-get update \
   && apt-get install -y gnupg2 \
   && apt-get install -y curl \
   && apt-get install -y git \
-  && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
+  && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev dev86 iasl wget libaio-dev yajl-dev
 
 VOLUME ["/vagrant"]
 CMD ["/bin/bash","/vagrant/build/build_agent.sh"]

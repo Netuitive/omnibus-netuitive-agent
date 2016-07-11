@@ -15,6 +15,7 @@ dependency "python-setproctitle"
 dependency "python-netuitive"
 dependency "python-statsd"
 # Collectors dependency
+dependency "python-libvirt"
 dependency "python-mysql"
 dependency "python-beanstalkc"
 dependency "python-docker-py"

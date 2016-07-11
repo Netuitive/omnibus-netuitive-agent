@@ -8,7 +8,7 @@ FROM      centos:6.7
 
 RUN yum -y update \
   && yum groupinstall -y development \
-  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar
+  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar dev86 iasl wget libaio-devel yajl-devel
 
 VOLUME ["/vagrant"]
 CMD ["/bin/bash","/vagrant/build/build_agent.sh"]
