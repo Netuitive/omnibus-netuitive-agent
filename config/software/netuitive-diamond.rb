@@ -30,7 +30,7 @@ dependency "python-supervisor"
 # Sources may be URLs, git locations, or path locations
 #source git: "https://github.com/Netuitive/Diamond.git"
 #source path: "/vagrant/Diamond"
-source git: "https://github.com/Netuitive/Diamond.git"
+source git: "https://github.com/Netuitive/netuitive-diamond.git"
 
 # This is the path, inside the tarball, where the source resides
 relative_path "Diamond"
@@ -66,4 +66,7 @@ build do
 
     command "chmod 700 #{install_dir}/.install/scripts/*"
 
+    copy "#{install_dir}/.install/scripts/get-support", "#{install_dir}/bin/get-support"
+
 end
+
