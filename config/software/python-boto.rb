@@ -1,5 +1,5 @@
 name "boto"
-default_version "2.41.0"
+default_version "2.42.0"
 
 dependency "python"
 dependency "pip"
