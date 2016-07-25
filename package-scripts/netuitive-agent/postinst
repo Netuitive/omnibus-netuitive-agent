@@ -114,7 +114,15 @@ case "$1" in
     # Looks like an RPM upgrade
     init_scripts
     upgrade_scripts
-    exit 0
+    failsafe_conf_file
+    ;;
+
+  configure)
+    # Looks like a DEB install. We don't know if it is a fresh install or an
+    # upgrade.
+    init_scripts
+    upgrade_scripts
+    failsafe_conf_file
     ;;
 
   *)
@@ -124,12 +132,12 @@ case "$1" in
     if [ -x /bin/rpm ] ; then
         init_scripts
         upgrade_scripts
+        failsafe_conf_file
     fi
     ;;
 esac
 
 cleanup_old_files
-failsafe_conf_file
 print_welcome
 
 exit 0
