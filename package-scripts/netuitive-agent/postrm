@@ -12,7 +12,9 @@ notify()
 cleanup () {
 
   if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
-    /bin/systemctl disenable netuitive-agent.service
+    /bin/systemctl disenable netuitive-agent.service > /dev/null 2>&1
+    /bin/systemctl disable netuitive-agent.service > /dev/null 2>&1
+
     rm -f /usr/lib/systemd/system/netuitive-agent.service
     /bin/systemctl daemon-reload
   fi
