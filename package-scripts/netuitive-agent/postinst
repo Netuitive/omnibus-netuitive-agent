@@ -36,6 +36,17 @@ cleanup_old_files()
 
 }
 
+failsafe_conf_file()
+{
+  if [ ! -f "/opt/netuitive-agent/conf/netuitive-agent.conf" ]; then
+    cp /opt/netuitive-agent/.install/conf/netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf
+  fi
+
+  if [ ! -f "/opt/netuitive-agent/conf/supervisor.conf" ]; then
+    cp /opt/netuitive-agent/.install/conf/supervisor.conf /opt/netuitive-agent/conf/supervisor.conf
+  fi
+}
+
 upgrade_scripts()
 {
   /opt/netuitive-agent/.install/scripts/upgrade
@@ -95,6 +106,7 @@ init_scripts()
     # /sbin/service netuitive-agent start
 
   fi
+
 }
 
 case "$1" in
@@ -105,16 +117,10 @@ case "$1" in
     exit 0
     ;;
 
-  configure)
+  *)
     # Looks like a DEB install. We don't know if it is a fresh install or an
     # upgrade.
-    if [ -z $2 ]; then
-      init_scripts
-      upgrade_scripts
-    fi
-    ;;
 
-  *)
     if [ -x /bin/rpm ] ; then
         init_scripts
         upgrade_scripts
@@ -123,6 +129,7 @@ case "$1" in
 esac
 
 cleanup_old_files
+failsafe_conf_file
 print_welcome
 
 exit 0
