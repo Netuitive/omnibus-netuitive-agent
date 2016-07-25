@@ -19,7 +19,7 @@ default_version "25.0.1"
 
 dependency "python"
 
-source url: "https://pypi.python.org/packages/f0/21/708b3eb6709ece3cb2613b6c44e749823c435bef0b26b9b45be1634afe16/setuptools-#{version}tar.gz",
+source url: "https://pypi.python.org/packages/f0/21/708b3eb6709ece3cb2613b6c44e749823c435bef0b26b9b45be1634afe16/setuptools-#{version}.tar.gz",
        md5: '0177aa36b2d59b030bd628db1e6a0072'
 
 relative_path "setuptools-#{version}"
