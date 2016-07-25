@@ -1,12 +1,28 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.4.0 - Jul 25 2016
+----------------------------
+- update netuitive-client-python to 0.2.0
+  - sanitize metric names
+- update to the latest netuitive diamond
+  - Fix/correct counter publishing
+- update netuitive-statsd to 0.2.0
+- update boto to 2.42.0
+- update cython to 0.24.1
+- update psycopg2 to 2.6.2
+- update pymongo to 3.3.0
+- update setuptools to 25.0.1
+- change git repo for Netuitive Diamond
+- address reinstall issue on deb based installs
+- add get-support script
+- add alpha version of netuitive-event-handler
+
 Version 0.3.2 - Jul 11 2016
 ----------------------------
 - update Netuitive Diamond
 - update netuitive-statsd to 0.1.1
     - fix tag processing bug
-
 
 Version 0.3.1 - Jun 30 2016
 ----------------------------
