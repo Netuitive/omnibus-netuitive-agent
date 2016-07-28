@@ -8,7 +8,20 @@ FROM      centos:6.7
 
 RUN yum -y update \
   && yum groupinstall -y development \
-  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar
+  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget \
+  && rpm -e git perl-Git\
+  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
+  && yum -y install gcc perl-ExtUtils-MakeMaker \
+  && mkdir -p /usr/src \
+  && cd /usr/src \
+  && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
+  && tar xzf git-2.9.2.tar.gz \
+  && cd git-2.9.2 \
+  && make prefix=/usr \
+  && make prefix= /usr install \
+  && cd / \
+  && git config --global user.email "you@example.com" \
+  && git config --global user.name "Your Name"
 
 VOLUME ["/vagrant"]
 CMD ["/bin/bash","/vagrant/build/build_agent.sh"]
