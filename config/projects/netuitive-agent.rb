@@ -47,4 +47,8 @@ config_file "#{install_dir}/conf/collectors/RabbitMQCollector.conf"
 config_file "#{install_dir}/conf/collectors/RedisCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPInterfaceCollector.conf"
+config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
+config_file "#{install_dir}/conf/collectors/KafkaCollector.conf"
+config_file "#{install_dir}/conf/collectors/KafkaConsumerLagCollector.conf"
+config_file "#{install_dir}/conf/collectors/SolrCollector.conf"
 
