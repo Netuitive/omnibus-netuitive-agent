@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.4.0'
+build_version '0.4.1'
 build_iteration 1
 
 # Creates required build directories
@@ -47,4 +47,8 @@ config_file "#{install_dir}/conf/collectors/RabbitMQCollector.conf"
 config_file "#{install_dir}/conf/collectors/RedisCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPInterfaceCollector.conf"
+config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
+config_file "#{install_dir}/conf/collectors/KafkaCollector.conf"
+config_file "#{install_dir}/conf/collectors/KafkaConsumerLagCollector.conf"
+config_file "#{install_dir}/conf/collectors/SolrCollector.conf"
 

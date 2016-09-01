@@ -1,6 +1,18 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.4.1 - Sep 01 2016
+----------------------------
+- update to the latest netuitive diamond
+- build updates
+- fix typo in get-support script
+- add more example config files
+- update mysql to 5.6.32
+- update postgresql to 9.4.9
+- update docker-py to 1.9.0
+- update supervisor to 3.3.1
+- update setuptools to 26.1.1
+
 Version 0.4.0 - Jul 25 2016
 ----------------------------
 - update netuitive-client-python to 0.2.0
