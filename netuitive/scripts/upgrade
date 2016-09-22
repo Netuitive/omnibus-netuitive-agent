@@ -18,7 +18,8 @@ if __name__ == "__main__":
     filedata = f.read()
     f.close()
 
-    newdata = filedata.replace("netuitive_cloud", "netuitive_handler")
+    newdata = filedata.replace("netuitive_cloud", "netuitive_handler").replace(
+        "[%(asctime)s] [%(threadName)s] %(message)s", "[%(asctime)s] [%(threadName)s:%(processName)s:%(levelname)s] %(message)s")
 
     f = open(N_CONFIG, 'w')
     f.write(newdata)
