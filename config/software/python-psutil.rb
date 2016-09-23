@@ -1,5 +1,5 @@
 name "psutil"
-default_version "4.3.0"
+default_version "4.3.1"
 
 dependency "python"
 dependency "pip"
