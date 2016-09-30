@@ -53,3 +53,4 @@ config_file "#{install_dir}/conf/collectors/KafkaConsumerLagCollector.conf"
 config_file "#{install_dir}/conf/collectors/SolrCollector.conf"
 config_file "#{install_dir}/conf/collectors/UserScriptsCollector.conf"
 config_file "#{install_dir}/conf/collectors/FlumeCollector.conf"
+
