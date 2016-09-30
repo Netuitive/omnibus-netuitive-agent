@@ -1,7 +1,7 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.5.0 - Sep 23 2016
+Version 0.5.0 - Sep 30 2016
 ----------------------------
 - update to the latest netuitive diamond
   - change metric names in a Cassandra
