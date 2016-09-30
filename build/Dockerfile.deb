@@ -5,23 +5,12 @@
 
 FROM      debian:7
 
-RUN apt-get update
-RUN apt-get install -y build-essential
-RUN apt-get install -y gnupg2
-RUN apt-get install -y curl wget
-RUN apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-RUN apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
-RUN wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz
-RUN tar xzf git-2.9.2.tar.gz
-RUN cd git-2.9.2; make prefix=/usr; make prefix= /usr install
-RUN git config --global user.email "you@example.com"
-RUN git config --global user.name "Your Name"
-
-# install RVM, Ruby, Bundler, and Omnibus
-RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-RUN curl -sSL https://get.rvm.io | bash -s stable
-COPY Gemfile /tmp
-RUN /bin/bash -l -c "rvm use --install 2.3.1; gem install bundler --no-ri --no-rdoc; cd /tmp; bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3"
+RUN apt-get update \
+  && apt-get install -y build-essential \
+  && apt-get install -y gnupg2 \
+  && apt-get install -y curl \
+  && apt-get install -y git \
+  && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
 
 VOLUME ["/vagrant"]
 CMD ["/bin/bash","/vagrant/build/build_agent.sh"]

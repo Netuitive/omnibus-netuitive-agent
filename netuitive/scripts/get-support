@@ -192,6 +192,6 @@ if __name__ == "__main__":
 
     shutil.rmtree('/opt/netuitive-agent/support/')
 
-    print('Please open a support case and upload {0}'.format(supportzip))
+    print('Please open a support case with and upload {0}'.format(supportzip))
     print('with a detailed description of the issue.\n')
     print('Thank you\n')
