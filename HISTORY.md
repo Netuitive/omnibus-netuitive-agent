@@ -1,6 +1,38 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.5.0 - Sep 23 2016
+----------------------------
+- update to the latest netuitive diamond
+  - change metric names in a Cassandra
+  - improve userscripts collector error messages
+  - adding more rollover functionality to archive handler
+  - valuable stats are missed due to missing types
+  - allow precision to be set in nginx collector
+  - add collector for Linux kernel bcache statistics
+  - fix leading dot when prefix empty
+- fix typo in default PostgresqlCollector.conf
+- improve logging
+- update cacerts to 2016.09.14
+- update libedit to 20160903-3.1
+- update mysql to 5.6.33
+- upgrade openssl to 1.0.2i
+- update docker-py to 1.10.3
+- update psutil to 4.3.1
+- update setuptools to 27.3.0
+
+Version 0.4.1 - Sep 01 2016
+----------------------------
+- update to the latest netuitive diamond
+- build updates
+- fix typo in get-support script
+- add more example config files
+- update mysql to 5.6.32
+- update postgresql to 9.4.9
+- update docker-py to 1.9.0
+- update supervisor to 3.3.1
+- update setuptools to 26.1.1
+
 Version 0.4.0 - Jul 25 2016
 ----------------------------
 - update netuitive-client-python to 0.2.0

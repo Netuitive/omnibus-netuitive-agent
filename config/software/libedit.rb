@@ -15,12 +15,13 @@
 #
 
 name "libedit"
-default_version "20160618-3.1"
+default_version "20160903-3.1"
 
 dependency "ncurses"
 
 version("20150325-3.1") { source md5: "43cdb5df3061d78b5e9d59109871b4f6" }
 version("20160618-3.1") { source md5: "b6e60f326a3fce91bea1a6fe4700af58" }
+version("20160903-3.1") { source md5: "0467d27684c453a351fbcefebbcb16a3" }
 
 source url: "http://thrysoee.dk/editline/libedit-#{version}.tar.gz"
 

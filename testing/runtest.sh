@@ -5,9 +5,6 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-rm -f *.log
-rm -f *.pass
-
 if [ "$1" == "centos6" ] ||  [ "$1" == "all" ]; then
     echo "Running centos6 test..."
     time docker run --rm --name centos6-test -v `pwd`:/vagrant -h centos6 centos:6 /vagrant/docker/test.sh
@@ -74,4 +71,3 @@ fi
 
 grep -e '\.*' *.log
 
-rm -f *.log
