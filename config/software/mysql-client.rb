@@ -23,7 +23,7 @@ dependency "zlib"
 dependency "ncurses"
 
 source  :url => "http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-#{version}.tar.gz",
-        :md5 => "f32054a4f04ebdfebbc851cd9d9ed381"
+        :md5 => "255c5781f0cbb13f0e745b21c0ae3c1c"
 
 relative_path "mysql-#{version}"
 
