@@ -15,12 +15,12 @@
 #
 
 name "setuptools"
-default_version "27.3.0"
+default_version "28.8.0"
 
 dependency "python"
 
-source url: "https://pypi.python.org/packages/72/e1/741cd8c4825e58119481d8be4254c9cd133db50876b159cdf8cbd253fbb3/setuptools-#{version}.tar.gz",
-       md5: '2246eb4c511fa4b50003b10ea2a49d42'
+source url: "https://pypi.python.org/packages/25/4e/1b16cfe90856235a13872a6641278c862e4143887d11a12ac4905081197f/setuptools-28.8.0.tar.gz#md5=43d6eb25f60e8a2682a8f826ce9e3f42",
+       md5: '43d6eb25f60e8a2682a8f826ce9e3f42'
 
 relative_path "setuptools-#{version}"
 
