@@ -20,7 +20,7 @@ default_version "9.0.0"
 
 dependency "setuptools"
 
-source :url => "https://pypi.python.org/packages/5e/53/eaef47e5e2f75677c9de0737acc84b659b78a71c4086f424f55346a341b5/pip-9.0.0.tar.gz#md5=def0a8e3db26f896c128d063591bd008",
+source :url => "https://pypi.python.org/packages/5e/53/eaef47e5e2f75677c9de0737acc84b659b78a71c4086f424f55346a341b5/pip-9.0.0.tar.gz",
        :md5 => 'def0a8e3db26f896c128d063591bd008'
 
 relative_path "pip-#{version}"
