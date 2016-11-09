@@ -15,7 +15,7 @@ Version 0.5.1 - Nov XX 2016
 - update mysql to 5.6.34
 - update netuitive-event-handler
 - upgrade openssl to 1.0.2j
-- update pip to 9.0.0
+- update pip to 9.0.1
 - update boto to 2.43.0
 - update cython to 0.25.1
 - update docker-py to 1.10.6
