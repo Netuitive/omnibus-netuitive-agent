@@ -7,8 +7,9 @@ Version 0.5.1 - Nov XX 2016
   - fix millisecond timestamps
 - update to the latest netuitive diamond
   - elasticsearch: support 5.x
-  - mongodb: fix for dupe datapoints
+  - mongodb: fix for dupe datapoints and add better SSL suport
   - memcached: call socket.recv multiple times to get all stats
+  - netuitivedocker: support container metrics for new and old APIs.
 - update to the latest netuitive-statsd
   - fix "list index out of range" error for messages with bad formatting
 - update cacerts to 2016.11.02
