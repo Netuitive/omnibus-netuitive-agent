@@ -11,6 +11,10 @@ RUN apt-get install -y gnupg2
 RUN apt-get install -y curl wget
 RUN apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 RUN apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
+
+# get our own version of wget since the default is to old to handle some ssl certs
+RUN wget http://ftp.gnu.org/gnu/wget/wget-1.18.tar.gz; tar -zxvf wget-1.18.tar.gz; cd wget-1.18; ./configure --prefix=/usr/local --with-ssl=openssl; make; make install; cat /usr/local/bin/wget > /usr/bin/wget
+
 RUN wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz
 RUN tar xzf git-2.9.2.tar.gz
 RUN cd git-2.9.2; make prefix=/usr; make prefix= /usr install

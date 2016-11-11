@@ -1,6 +1,33 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.5.1 - Nov 11 2016
+----------------------------
+- update netuitive-python-client to the latest
+  - fix millisecond timestamps
+- update to the latest netuitive diamond
+  - elasticsearch: support 5.x
+  - mongodb: fix for dupe datapoints and add better SSL suport
+  - memcached: call socket.recv multiple times to get all stats
+  - netuitivedocker: support container metrics for new and old APIs
+  - cassandra_jolokia: fix cassandra error handling
+  - netuitive_handler: add azure meta data
+- update to the latest netuitive-statsd
+  - fix "list index out of range" error for messages with bad formatting
+- update cacerts to 2016.11.02
+- update mysql to 5.6.34
+- update netuitive-event-handler
+- upgrade openssl to 1.0.2j
+- update pip to 9.0.1
+- update boto to 2.43.0
+- update cython to 0.25.1
+- update docker-py to 1.10.6
+- update psutil to 4.4.2
+- update pymongo to 3.3.1
+- update setuptools to 28.8.0
+- update xproto to 7.0.31
+- fix build issue with too old wget on debian 7
+
 Version 0.5.0 - Sep 30 2016
 ----------------------------
 - update to the latest netuitive diamond
