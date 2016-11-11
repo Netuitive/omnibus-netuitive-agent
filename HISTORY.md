@@ -1,7 +1,7 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.5.1 - Nov XX 2016
+Version 0.5.1 - Nov 11 2016
 ----------------------------
 - update netuitive-python-client to the latest
   - fix millisecond timestamps
