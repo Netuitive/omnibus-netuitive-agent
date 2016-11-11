@@ -11,6 +11,7 @@ Version 0.5.1 - Nov XX 2016
   - memcached: call socket.recv multiple times to get all stats
   - netuitivedocker: support container metrics for new and old APIs
   - cassandra_jolokia: fix cassandra error handling
+  - netuitive_handler: add azure meta data
 - update to the latest netuitive-statsd
   - fix "list index out of range" error for messages with bad formatting
 - update cacerts to 2016.11.02
