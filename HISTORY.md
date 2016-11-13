@@ -1,8 +1,9 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.5.1 - Nov 11 2016
+Version 0.5.1 - Nov 13 2016
 ----------------------------
+- ignore cassandra table metrics by default
 - update netuitive-python-client to the latest
   - fix millisecond timestamps
 - update to the latest netuitive diamond
