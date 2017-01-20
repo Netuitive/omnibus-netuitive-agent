@@ -16,14 +16,14 @@
 # limitations under the License.
 #
 name "mysql-client"
-default_version "5.6.34"
+default_version "5.6.35"
 
 dependency "openssl"
 dependency "zlib"
 dependency "ncurses"
 
 source  :url => "http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-#{version}.tar.gz",
-        :md5 => "255c5781f0cbb13f0e745b21c0ae3c1c"
+        :md5 => "e4f170f6f73aa94c0d8da90019545908"
 
 relative_path "mysql-#{version}"
 
