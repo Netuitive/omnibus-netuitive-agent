@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y build-essential
 RUN apt-get install -y gnupg2
 RUN apt-get install -y curl wget
-RUN apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+RUN apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev unzip
 RUN apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev
 
 # get our own version of wget since the default is to old to handle some ssl certs
