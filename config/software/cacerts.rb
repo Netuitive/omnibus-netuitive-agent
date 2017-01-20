@@ -17,14 +17,14 @@
 name "cacerts"
 
 # Date of the file is in a comment at the start, or in the changelog
-default_version "2016.11.02"
+default_version "2017.01.18"
 
-version "2016.11.02" do
-  source md5: "11713bf9b8c10aca2fb4708f1ba01072"
+version "2017.01.18" do
+  source md5: "38cd779c9429ab6e2e5ae3437b763238"
 end
 
 
-source url: "http://curl.haxx.se/ca/cacert.pem"
+source url: "https://curl.haxx.se/ca/cacert.pem"
 
 relative_path "cacerts-#{version}"
 
