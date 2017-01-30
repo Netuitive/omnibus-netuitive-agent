@@ -14,7 +14,7 @@ function error_exit
 
 
 if [ -f "/usr/lib/systemd/system/netuitive-agent.service" ]; then
-  /bin/systemctl stop netutiive-agent
+  /bin/systemctl stop netuitive-agent
 fi
 
 if [ -f "/etc/init/netuitive-agent.conf" ]; then
