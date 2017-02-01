@@ -1,6 +1,31 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.5.2 - Feb 01 2017
+----------------------------
+- update to the latest netuitive diamond
+  - account for new jmx structure for cassandra 3
+  - corrected the name of the counter metrics
+- new jolokia config
+- new heardbeat collector
+- fix typo in cassandra collector config
+- fix error when removing agent from Ubuntu 16.04
+- default kafka jolokia collector
+- add metric whitelist for postgresql
+- update rabbitmq blacklist
+- update mongodb blacklist
+- update cacerts to 2017.01.18
+- update gmp to 6.1.2
+- update mysql to 5.6.35
+- update postgresql to 9.4.10
+- update boto to 2.45.0
+- update cython to 0.25.2
+- update pymongo to 3.4.0
+- update python to 2.7.13
+- update setuptools to 33.1.1
+- update zlib to 1.2.11
+- update openssl to 1.0.2k
+
 Version 0.5.1 - Nov 13 2016
 ----------------------------
 - ignore cassandra table metrics by default
