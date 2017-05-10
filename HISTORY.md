@@ -1,6 +1,14 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.5.3
+----------------------------
+- update to the latest netuitive diamond
+  - add simple mode support for NetuitiveDockerCollector
+- enable simple mode by default for all collectors
+- fix metrics blacklist for RabbitMQCollector
+- fix metrics blacklist for ElasticSearchCollector
+
 Version 0.5.2 - Feb 01 2017
 ----------------------------
 - update to the latest netuitive diamond
