@@ -1,7 +1,7 @@
 Netuitive Linux Agent Release History
 ===============================
 
-Version 0.5.3
+Version 0.5.3 - May 15 2017
 ----------------------------
 - update to the latest netuitive diamond
   - add simple mode support for NetuitiveDockerCollector
