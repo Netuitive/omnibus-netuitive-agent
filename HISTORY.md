@@ -1,6 +1,11 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version 0.5.4
+----------------------------
+- Kafka Collector: better error handling per topic collection 
+- Adding percent diskspace available
+
 Version 0.5.3 - May 15 2017
 ----------------------------
 - update to the latest netuitive diamond
