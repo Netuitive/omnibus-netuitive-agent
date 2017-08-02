@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.5.4'
+build_version '0.5.5-RC1'
 build_iteration 1
 
 # Creates required build directories
@@ -55,4 +55,3 @@ config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPInterfaceCollector.conf"
 config_file "#{install_dir}/conf/collectors/SolrCollector.conf"
 config_file "#{install_dir}/conf/collectors/UserScriptsCollector.conf"
-
