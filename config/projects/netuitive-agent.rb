@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.6.0-RC2'
+build_version '0.6.0-RC3'
 build_iteration 1
 
 # Creates required build directories
