@@ -1,9 +1,13 @@
 Netuitive Linux Agent Release History
 ===============================
 
+Version next
+----------------------------
+- Setting default Hearbeat Collector TTL to 150 seconds to reduce noise.
+
 Version 0.5.4
 ----------------------------
-- Kafka Collector: better error handling per topic collection 
+- Kafka Collector: better error handling per topic collection
 - Adding percent diskspace available
 
 Version 0.5.3 - May 15 2017
@@ -317,4 +321,3 @@ Version 0.1.2 - Jun 12 2015
 Version 0.1.0 - Jun 4 2015
 --------------------------
 - First beta release
-
