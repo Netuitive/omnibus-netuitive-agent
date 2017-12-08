@@ -5,6 +5,7 @@ Version next
 ----------------------------
 - Setting default Hearbeat Collector TTL to 150 seconds to reduce noise.
 - Add PortCheckCollector and ProcessCheckCollector
+- Increasing NetuitiveHandler batch size to 500.
 
 Version 0.5.4
 ----------------------------
