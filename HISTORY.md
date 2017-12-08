@@ -4,6 +4,7 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 - Setting default Hearbeat Collector TTL to 150 seconds to reduce noise.
+- Add PortCheckCollector and ProcessCheckCollector
 
 Version 0.5.4
 ----------------------------
