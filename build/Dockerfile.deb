@@ -10,15 +10,18 @@ RUN apt-get update \
  && apt-get install -y gnupg2 \
  && apt-get install -y curl wget \
  && apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev unzip \
- && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev 
+ && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev \
+ && apt-get clean \
+ && rm -rf  /tmp/* 
 
-# get our own version of wget since the default is to old to handle some ssl certs
+# get our own version of wget since the default is too old to handle some ssl certs
 RUN wget http://ftp.gnu.org/gnu/wget/wget-1.18.tar.gz; tar -zxvf wget-1.18.tar.gz; cd wget-1.18; ./configure --prefix=/usr/local --with-ssl=openssl; make; make install; cat /usr/local/bin/wget > /usr/bin/wget \
  && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
  && tar xzf git-2.9.2.tar.gz \
  && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
  && git config --global user.email "you@example.com" \
- && git config --global user.name "Your Name"
+ && git config --global user.name "Your Name" \
+ && rm -rf git* wget* /tmp/* 
 
 # install RVM, Ruby, Bundler, and Omnibus
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \

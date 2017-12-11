@@ -12,14 +12,13 @@ RUN yum -y update \
  && rpm -e git perl-Git \
  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
  && yum -y install gcc perl-ExtUtils-MakeMaker \
+ && yum clean all \
  && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
  && tar xzf git-2.9.2.tar.gz \
- && rm -f git-2.9.2.tar.gz \
- && yum clean all
-
-RUN cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
+ && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
+ && rm -rf git* /tmp/* \
  && git config --global user.email "you@example.com" \
- && git config --global user.name "Your Name"
+ && git config --global user.name "Your Name" 
 
 # install RVM, Ruby, Bundler, and Omnibus
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
