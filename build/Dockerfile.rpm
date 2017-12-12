@@ -6,21 +6,23 @@
 
 FROM      centos:6.8
 
-RUN yum -y update
-RUN yum groupinstall -y development
-RUN yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget
-RUN rpm -e git perl-Git
-RUN yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-RUN yum -y install gcc perl-ExtUtils-MakeMaker
-RUN wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz
-RUN tar xzf git-2.9.2.tar.gz
-RUN cd git-2.9.2; make prefix=/usr; make prefix= /usr install
-RUN git config --global user.email "you@example.com"
-RUN git config --global user.name "Your Name"
+RUN yum -y update \
+ && yum groupinstall -y development \
+ && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget \
+ && rpm -e git perl-Git \
+ && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
+ && yum -y install gcc perl-ExtUtils-MakeMaker \
+ && yum clean all \
+ && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
+ && tar xzf git-2.9.2.tar.gz \
+ && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
+ && rm -rf git* /tmp/* \
+ && git config --global user.email "you@example.com" \
+ && git config --global user.name "Your Name" 
 
 # install RVM, Ruby, Bundler, and Omnibus
-RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-RUN curl -sSL https://get.rvm.io | bash -s stable
+RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
+ && curl -sSL https://get.rvm.io | bash -s stable
 
 COPY Gemfile /tmp
 RUN /bin/bash -l -c "rvm use --install 2.3.1; gem install bundler --no-ri --no-rdoc; cd /tmp; bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3"
