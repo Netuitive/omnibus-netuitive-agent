@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 
 Version next
 ----------------------------
+- Added help content for port and process check collectors
 
 Version 0.6.1
 ----------------------------
