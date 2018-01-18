@@ -1,8 +1,13 @@
 Netuitive Linux Agent Release History
 ===============================
-
 Version next
 ----------------------------
+
+Version 0.6.2
+----------------------------
+- Fix netuitive-statsd poster which caches elements forever
+- Fix remapping of the PuppetDB queue metrics for PuppetDB 5.1
+- Add help content for port and process check collectors
 
 Version 0.6.1
 ----------------------------
