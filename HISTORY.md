@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Remove zip extension from get-support file output
 
 Version 0.6.2
 ----------------------------
