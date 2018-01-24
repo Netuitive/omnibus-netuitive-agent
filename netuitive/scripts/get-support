@@ -153,7 +153,7 @@ if __name__ == "__main__":
     print('\nCollecting logs and configuration....\n')
 
     timestamp = str(datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
-    supportzip = '/opt/netuitive-agent/support-' + timestamp + '.zip'
+    supportzip = '/opt/netuitive-agent/support-' + timestamp
 
     data = {}
     data['support_timestamp'] = timestamp
