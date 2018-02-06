@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 - Remove zip extension from get-support file output
+- Add PowerDNSCollector.conf, closing #62
 
 Version 0.6.2
 ----------------------------
