@@ -4,6 +4,11 @@ Version 0.6.3
 ----------------------------
 - Remove zip extension from get-support file output
 - Add PowerDNSCollector.conf, closing #62
+- Update netuitive-client-python to 0.3.1
+  - Bug Fix and Performance Improvement on element metrics lookup during adding sample
+- Update to the latest neuitive-diamond
+  - Fix bug with PuppetDB collector
+  - Fix bug with collector namespace
 
 Version 0.6.2
 ----------------------------
