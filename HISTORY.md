@@ -1,5 +1,9 @@
 Netuitive Linux Agent Release History
 ===============================
+Version next
+----------------------------
+- Add HttpCollector.conf, closing #66
+
 Version 0.6.3
 ----------------------------
 - Remove zip extension from get-support file output
