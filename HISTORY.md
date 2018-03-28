@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 - Add HttpCollector.conf, closing #66
+- Adding new DNS Lookup Check collector
 
 Version 0.6.3
 ----------------------------
