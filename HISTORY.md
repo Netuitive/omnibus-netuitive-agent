@@ -4,6 +4,7 @@ Version next
 ----------------------------
 - Add HttpCollector.conf, closing #66
 - Adding new DNS Lookup Check collector
+- Adding PuppetDBCollector.conf, closing #71
 
 Version 0.6.3
 ----------------------------
