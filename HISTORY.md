@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Update the default API URL to Metricly
 - Add HttpCollector.conf, closing #66
 - Adding new DNS Lookup Check collector
 - Adding PuppetDBCollector.conf, closing #71
