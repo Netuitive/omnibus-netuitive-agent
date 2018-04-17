@@ -6,6 +6,9 @@ Version next
 - Add HttpCollector.conf, closing #66
 - Adding new DNS Lookup Check collector
 - Adding PuppetDBCollector.conf, closing #71
+- Add BaseCollector
+- Add connection_timeout to NetuitiveHandler
+
 
 Version 0.6.3
 ----------------------------
