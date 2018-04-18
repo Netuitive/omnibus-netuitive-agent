@@ -2,13 +2,14 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+
+Version 0.6.4
 - Update the default API URL to Metricly
 - Add HttpCollector.conf, closing #66
 - Adding new DNS Lookup Check collector
 - Adding PuppetDBCollector.conf, closing #71
-- Add BaseCollector
+- Add BaseCollector that collects CPU/MEM/NET/DISK metrics by delegation
 - Add connection_timeout to NetuitiveHandler
-
 
 Version 0.6.3
 ----------------------------
