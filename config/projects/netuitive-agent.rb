@@ -7,7 +7,7 @@ homepage "http://www.netuitive.com"
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.6.3'
+build_version '0.6.4'
 build_iteration 1
 
 # Creates required build directories
@@ -39,6 +39,7 @@ config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
 config_file "#{install_dir}/conf/collectors/FlumeCollector.conf"
 config_file "#{install_dir}/conf/collectors/HeartbeatCollector.conf"
 config_file "#{install_dir}/conf/collectors/HttpCodeCollector.conf"
+config_file "#{install_dir}/conf/collectors/HttpCollector.conf"
 config_file "#{install_dir}/conf/collectors/HttpdCollector.conf"
 config_file "#{install_dir}/conf/collectors/JolokiaCollector.conf"
 config_file "#{install_dir}/conf/collectors/KafkaCollector.conf"
@@ -47,8 +48,12 @@ config_file "#{install_dir}/conf/collectors/KafkaJolokiaCollector.conf"
 config_file "#{install_dir}/conf/collectors/MongoDBCollector.conf"
 config_file "#{install_dir}/conf/collectors/MySQLCollector.conf"
 config_file "#{install_dir}/conf/collectors/NginxCollector.conf"
+config_file "#{install_dir}/conf/collectors/PortCheckCollector.conf"
 config_file "#{install_dir}/conf/collectors/PostgresqlCollector.conf"
+config_file "#{install_dir}/conf/collectors/PowerDNSCollector.conf"
+config_file "#{install_dir}/conf/collectors/ProcessCheckCollector.conf"
 config_file "#{install_dir}/conf/collectors/ProcessResourcesCollector.conf"
+config_file "#{install_dir}/conf/collectors/PuppetDBCollector.conf"
 config_file "#{install_dir}/conf/collectors/RabbitMQCollector.conf"
 config_file "#{install_dir}/conf/collectors/RedisCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
