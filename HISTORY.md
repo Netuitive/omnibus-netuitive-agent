@@ -1,6 +1,6 @@
 Netuitive Linux Agent Release History
 ===============================
-Version next
+Version 0.6.5
 ----------------------------
 - Add default configs for the metric fqn list file, closing #75
 

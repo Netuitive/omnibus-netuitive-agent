@@ -1,34 +1,33 @@
 
-name "netuitive-agent"
-maintainer "Netuitive, Inc"
-homepage "http://www.netuitive.com"
+name 'netuitive-agent'
+maintainer 'Netuitive, Inc'
+homepage 'http://www.netuitive.com'
 
 # Defaults to C:/netuitive on Windows
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.6.4'
+build_version '0.6.5'
 build_iteration 1
 
 # Creates required build directories
-dependency "preparation"
-
+dependency 'preparation'
 
 # netuitive diamond agent
-dependency "netuitive-diamond"
+dependency 'netuitive-diamond'
 
 # netuitive statsd
-dependency "netuitive-statsd"
+dependency 'netuitive-statsd'
 
 # netuitive event handler
-dependency "netuitive-event-handler"
+dependency 'netuitive-event-handler'
 
 # Version manifest file
-dependency "version-manifest"
+dependency 'version-manifest'
 
-exclude "**/.git"
-exclude "**/bundler/git"
-exclude "**/.gitkeep"
+exclude '**/.git'
+exclude '**/bundler/git'
+exclude '**/.gitkeep'
 
 # main config
 config_file "#{install_dir}/conf/netuitive-agent.conf"
