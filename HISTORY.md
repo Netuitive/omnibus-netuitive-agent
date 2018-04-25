@@ -3,6 +3,8 @@ Netuitive Linux Agent Release History
 Version 0.6.5
 ----------------------------
 - Add default configs for the metric fqn list file, closing #75
+- lock down license_scout version
+- Increase timeout when bundle installing gems
 
 Version 0.6.4
 - Update the default API URL to Metricly

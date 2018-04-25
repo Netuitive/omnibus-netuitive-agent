@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 # Install omnibus
 gem 'omnibus', '~> 5.5.0'
 
+# Install license_scout
+gem 'license_scout', '= 1.0.3'
+
 # Use Chef's software definitions. It is recommended that you write your own
 # software definitions, but you can clone/fork Chef's to get you started.
 # gem 'omnibus-software', github: 'opscode/omnibus-software'
