@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 Version 0.6.5
 ----------------------------
 - Add default configs for the metric fqn list file, closing #75
+- Fix statsd poster to add a prefix only when the value is a non-empty string
 - lock down license_scout version
 - Increase timeout when bundle installing gems
 
