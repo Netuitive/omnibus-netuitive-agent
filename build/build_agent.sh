@@ -24,6 +24,7 @@ cd /var/cache/omnibus
 
 source /etc/profile.d/rvm.sh
 rvm use --install 2.3.1
+bundle config timeout 30
 bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3
 
 if [ -f "/var/cache/omnibus/local.sh" ]; then
