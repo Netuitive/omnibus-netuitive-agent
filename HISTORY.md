@@ -1,5 +1,9 @@
 Netuitive Linux Agent Release History
 ===============================
+Version 0.6.6
+----------------------------
+- update python to 2.7.15
+
 Version 0.6.5
 ----------------------------
 - Add default configs for the metric fqn list file, closing #75
