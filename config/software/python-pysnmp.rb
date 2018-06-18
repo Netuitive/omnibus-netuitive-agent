@@ -1,5 +1,5 @@
 name "pysnmp"
-default_version "4.3.2"
+default_version "4.4.4"
 
 dependency "python"
 dependency "pip"
