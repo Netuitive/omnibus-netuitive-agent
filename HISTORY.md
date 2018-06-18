@@ -1,5 +1,9 @@
 Netuitive Linux Agent Release History
 ===============================
+Version 0.6.7
+----------------------------
+- Update pysnmp to 4.4.4
+
 Version 0.6.6
 ----------------------------
 - update python to 2.7.15
