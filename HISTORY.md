@@ -1,5 +1,9 @@
 Netuitive Linux Agent Release History
 ===============================
+Version next
+----------------------------
+- Enable BaseCollector by default, per #80
+
 Version 0.6.7
 ----------------------------
 - Update pysnmp to 4.4.4
