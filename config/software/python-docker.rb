@@ -1,5 +1,5 @@
-name "docker-py"
-default_version "1.10.6"
+name "docker"
+default_version "3.4.1"
 
 dependency "python"
 dependency "pip"
