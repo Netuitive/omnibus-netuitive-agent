@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Enable BaseCollector by default, per #80
 - Update docker-py to docker 3.4.1
 
 Version 0.6.7
