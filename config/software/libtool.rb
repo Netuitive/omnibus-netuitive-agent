@@ -22,7 +22,7 @@ version "2.4.6" do
 end
 
 
-source url: "http://ftp.gnu.org/gnu/libtool/libtool-#{version}.tar.gz"
+source url: "http://mirrors.ibiblio.org/gnu/ftp/gnu/libtool/libtool-#{version}.tar.gz"
 
 relative_path "libtool-#{version}"
 

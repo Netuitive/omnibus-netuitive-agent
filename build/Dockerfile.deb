@@ -15,7 +15,7 @@ RUN apt-get update \
  && rm -rf  /tmp/* 
 
 # get our own version of wget since the default is too old to handle some ssl certs
-RUN wget http://ftp.gnu.org/gnu/wget/wget-1.18.tar.gz; tar -zxvf wget-1.18.tar.gz; cd wget-1.18; ./configure --prefix=/usr/local --with-ssl=openssl; make; make install; cat /usr/local/bin/wget > /usr/bin/wget \
+RUN wget http://mirrors.ibiblio.org/gnu/ftp/gnu/wget/wget-1.18.tar.gz; tar -zxvf wget-1.18.tar.gz; cd wget-1.18; ./configure --prefix=/usr/local --with-ssl=openssl; make; make install; cat /usr/local/bin/wget > /usr/bin/wget \
  && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
  && tar xzf git-2.9.2.tar.gz \
  && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \

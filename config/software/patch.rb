@@ -19,7 +19,7 @@ default_version "2.7.5"
 
 version("2.7.5") { source md5: "ed4d5674ef4543b4eb463db168886dc7" }
 
-source url: "http://ftp.gnu.org/gnu/patch/patch-#{version}.tar.gz"
+source url: "http://mirrors.ibiblio.org/gnu/ftp/gnu/patch/patch-#{version}.tar.gz"
 
 relative_path "patch-#{version}"
 
