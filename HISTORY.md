@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Add minimal mode (off by default) option to the NetuitiveDockerCollector
 - Enable BaseCollector by default, per #80
 
 Version 0.6.7
