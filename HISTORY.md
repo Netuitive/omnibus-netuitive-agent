@@ -2,6 +2,13 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+
+Version 0.7.1
+----------------------------
+- Fix ElasticSearchCollector ssl config options type error
+
+Version 0.7.0
+----------------------------
 - Add a SimpleCollector config (off by default)
 - Add minimal mode (off by default) option to the NetuitiveDockerCollector
 - Enable BaseCollector by default, per #80
@@ -22,6 +29,7 @@ Version 0.6.5
 - Increase timeout when bundle installing gems
 
 Version 0.6.4
+----------------------------
 - Update the default API URL to Metricly
 - Add HttpCollector.conf, closing #66
 - Adding new DNS Lookup Check collector
