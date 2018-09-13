@@ -3,16 +3,12 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
-<<<<<<< HEAD
 Version 0.7.1
 ----------------------------
 - Fix ElasticSearchCollector ssl config options type error
 
 Version 0.7.0
 ----------------------------
-=======
-Version 0.7.0
->>>>>>> e8f79b199ad740b09eb2554b94bcce5e9c9db8e2
 - Add a SimpleCollector config (off by default)
 - Add minimal mode (off by default) option to the NetuitiveDockerCollector
 - Enable BaseCollector by default, per #80
