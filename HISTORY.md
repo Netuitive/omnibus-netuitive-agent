@@ -3,6 +3,10 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.2
+----------------------------
+- Add missing quotes to ElasticSearchCollector default config option
+
 Version 0.7.1
 ----------------------------
 - Fix ElasticSearchCollector ssl config options type error
