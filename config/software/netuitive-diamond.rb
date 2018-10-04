@@ -68,5 +68,8 @@ build do
 
     copy "#{install_dir}/.install/scripts/get-support", "#{install_dir}/bin/get-support"
 
+  # User-scripts Dir
+  mkdir "#{install_dir}/user-scripts"
+  
 end
 
