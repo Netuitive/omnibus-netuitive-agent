@@ -17,7 +17,7 @@ dependency "python-statsd"
 # Collectors dependency
 dependency "python-mysql"
 dependency "python-beanstalkc"
-dependency "python-docker-py"
+dependency "python-docker"
 dependency "python-pymongo"
 dependency "python-pyutmp"
 dependency "python-redis"
@@ -69,4 +69,3 @@ build do
     copy "#{install_dir}/.install/scripts/get-support", "#{install_dir}/bin/get-support"
 
 end
-

@@ -16,6 +16,7 @@ Version 0.7.0
 - Add a SimpleCollector config (off by default)
 - Add minimal mode (off by default) option to the NetuitiveDockerCollector
 - Enable BaseCollector by default, per #80
+- Update docker-py to docker 3.4.1
 
 Version 0.6.7
 ----------------------------
