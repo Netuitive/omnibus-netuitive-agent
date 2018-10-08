@@ -3,6 +3,12 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.3
+----------------------------
+- Add user-scripts creation to diamond.rb
+- change default UserScripts directory to /opt/netuitive/user-scripts
+- Fix ctx variable reference before assignment
+
 Version 0.7.2
 ----------------------------
 - Add missing quotes to ElasticSearchCollector default config option
