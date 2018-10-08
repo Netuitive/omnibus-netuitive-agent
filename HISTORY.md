@@ -2,6 +2,8 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Add user-scripts creation to diamond.rb
+- change default UserScripts directory to /opt/netuitive/user-scripts
 
 Version 0.7.2
 ----------------------------
