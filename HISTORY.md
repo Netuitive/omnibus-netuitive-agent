@@ -2,6 +2,8 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Update cacerts.rb
+- Change bzip2 source to fix broken build dependency
 
 Version 0.7.3
 ----------------------------
