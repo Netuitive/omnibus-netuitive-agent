@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Adding DNSLookupCheckCollector.conf to project config
 - Update cacerts.rb
 - Change bzip2 source to fix broken build dependency
 
