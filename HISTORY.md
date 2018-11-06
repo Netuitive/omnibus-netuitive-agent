@@ -3,6 +3,13 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.4
+- Add a Consul collector
+- Retry failed checks using the updated Metricly Python client
+- Adding DNSLookupCheckCollector.conf to project config
+- Update cacerts.rb
+- Change bzip2 source to fix broken build dependency
+
 Version 0.7.3
 ----------------------------
 - Add user-scripts creation to diamond.rb

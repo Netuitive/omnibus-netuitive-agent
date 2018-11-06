@@ -7,7 +7,7 @@ homepage 'http://www.netuitive.com'
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.7.3'
+build_version '0.7.4-RC1'
 build_iteration 1
 
 # Creates required build directories
@@ -34,6 +34,7 @@ config_file "#{install_dir}/conf/netuitive-agent.conf"
 
 # default collector configs
 config_file "#{install_dir}/conf/collectors/CassandraJolokiaCollector.conf"
+config_file "#{install_dir}/conf/collectors/DNSLookupCheckCollector.conf"
 config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
 config_file "#{install_dir}/conf/collectors/FlumeCollector.conf"
 config_file "#{install_dir}/conf/collectors/HeartbeatCollector.conf"
