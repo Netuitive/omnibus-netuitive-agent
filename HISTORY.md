@@ -4,6 +4,8 @@ Version next
 ----------------------------
 
 Version 0.7.4
+----------------------------
+- Add default ConsulCollector.conf
 - Add a Consul collector
 - Retry failed checks using the updated Metricly Python client
 - Adding DNSLookupCheckCollector.conf to project config
