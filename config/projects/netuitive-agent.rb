@@ -34,6 +34,7 @@ config_file "#{install_dir}/conf/netuitive-agent.conf"
 
 # default collector configs
 config_file "#{install_dir}/conf/collectors/CassandraJolokiaCollector.conf"
+config_file "#{install_dir}/conf/collectors/ConsulCollector.conf"
 config_file "#{install_dir}/conf/collectors/DNSLookupCheckCollector.conf"
 config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
 config_file "#{install_dir}/conf/collectors/FlumeCollector.conf"
