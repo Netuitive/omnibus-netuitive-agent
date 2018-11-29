@@ -1,5 +1,5 @@
 name "netuitive-diamond"
-default_version "master"
+default_version "bugfix/concurrentlog"
 
 dependency "postgresql"
 dependency "mysql-client"
@@ -10,8 +10,8 @@ dependency "python-psutil"
 dependency "python-setproctitle"
 
 
-
 # Handlers dependency
+dependency "concurrent-log-handler"
 dependency "python-netuitive"
 dependency "python-statsd"
 # Collectors dependency
