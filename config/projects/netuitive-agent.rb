@@ -7,7 +7,7 @@ homepage 'http://www.netuitive.com'
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.7.4'
+build_version '0.7.5'
 build_iteration 1
 
 # Creates required build directories
@@ -34,6 +34,7 @@ config_file "#{install_dir}/conf/netuitive-agent.conf"
 
 # default collector configs
 config_file "#{install_dir}/conf/collectors/CassandraJolokiaCollector.conf"
+config_file "#{install_dir}/conf/collectors/ConsulCollector.conf"
 config_file "#{install_dir}/conf/collectors/DNSLookupCheckCollector.conf"
 config_file "#{install_dir}/conf/collectors/ElasticSearchCollector.conf"
 config_file "#{install_dir}/conf/collectors/FlumeCollector.conf"
@@ -59,4 +60,5 @@ config_file "#{install_dir}/conf/collectors/RedisCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPCollector.conf"
 config_file "#{install_dir}/conf/collectors/SNMPInterfaceCollector.conf"
 config_file "#{install_dir}/conf/collectors/SolrCollector.conf"
+config_file "#{install_dir}/conf/collectors/TCPCollector.conf"
 config_file "#{install_dir}/conf/collectors/UserScriptsCollector.conf"

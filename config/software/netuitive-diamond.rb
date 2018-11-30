@@ -10,8 +10,8 @@ dependency "python-psutil"
 dependency "python-setproctitle"
 
 
-
 # Handlers dependency
+dependency "concurrent-log-handler"
 dependency "python-netuitive"
 dependency "python-statsd"
 # Collectors dependency
