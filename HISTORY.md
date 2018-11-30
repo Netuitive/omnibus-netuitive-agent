@@ -6,6 +6,7 @@ Version next
 Version 0.7.6
 ----------------------------
 - Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
+- Add Docker Container Uptime feature to the NetuitiveDockerCollector
 
 Version 0.7.5
 ----------------------------
