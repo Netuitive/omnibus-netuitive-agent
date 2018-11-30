@@ -5,6 +5,7 @@ Version next
 - Exclude device mapper virtual drives from DiskSpaceCollector by default
 - Add a default TCPCollector config
 - Add ConsulCollector.conf to project config
+- Add pkg concurrent-log-handler to fix locking, I/O errors when multiprocess logging to single file
 
 Version 0.7.4
 ----------------------------
