@@ -1,5 +1,5 @@
 name "netuitive-diamond"
-default_version "bugfix/concurrentlog"
+default_version "master"
 
 dependency "postgresql"
 dependency "mysql-client"
