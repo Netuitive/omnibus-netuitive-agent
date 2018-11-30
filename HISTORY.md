@@ -3,6 +3,10 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.6
+----------------------------
+- Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
+
 Version 0.7.5
 ----------------------------
 - Exclude device mapper virtual drives from DiskSpaceCollector by default
