@@ -3,17 +3,14 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
-Version 0.7.6
-----------------------------
-- Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
-- Add Docker Container Uptime feature to the NetuitiveDockerCollector
-
 Version 0.7.5
 ----------------------------
 - Exclude device mapper virtual drives from DiskSpaceCollector by default
 - Add a default TCPCollector config
 - Add ConsulCollector.conf to project config
 - Add pkg concurrent-log-handler to fix locking, I/O errors when multiprocess logging to single file
+- Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
+- Add Docker Container Uptime feature to the NetuitiveDockerCollector
 
 Version 0.7.4
 ----------------------------
