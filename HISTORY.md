@@ -11,6 +11,7 @@ Version 0.7.5
 - Add pkg concurrent-log-handler to fix locking, I/O errors when multiprocess logging to single file
 - Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
 - Add Docker Container Uptime feature to the NetuitiveDockerCollector
+- Add support for UDP to PortCheckCollector
 
 Version 0.7.4
 ----------------------------
