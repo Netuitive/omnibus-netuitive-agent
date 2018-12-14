@@ -2,6 +2,8 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Fix loss of collector configs during reinstallation on Debian/Ubuntu
+- Minor buildfix in cacerts.rb, RVM via dockerfiles.
 
 Version 0.7.5
 ----------------------------
