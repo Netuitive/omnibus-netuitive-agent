@@ -32,6 +32,9 @@ cleanup () {
     rm -rf /opt/netuitive-agent
   fi
 
+  if [ -f "/var/lib/dpkg/info/netuitive-agent.list" ]; then
+    rm -f /var/lib/dpkg/info/netuitive-agent.list
+  fi
   notify "The Netuitive agent has been removed!"
 
 }
