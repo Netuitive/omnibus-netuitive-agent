@@ -2,8 +2,12 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+
+Version 0.7.6
+----------------------------
 - Fix loss of collector configs during reinstallation on Debian/Ubuntu
 - Minor buildfix in cacerts.rb, RVM via dockerfiles.
+- Make rabbitmq shovel states collectable via RabbitMQCollector
 
 Version 0.7.5
 ----------------------------
