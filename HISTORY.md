@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Provide better examples in DNSLookupCheckCollector.conf file
 
 Version 0.7.6
 ----------------------------
