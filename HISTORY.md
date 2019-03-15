@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 - Provide better examples in DNSLookupCheckCollector.conf file
+- Improve KafkaJolokiaCollector default metric blacklist
 
 Version 0.7.6
 ----------------------------
