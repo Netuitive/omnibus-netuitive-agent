@@ -7,7 +7,7 @@
 # curl -sSL https://get.rvm.io | bash -s stable
 
 # source /etc/profile.d/rvm.sh
-# rvm use --install 2.3.1
+# rvm use --install 2.5.1
 # gem install --verbose bundler
 
 if [ -f "/usr/bin/yum" ]; then
@@ -23,7 +23,7 @@ cp -rf /vagrant /var/cache/omnibus
 cd /var/cache/omnibus
 
 source /etc/profile.d/rvm.sh
-rvm use --install 2.3.1
+rvm use --install 2.5.1
 bundle config timeout 30
 bundle install --verbose --binstubs --jobs `nproc --ignore=1` --retry=3
 
