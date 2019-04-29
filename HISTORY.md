@@ -3,6 +3,16 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.7
+----------------------------
+- Provide better examples in DNSLookupCheckCollector.conf file
+- Improve KafkaJolokiaCollector default metric blacklist
+- Fix linting errors for netuiive-statsd
+- Update help links for netuitive-statsd
+- Drop suppoort for Python 3.3 and addding Python 3.6 in netuitive-statsd
+- Set minimal required netuitive-client-python version to netuitive>=0.3.4 in netuitive-statsd
+- Attempt to get AWS meta from instance meta endpoint more than one time
+
 Version 0.7.6
 ----------------------------
 - Fix loss of collector configs during reinstallation on Debian/Ubuntu
