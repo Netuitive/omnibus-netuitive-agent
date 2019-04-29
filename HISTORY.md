@@ -3,6 +3,8 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+- Upgrade ruby version to 2.5.1
+
 Version 0.7.7
 ----------------------------
 - Provide better examples in DNSLookupCheckCollector.conf file
