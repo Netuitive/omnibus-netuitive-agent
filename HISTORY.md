@@ -7,7 +7,7 @@ Version 0.7.7
 ----------------------------
 - Provide better examples in DNSLookupCheckCollector.conf file
 - Improve KafkaJolokiaCollector default metric blacklist
-- Fix linting errors for netuiive-statsd
+- Fix linting errors for netuitive-statsd
 - Update help links for netuitive-statsd
 - Drop suppoort for Python 3.3 and addding Python 3.6 in netuitive-statsd
 - Set minimal required netuitive-client-python version to netuitive>=0.3.4 in netuitive-statsd
