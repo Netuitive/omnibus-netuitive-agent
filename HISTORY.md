@@ -3,7 +3,11 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
-Version 0.7.7
+Version 0.7.7-RC2
+----------------------------
+- Upgrade ruby version to 2.5.1
+
+Version 0.7.7-RC1
 ----------------------------
 - Provide better examples in DNSLookupCheckCollector.conf file
 - Improve KafkaJolokiaCollector default metric blacklist
