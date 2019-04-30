@@ -10,7 +10,7 @@ RUN apt-get update \
  && apt-get install -y gnupg2 \
  && apt-get install -y curl wget \
  && apt-get install -y git libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev unzip \
- && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev \
+ && apt-get install -y cmake mysql-client libmysqlclient-dev postgresql-server-dev-all lm-sensors flex libgmp-dev pkg-config \
  && apt-get clean \
  && rm -rf  /tmp/* 
 

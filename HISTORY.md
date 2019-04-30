@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Install required pkg-config package
 
 Version 0.7.7-RC2
 ----------------------------
