@@ -3,6 +3,7 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 - Replace wheezy source with jessie for debian7 testing
+- Install required pkg-config package
 
 Version 0.7.7-RC2
 ----------------------------
