@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Install gpg version 2 for rpm build
 
 Version 0.7.7-RC3
 ----------------------------
