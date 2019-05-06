@@ -7,6 +7,7 @@ Version 0.7.7-RC3
 ----------------------------
 - Replace wheezy source with jessie for debian7 testing
 - Install required pkg-config package
+- Install gpg version 2 for rpm build
 
 Version 0.7.7-RC2
 ----------------------------
