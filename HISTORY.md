@@ -3,6 +3,10 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.7-RC4
+----------------------------
+- Install gpg version 2 for rpm build
+
 Version 0.7.7-RC3
 ----------------------------
 - Replace wheezy source with jessie for debian7 testing

@@ -8,7 +8,7 @@ FROM      centos:6.8
 
 RUN yum -y update \
  && yum groupinstall -y development \
- && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget \
+ && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget gnupg2 \
  && rpm -e git perl-Git \
  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
  && yum -y install gcc perl-ExtUtils-MakeMaker \
