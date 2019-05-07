@@ -2,6 +2,7 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+- Test need to cleanup after running
 
 Version 0.7.7-RC4
 ----------------------------
