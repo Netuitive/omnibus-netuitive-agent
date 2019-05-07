@@ -8,6 +8,10 @@ fi
 if [ "$1" == "centos6" ] ||  [ "$1" == "all" ]; then
     echo "Running centos6 test..."
     time docker run --rm --name centos6-test -v `pwd`:/vagrant -h centos6 centos:6 /vagrant/docker/test.sh
+    sleep 120
+    docker stop centos6-test
+    docker rm centos6-test
+    docker rmi centos:6
 fi
 
 if [ "$1" == "centos7" ] ||  [ "$1" == "all" ]; then
@@ -17,11 +21,16 @@ if [ "$1" == "centos7" ] ||  [ "$1" == "all" ]; then
     sleep 120
     docker stop centos7-test
     docker rm centos7-test
+    docker rmi local/c7-systemd-test
 fi
 
 if [ "$1" == "debian7" ] ||  [ "$1" == "all" ]; then
     echo "Running debian7 test..."
     time docker run --rm --name debian7-test -v `pwd`:/vagrant -h debian7 debian:7 /vagrant/docker/test.sh
+    sleep 120
+    docker stop debian7-test
+    docker rm debian7-test
+    docker rmi -f debian:7
 fi
 
 if [ "$1" == "debian8" ] ||  [ "$1" == "all" ]; then
@@ -31,6 +40,7 @@ if [ "$1" == "debian8" ] ||  [ "$1" == "all" ]; then
     sleep 120
     docker stop debian8-test
     docker rm debian8-test
+    docker rmi local/d8-systemd-test
 fi
 
 
@@ -41,6 +51,7 @@ if [ "$1" == "ubuntu12" ] ||  [ "$1" == "all" ]; then
     sleep 120
     docker stop ubuntu12-test
     docker rm ubuntu12-test
+    docker rmi local/u12-upstart-test
 fi
 
 if [ "$1" == "ubuntu14" ] ||  [ "$1" == "all" ]; then
@@ -49,6 +60,8 @@ if [ "$1" == "ubuntu14" ] ||  [ "$1" == "all" ]; then
     docker run --rm --name ubuntu14-test -v `pwd`:/vagrant -h ubuntu14 local/u14-upstart-test&
     sleep 120
     docker stop ubuntu14-test
+    docker rm ubuntu14-test
+    docker rmi local/u14-upstart-test
 fi
 
 if [ "$1" == "ubuntu15" ] ||  [ "$1" == "all" ]; then
@@ -58,6 +71,7 @@ if [ "$1" == "ubuntu15" ] ||  [ "$1" == "all" ]; then
     sleep 120
     docker stop ubuntu15-test
     docker rm ubuntu15-test
+    docker rmi local/u15-systemd-test
 fi
 
 if [ "$1" == "ubuntu16" ] ||  [ "$1" == "all" ]; then
@@ -67,6 +81,7 @@ if [ "$1" == "ubuntu16" ] ||  [ "$1" == "all" ]; then
     sleep 120
     docker stop ubuntu16-test
     docker rm ubuntu16-test
+    docker rmi local/u16-systemd-test
 fi
 
 grep -e '\.*' *.log
