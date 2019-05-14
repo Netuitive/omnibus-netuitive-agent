@@ -3,9 +3,14 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.7-RC6
+----------------------------
+- Update netuitive-python-client to latest
+  - Apply explicit urlopen request timeouts 
+
 Version 0.7.7-RC5
 ----------------------------
-- Test need to cleanup after running
+- Build tests need to be cleaned after run
 
 Version 0.7.7-RC4
 ----------------------------
