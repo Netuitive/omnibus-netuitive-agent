@@ -3,30 +3,15 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
-Version 0.7.7-RC6
+Version 0.7.7
 ----------------------------
 - Update netuitive-python-client to latest
   - Apply explicit urlopen request timeouts 
-
-Version 0.7.7-RC5
-----------------------------
 - Build tests need to be cleaned after run
-
-Version 0.7.7-RC4
-----------------------------
 - Install gpg version 2 for rpm build
-
-Version 0.7.7-RC3
-----------------------------
 - Replace wheezy source with jessie for debian7 testing
 - Install required pkg-config package
-
-Version 0.7.7-RC2
-----------------------------
 - Upgrade ruby version to 2.5.1
-
-Version 0.7.7-RC1
-----------------------------
 - Provide better examples in DNSLookupCheckCollector.conf file
 - Improve KafkaJolokiaCollector default metric blacklist
 - Fix linting errors for netuitive-statsd
