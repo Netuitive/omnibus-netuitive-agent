@@ -2,6 +2,9 @@ Netuitive Linux Agent Release History
 ===============================
 Version next
 ----------------------------
+
+Version 0.7.8
+----------------------------
 - Enable Docker minimal mode collection by default
 
 Version 0.7.7
