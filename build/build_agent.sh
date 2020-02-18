@@ -17,9 +17,9 @@ else
     apt-get upgrade -y
 fi
 
-mkdir -p /vagrant/dist
-rm -rf /var/cache/omnibus
-cp -rf /vagrant /var/cache/omnibus
+mkdir -pv /vagrant/dist
+rm -rfv /var/cache/omnibus
+cp -rfv /vagrant /var/cache/omnibus
 cd /var/cache/omnibus
 
 source /etc/profile.d/rvm.sh
@@ -35,5 +35,5 @@ fi
 
 bin/omnibus build netuitive-agent --log-level=debug
 
-cp -f /var/cache/omnibus/pkg/* /vagrant/dist
-cp -f /var/cache/omnibus/pkg/* /vagrant/testing/dist
+cp -fv /var/cache/omnibus/pkg/* /vagrant/dist
+cp -fv /var/cache/omnibus/pkg/* /vagrant/testing/dist
