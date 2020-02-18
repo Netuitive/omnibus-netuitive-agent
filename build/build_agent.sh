@@ -33,7 +33,7 @@ if [ -f "/var/cache/omnibus/local.sh" ]; then
     bin/omnibus cache populate
 fi
 
-bin/omnibus build netuitive-agent
+bin/omnibus build netuitive-agent --log-level=debug
 
 cp -f /var/cache/omnibus/pkg/* /vagrant/dist
 cp -f /var/cache/omnibus/pkg/* /vagrant/testing/dist
