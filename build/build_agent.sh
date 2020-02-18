@@ -20,7 +20,7 @@ fi
 mkdir -pv /vagrant/dist
 rm -rfv /var/cache/omnibus
 cp -rfv /vagrant /var/cache/omnibus
-cd -v /var/cache/omnibus
+cd /var/cache/omnibus
 
 source /etc/profile.d/rvm.sh
 rvm use --install 2.5.1
