@@ -38,7 +38,9 @@ runtest() {
     fi
 
     sleep 120
-    docker cp ${OS}-test:/vagrant/ .
+    docker cp ${OS}-test:/vagrant/${OS}-testserver.log .
+    docker cp ${OS}-test:/vagrant/${OS}.log .
+    docker cp ${OS}-test:/vagrant/${OS}.pass .
     
     
     docker stop ${OS}-test || echo "${OS}-test: stopped"
