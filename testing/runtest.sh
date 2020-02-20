@@ -38,7 +38,8 @@ runtest() {
     fi
 
     sleep 120
-    docker cp ${OS}-test:/vagrant/${OS}-testserver.log .
+    docker cp ${OS}-test:/vagrant/ .
+    
     
     docker stop ${OS}-test || echo "${OS}-test: stopped"
     docker rmi -f ${image} || echo "${image}: removed"
