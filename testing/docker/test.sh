@@ -30,7 +30,6 @@ elif [ `hostname` == "debian7" ]; then
     for f in /vagrant/dist/*.deb; do dpkg -i $f; done
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
     service netuitive-agent start
-    sleep 120
 
 elif [ `hostname` == "debian8" ]; then
     apt-get update
@@ -81,4 +80,4 @@ else
 fi
 
 
-sleep 65
+sleep 300
