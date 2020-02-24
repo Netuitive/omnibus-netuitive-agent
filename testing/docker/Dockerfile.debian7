@@ -1,0 +1,17 @@
+FROM debian:7
+
+ENV container docker
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN sed -i '/wheezy/d' /etc/apt/sources.list \
+ && echo "deb http://deb.debian.org/debian jessie main" >> /etc/apt/sources.list \
+ && echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list
+
+# Install packages
+RUN apt-get -y update \
+    && apt-get -y install \
+    curl python sudo
+
+VOLUME ["/vagrant"]
+CMD ["/bin/bash","/vagrant/docker/test.sh"]
