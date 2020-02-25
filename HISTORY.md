@@ -8,6 +8,10 @@ Version 0.7.9
 - Debian7 dockerfile added to address apt-get broken repo mirrors
 - test.sh global sleep bumped to 5 minutes (the tests actually stop the docker container, there is no need to die unless the test is not running or exits with error and without cleanup)
 - runtest.sh has been consolidated into a run block. we can now scale tests by adding them to the RELEASE var
+- Added debug logging to build
+- Removed the `--no-ri` and `--no-rdoc` option from gem install bundler and have subsequent commands have exit 0 before continuing
+- Increased verbosity on commands executed by build.sh
+- Removed `-v` from `cd` because there is not a verbose output on change directory command
 
 Version 0.7.8
 ----------------------------
