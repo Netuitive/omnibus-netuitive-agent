@@ -12,6 +12,8 @@ Version 0.7.9
 - Removed the `--no-ri` and `--no-rdoc` option from gem install bundler and have subsequent commands have exit 0 before continuing
 - Increased verbosity on commands executed by build.sh
 - Removed `-v` from `cd` because there is not a verbose output on change directory command
+- Submit some metrics as a counter instead of gauge
+- Add more simple mode, minimal mode, and base collector docs
 
 Version 0.7.8
 ----------------------------
