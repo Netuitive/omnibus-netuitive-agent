@@ -3,6 +3,12 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.7.9
+----------------------------
+- Debian7 dockerfile added to address apt-get broken repo mirrors
+- test.sh global sleep bumped to 5 minutes (the tests actually stop the docker container, there is no need to die unless the test is not running or exits with error and without cleanup)
+- runtest.sh has been consolidated into a run block. we can now scale tests by adding them to the RELEASE var
+
 Version 0.7.8
 ----------------------------
 - Enable Docker minimal mode collection by default

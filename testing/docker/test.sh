@@ -80,4 +80,4 @@ else
 fi
 
 
-sleep 65
+sleep 300
