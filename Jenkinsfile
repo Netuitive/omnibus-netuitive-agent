@@ -1,4 +1,6 @@
 #!/usr/bin/env groovy
+@Library("shared@master")
+
 pipeline {
   agent { label 'docker' }
   stages {
