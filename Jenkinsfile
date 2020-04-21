@@ -7,8 +7,10 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        Echo echo = new Echo(this)
-        echo.info('Hello world!')
+        script {
+          Echo echo = new Echo(this)
+          echo.info('Hello world!')
+        }
       }
     }
   }
