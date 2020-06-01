@@ -3,6 +3,12 @@ Netuitive Linux Agent Release History
 Version next
 ----------------------------
 
+Version 0.8.0
+----------------------------
+- ElasticSearchCollector - Collect file descriptor metrics
+- PuppetDBCollector - Fix node status metric collection
+- NetuitiveDockerCollector - Fix minimal mode cpu utilization metric generation
+
 Version 0.7.9
 ----------------------------
 - Debian7 dockerfile added to address apt-get broken repo mirrors
