@@ -15,6 +15,9 @@
 #
 
 name "xproto"
+
+dependency 'config_guess'
+
 default_version '7.0.31'
 
 version('7.0.31') { source md5: '04b925bf9e472c80f9212615cd684f1e' }
@@ -31,6 +34,8 @@ relative_path "xproto-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
+
+  update_config_guess
 
   command "./configure" \
           " --prefix=#{install_dir}/embedded", env: env
