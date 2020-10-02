@@ -1,5 +1,5 @@
 #
-# Copyright 2012-2014 Chef Software, Inc.
+# Copyright 2012-2019, Chef Software Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,19 @@
 #
 
 name "ncurses"
-default_version "5.9"
+default_version '6.2-20200926'
 
-dependency "libtool" if aix?
-dependency "patch" if solaris2?
+license "MIT"
+license_file "http://invisible-island.net/ncurses/ncurses-license.html"
+license_file "http://invisible-island.net/ncurses/ncurses.faq.html"
+skip_transitive_dependency_licensing true
 
-source url: "http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz",
-       md5: "8cb9c412e5f2d96bc6f459aa8c6282a1"
+dependency 'config_guess'
 
-relative_path "ncurses-5.9"
+version('6.2')          { source sha256: 'a31aa7aa36a441ada2cf691e3849c0aaa81398017acfd3aa62a89da539d47ed7', url: 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz' }
+version('6.2-20200926') { source sha256: 'a31aa7aa36a441ada2cf691e3849c0aaa81398017acfd3aa62a89da539d47ed7', url: 'https://invisible-mirror.net/archives/ncurses/current/ncurses-6.2-20200926.tgz' }
+
+relative_path "ncurses-#{version}"
 
 ########################################################################
 #
@@ -44,85 +48,34 @@ build do
   env = with_standard_compiler_flags(with_embedded_path)
   env.delete('CPPFLAGS')
 
-  if smartos?
-    # SmartOS is Illumos Kernel, plus NetBSD userland with a GNU toolchain.
-    # These patches are taken from NetBSD pkgsrc and provide GCC 4.7.0
-    # compatibility:
-    # http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/devel/ncurses/patches/
-    patch source: "patch-aa", plevel: 0
-    patch source: "patch-ab", plevel: 0
-    patch source: "patch-ac", plevel: 0
-    patch source: "patch-ad", plevel: 0
-    patch source: "patch-cxx_cursesf.h", plevel: 0
-    patch source: "patch-cxx_cursesm.h", plevel: 0
+  update_config_guess
 
-    # Opscode patches - <someara@opscode.com>
-    # The configure script from the pristine tarball detects xopen_source_extended incorrectly.
-    # Manually working around a false positive.
-    patch source: "ncurses-5.9-solaris-xopen_source_extended-detection.patch", plevel: 0
-  end
-
-  if aix?
-    patch_env = env.dup
-    patch_env['PATH'] = "/opt/freeware/bin:#{env['PATH']}"
-
-    patch source: "patch-aix-configure", plevel: 0, env: patch_env
-  end
-
-  if mac_os_x? ||
-    # Clang became the default compiler in FreeBSD 10+
-    (freebsd? && ohai['os_version'].to_i >= 1000024)
-    # References:
-    # https://github.com/Homebrew/homebrew-dupes/issues/43
-    # http://invisible-island.net/ncurses/NEWS.html#t20110409
-    #
-    # Patches ncurses for clang compiler. Changes have been accepted into
-    # upstream, but occurred shortly after the 5.9 release. We should be able
-    # to remove this after upgrading to any release created after June 2012
-    patch source: "ncurses-clang.patch"
-  end
-
-  # build wide-character libraries
-  cmd = [
+  configure_command = [
     "./configure",
     "--prefix=#{install_dir}/embedded",
+    "--enable-overwrite",
     "--with-shared",
     "--with-termlib",
-    "--without-debug",
-    "--without-normal", # AIX doesn't like building static libs
-    "--enable-overwrite",
-    "--enable-widec",
+    "--without-ada",
     "--without-cxx-binding",
+    "--without-debug",
+    "--without-manpages",
   ]
 
-  command cmd.join(" "), env: env
+  command configure_command.join(" "), env: env
+
   make "-j #{workers}", env: env
   make "-j #{workers} install", env: env
 
   # Build non-wide-character libraries
   make "distclean", env: env
+  configure_command << "--enable-widec"
 
-  cmd = [
-    "./configure",
-    "--prefix=#{install_dir}/embedded",
-    "--with-shared",
-    "--with-termlib",
-    "--without-debug",
-    "--without-normal",
-    "--enable-overwrite",
-    "--without-cxx-binding",
-  ]
-
-  command cmd.join(" "), env: env
+  command configure_command.join(" "), env: env
   make "-j #{workers}", env: env
 
   # Installing the non-wide libraries will also install the non-wide
   # binaries, which doesn't happen to be a problem since we don't
   # utilize the ncurses binaries in private-chef (or oss chef)
   make "-j #{workers} install", env: env
-
-  # Ensure embedded ncurses wins in the LD search path
-  if smartos?
-    link "#{install_dir}/embedded/lib/libcurses.so", "#{install_dir}/embedded/lib/libcurses.so.1"
-  end
 end
