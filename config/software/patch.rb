@@ -1,5 +1,5 @@
 #
-# Copyright 2014 Chef Software, Inc.
+# Copyright 2015-2018 Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,21 +15,28 @@
 #
 
 name "patch"
-default_version "2.7.5"
 
-version("2.7.5") { source md5: "ed4d5674ef4543b4eb463db168886dc7" }
+dependency "config_guess"
 
-source url: "http://ftp.gnu.org/gnu/patch/patch-#{version}.tar.gz"
+license "GPL-3.0"
+license_file "COPYING"
+skip_transitive_dependency_licensing true
 
+default_version "2.7.6"
+
+version("2.7.6") { source sha256: "8cf86e00ad3aaa6d26aca30640e86b0e3e1f395ed99f189b06d4c9f74bc58a4e" }
+version("2.7.5") { source sha256: "7436f5a19f93c3ca83153ce9c5cbe4847e97c5d956e57a220121e741f6e7968f" }
+version("2.7") { source sha256: "59c29f56faa0a924827e6a60c6accd6e2900eae5c6aaa922268c717f06a62048" }
+source url: "https://ftp.gnu.org/gnu/patch/patch-#{version}.tar.gz"
 relative_path "patch-#{version}"
 
 env = with_standard_compiler_flags(with_embedded_path)
 
 build do
-  configure_command = ["./configure",
-                       "--prefix=#{install_dir}/embedded"]
 
-  command configure_command.join(" "), env: env
+  update_config_guess(target: "build-aux")
+
+  configure "--disable-xattr", env: env
   make "-j #{workers}", env: env
   make "-j #{workers} install", env: env
 end
