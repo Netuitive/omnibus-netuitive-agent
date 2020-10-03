@@ -20,7 +20,8 @@ default_version "0.9.12"
 
 dependency "python"
 dependency "pip"
+dependency 'python-portalocker'
 
 build do
-	command "#{install_dir}/embedded/bin/pip install -I -t #{install_dir}/embedded/lib/python2.7 concurrent-log-handler"
+	command "#{install_dir}/embedded/bin/pip install -I -t #{install_dir}/embedded/lib/python2.7 #{name}==#{version}"
 end
