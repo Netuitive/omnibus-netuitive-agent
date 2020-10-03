@@ -24,14 +24,14 @@ version("3.6.0") { source sha256: '0591f9fa0339f0d15e75326d0365871c2d4e2ed8aa1ff
 
 source url: "https://github.com/lm-sensors/lm-sensors/archive/V#{version.tr('.', '-')}.tar.gz"
 
-dependency "patch"
+dependency 'patch'
 
-relative_path "lm_sensors-#{version}"
+relative_path "lm-sensors-#{version.tr('.', '-')}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
-    patch source: "disable_iconv.patch"
+  patch source: 'disable_iconv.patch'
 
   # command "make " \
   #         " PREFIX=#{install_dir}/embedded", env: env
