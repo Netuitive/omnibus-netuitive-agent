@@ -4,21 +4,17 @@
 # debugging:
 # docker run -it -v `pwd`:/vagrant agent-builder-rpm bash
 
-FROM      centos:6.8
+FROM centos:7
 
 RUN yum -y update \
  && yum groupinstall -y development \
- && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget gnupg2 \
- && rpm -e git perl-Git \
+ && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget gnupg2 golang \
  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
  && yum -y install gcc perl-ExtUtils-MakeMaker \
+ && yum -y install ncurses-base ncurses-term \
  && yum clean all \
- && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
- && tar xzf git-2.9.2.tar.gz \
- && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
- && rm -rf git* /tmp/* \
  && git config --global user.email "you@example.com" \
- && git config --global user.name "Your Name" 
+ && git config --global user.name "Your Name"
 
 # install RVM, Ruby, Bundler, and Omnibus
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
