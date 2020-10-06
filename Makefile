@@ -64,7 +64,7 @@ rpm:
 	docker buildx build \
 		--load \
 		--platform=linux/arm64 \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		-t agent-builder-rpm:aarch64-el7 \
 		-f build/Dockerfile.rpm_el7 \
@@ -75,7 +75,7 @@ rpm:
 	docker buildx build \
 		--load \
 		--platform=linux/ppc64le \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		-t agent-builder-rpm:ppc64le-el7 \
 		-f build/Dockerfile.rpm_el7 \
@@ -86,7 +86,7 @@ rpm:
 	docker buildx build \
 		--load \
 		--platform=linux/amd64 \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		-t agent-builder-rpm:x86_64-el6 \
 		-f build/Dockerfile.rpm_el6 \
@@ -99,7 +99,7 @@ rpm:
 	@echo -e $(E)[36mBuilding aarch64 package...$(E)[0m
 
 	docker run \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		--name agent-builder-rpm-aarch64-el7 \
 		-v `pwd`:/vagrant \
@@ -108,7 +108,7 @@ rpm:
 	@echo -e $(E)[36mBuilding ppc64le package...$(E)[0m
 
 	docker run \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		--name agent-builder-rpm-ppc64le-el7 \
 		-v `pwd`:/vagrant \
@@ -117,7 +117,7 @@ rpm:
 	@echo -e $(E)[36mBuilding x86_64 package...$(E)[0m
 
 	docker run \
-		--cpu-shares 2048 \
+		--cpu-shares 3072 \
 		--rm \
 		--name agent-builder-rpm-x86_64-el6 \
 		-v `pwd`:/vagrant \
