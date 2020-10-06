@@ -7,11 +7,14 @@ homepage 'http://www.netuitive.com'
 # and /opt/netuitive on all other platforms
 install_dir "#{default_root}/#{name}"
 
-build_version '0.8.0'
+build_version '0.8.0.art19'
 build_iteration 1
 
 # Creates required build directories
 dependency 'preparation'
+
+# netuitive event handler
+dependency 'netuitive-event-handler'
 
 # netuitive diamond agent
 dependency 'netuitive-diamond'
@@ -19,12 +22,13 @@ dependency 'netuitive-diamond'
 # netuitive statsd
 dependency 'netuitive-statsd'
 
-# netuitive event handler
-dependency 'netuitive-event-handler'
-
 # Version manifest file
 dependency 'version-manifest'
 
+# Cleanup stuff we compiled unnecessarily
+dependency 'cleanup'
+
+# Exclude stuff we don't need in the package
 exclude '**/.git'
 exclude '**/bundler/git'
 exclude '**/.gitkeep'
