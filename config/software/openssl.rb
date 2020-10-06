@@ -75,6 +75,7 @@ build do
   configure_args = [
     "--prefix=#{install_dir}/embedded",
     "no-unit-test",
+    "no-apps",
     "no-comp",
     "no-idea",
     "no-mdc2",
