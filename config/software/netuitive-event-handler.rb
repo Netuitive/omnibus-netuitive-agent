@@ -15,7 +15,7 @@ build do
 
   mkdir "#{pkgroot}/build"
 
-  command 'go build -o ./build/netuitive-event-handler main.go',
+  command 'go build -ldflags="-s -w" -o ./build/netuitive-event-handler main.go',
           cwd: pkgroot,
           env: env
 
