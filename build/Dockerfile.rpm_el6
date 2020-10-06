@@ -8,14 +8,14 @@ FROM centos:6
 
 RUN yum -y update \
  && yum groupinstall -y development \
- && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel golang cmake screen which tar wget gnupg2 \
- && rpm -e git perl-Git \
+ && yum -y install epel-release \
+ && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget gnupg2 golang \
  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
  && yum -y install gcc perl-ExtUtils-MakeMaker \
  && yum clean all \
  && wget https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz \
  && tar xzf git-2.9.2.tar.gz \
- && cd git-2.9.2; make prefix=/usr; make prefix= /usr install \
+ && cd git-2.9.2; make prefix=/usr; make prefix=/usr install \
  && rm -rf git* /tmp/* \
  && git config --global user.email "you@example.com" \
  && git config --global user.name "Your Name"
