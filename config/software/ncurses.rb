@@ -24,7 +24,7 @@ skip_transitive_dependency_licensing true
 
 dependency 'config_guess'
 
-version('6.2')          { source sha256: 'a31aa7aa36a441ada2cf691e3849c0aaa81398017acfd3aa62a89da539d47ed7', url: 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz' }
+version('6.2')          { source sha256: '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d', url: 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz' }
 version('6.2-20200926') { source sha256: 'a31aa7aa36a441ada2cf691e3849c0aaa81398017acfd3aa62a89da539d47ed7', url: 'https://invisible-mirror.net/archives/ncurses/current/ncurses-6.2-20200926.tgz' }
 
 relative_path "ncurses-#{version}"
@@ -60,6 +60,7 @@ build do
     "--without-cxx-binding",
     "--without-debug",
     "--without-manpages",
+    "--without-tests"
   ]
 
   command configure_command.join(" "), env: env
