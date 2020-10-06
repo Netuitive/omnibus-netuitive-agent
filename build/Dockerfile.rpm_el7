@@ -8,6 +8,7 @@ FROM centos:7
 
 RUN yum -y update \
  && yum groupinstall -y development \
+ && yum -y install epel-release \
  && yum -y install fakeroot mysql mysql-devel postgresql-devel lm_sensors-devel cmake screen which tar wget gnupg2 golang \
  && yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel \
  && yum -y install gcc perl-ExtUtils-MakeMaker \
