@@ -15,15 +15,19 @@
 #
 
 name "python"
-default_version "2.7.15"
+default_version '2.7.18'
 
 dependency "ncurses"
 dependency "zlib"
 dependency "openssl"
 dependency "bzip2"
 
-source url: "https://python.org/ftp/python/#{version}/Python-#{version}.tgz",
-       md5: '045fb3440219a1f6923fefdabde63342'
+version('2.7.18') { source md5: '38c84292658ed4456157195f1c9bcbe1' }
+version('2.7.17') { source md5: '27a7919fa8d1364bae766949aaa91a5b' }
+version('2.7.16') { source md5: 'f1a2ace631068444831d01485466ece0' }
+version('2.7.15') { source md5: '045fb3440219a1f6923fefdabde63342' }
+
+source url: "https://python.org/ftp/python/#{version}/Python-#{version}.tgz"
 
 relative_path "Python-#{version}"
 
