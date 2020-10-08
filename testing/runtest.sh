@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-RELEASE="centos6 centos7 centos7_aarch64 debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
+RELEASE="centos6 centos7 centos7_aarch64 centos7_ppc64le debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
 
 runtest() {
     echo "Running ${OS} test..."
@@ -17,6 +17,8 @@ runtest() {
 
         if [[ ${OS} =~ aarch64$ ]]; then
           docker buildx build --load --platform=linux/arm64 --cpu-shares 3072 --rm -t ${image} -f docker/Dockerfile.${OS} .
+        elif [[ ${OS} =~ ppc64le$ ]]; then
+          docker buildx build --load --platform=linux/ppc64le --cpu-shares 3072 --rm -t ${image} -f docker/Dockerfile.${OS} .
         else
           docker build --rm -t ${image} -f docker/Dockerfile.${OS} .
         fi
@@ -42,7 +44,9 @@ runtest() {
         time docker start ${OS}-test
     fi
 
+    echo "Waiting for test to complete..."
     sleep 120
+
     docker cp ${OS}-test:/vagrant/${OS}-testserver.log .
     docker cp ${OS}-test:/vagrant/${OS}.log .
     docker cp ${OS}-test:/vagrant/${OS}.pass .

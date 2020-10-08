@@ -30,6 +30,14 @@ elif [ `hostname` == "centos7_aarch64" ]; then
     # /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
     /bin/systemctl start netuitive-agent
 
+elif [ `hostname` == "centos7_ppc64le" ]; then
+    yum install -y initscripts
+    nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.log 2>&1 &
+    for f in /vagrant/dist/*.ppc64le.rpm; do rpm -ivh $f; done
+    cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
+    # /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
+    /bin/systemctl start netuitive-agent
+
 elif [ `hostname` == "debian7" ]; then
     apt-get update
     apt-get -y install sysv-rc-conf lsb-release python; sync; sync
