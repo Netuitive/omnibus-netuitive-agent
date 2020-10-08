@@ -31,22 +31,28 @@ help:
 	@echo "clean - remove all build and test artifacts"
 	@echo "build - build RPM & DEB packages"
 	@echo "test - test RPM & DEB packages"
+.PHONY: help
 
 clean: clean-test-files clean-dist
+.PHONY: clean
 
 clean-test-files:
 	rm -f testing/*.log
 	rm -f testing/*.pass
 	rm -f testing/dist/*
+.PHONY: clean-test-files
 
 clean-dist:
 	rm -f dist/*
+.PHONY: clean-dist
 
 build: rpm deb
+.PHONY: build
 
 deb:
 	docker build --rm=true -t agent-builder-deb -f build/Dockerfile.deb .
 	docker run --rm=true --name agent-builder-deb -v `pwd`:/vagrant agent-builder-deb
+.PHONY: deb
 
 rpm:
 	@# Use Docker BuildX to build a build image so we can build with it. This build image doesn't
@@ -126,37 +132,51 @@ rpm:
 		@echo -e $(E)[92mDone!$(E)[0m
 .PHONY: rpm
 
-test: test-centos6 test-centos7 test-debian7 test-debian8 test-ubuntu12 test-ubuntu14 test-ubuntu15 test-ubuntu16
+test: test-centos6 test-centos7 test-centos7-aarch64 test-debian7 test-debian8 test-ubuntu12 test-ubuntu14 test-ubuntu15 test-ubuntu16
+.PHONY: test
 
 test-centos6:
 	cd testing; ./runtest.sh centos6
 	cd testing; ./check.sh centos6
+.PHONY: test-centos6
 
 test-centos7:
 	cd testing; ./runtest.sh centos7
 	cd testing; ./check.sh centos7
+.PHONY: test-centos7
+
+test-centos7-aarch64:
+	cd testing; ./runtest.sh centos7_aarch64
+	cd testing; ./check.sh centos7_aarch64
+.PHONY: test-centos7-aarch64
 
 test-debian7:
 	cd testing; ./runtest.sh debian7
 	cd testing; ./check.sh debian7
+.PHONY: test-debian7
 
 test-debian8:
 	cd testing; ./runtest.sh debian8
 	cd testing; ./check.sh debian8
+.PHONY: test-debian8
 
 test-ubuntu12:
 	cd testing; ./runtest.sh ubuntu12
 	cd testing; ./check.sh ubuntu12
+.PHONY: test-ubuntu12
 
 test-ubuntu14:
 	cd testing; ./runtest.sh ubuntu14
 	cd testing; ./check.sh ubuntu14
+.PHONY: test-ubuntu14
 
 test-ubuntu15:
 	cd testing; ./runtest.sh ubuntu15
 	cd testing; ./check.sh ubuntu15
+.PHONY: test-ubuntu15
 
 test-ubuntu16:
 	cd testing; ./runtest.sh ubuntu16
 	cd testing; ./check.sh ubuntu16
+.PHONY: test-ubuntu16
 

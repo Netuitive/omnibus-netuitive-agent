@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-RELEASE="centos6 centos7 debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
+RELEASE="centos6 centos7 centos7_aarch64 debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
 
 runtest() {
     echo "Running ${OS} test..."
@@ -14,7 +14,12 @@ runtest() {
         image="local/${OS}"
 
         echo "Building docker image: ${image}"
-        docker build --rm -t ${image} -f docker/Dockerfile.${OS} .
+
+        if [[ ${OS} =~ aarch64$ ]]; then
+          docker buildx build --load --platform=linux/arm64 --cpu-shares 3072 --rm -t ${image} -f docker/Dockerfile.${OS} .
+        else
+          docker build --rm -t ${image} -f docker/Dockerfile.${OS} .
+        fi
 
         echo "Creating docker container: ${OS}-test"
         docker create --rm --privileged --name ${OS}-test -h ${OS} ${image}
@@ -23,7 +28,7 @@ runtest() {
         docker cp . ${OS}-test:/vagrant/
 
         echo "Starting container: ${OS}-test"
-        time docker start ${OS}-test 
+        time docker start ${OS}-test
     else
         image=`echo "${OS}" | sed 's%\([0-9]\)%:\1%'`
 
@@ -41,8 +46,8 @@ runtest() {
     docker cp ${OS}-test:/vagrant/${OS}-testserver.log .
     docker cp ${OS}-test:/vagrant/${OS}.log .
     docker cp ${OS}-test:/vagrant/${OS}.pass .
-    
-    
+
+
     docker stop ${OS}-test || echo "${OS}-test: stopped"
     docker rmi -f ${image} || echo "${image}: removed"
 
