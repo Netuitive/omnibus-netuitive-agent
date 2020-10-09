@@ -14,7 +14,7 @@ if [ `hostname` == "centos6" ]; then
     cat /vagrant/test.conf > /opt/netuitive-agent/conf/netuitive-agent.conf
     service netuitive-agent start
 
-elif [ `hostname` == "centos7" ]; then
+elif [ `hostname` == "centos7" ] || [ `hostname` == "centos8" ]; then
     yum install -y initscripts
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.log 2>&1 &
     for f in /vagrant/dist/*.x86_64.rpm; do rpm -ivh $f; done
@@ -22,7 +22,7 @@ elif [ `hostname` == "centos7" ]; then
     # /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
     /bin/systemctl start netuitive-agent
 
-elif [ `hostname` == "centos7_aarch64" ]; then
+elif [ `hostname` == "centos7_aarch64" ] || [ `hostname` == "centos8_aarch64" ]; then
     yum install -y initscripts
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.log 2>&1 &
     for f in /vagrant/dist/*.aarch64.rpm; do rpm -ivh $f; done
@@ -30,7 +30,7 @@ elif [ `hostname` == "centos7_aarch64" ]; then
     # /opt/netuitive-agent/bin/supervisord -c /opt/netuitive-agent/conf/supervisor.conf
     /bin/systemctl start netuitive-agent
 
-elif [ `hostname` == "centos7_ppc64le" ]; then
+elif [ `hostname` == "centos7_ppc64le" ] || [ `hostname` == "centos8_ppc64le" ]; then
     yum install -y initscripts
     nohup python /vagrant/testserver.py  > /vagrant/`hostname`-testserver.log 2>&1 &
     for f in /vagrant/dist/*.ppc64le.rpm; do rpm -ivh $f; done

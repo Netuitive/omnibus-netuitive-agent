@@ -132,7 +132,7 @@ rpm:
 		@echo -e $(E)[92mDone!$(E)[0m
 .PHONY: rpm
 
-test: test-centos6 test-centos7 test-centos7-aarch64 test-centos7-ppc64le test-debian7 test-debian8 test-ubuntu12 test-ubuntu14 test-ubuntu15 test-ubuntu16
+test: test-centos6 test-centos7 test-centos7-aarch64 test-centos7-ppc64le test-centos8 test-centos8-aarch64 test-centos8-ppc64le test-debian7 test-debian8 test-ubuntu12 test-ubuntu14 test-ubuntu15 test-ubuntu16
 .PHONY: test
 
 test-centos6:
@@ -154,6 +154,21 @@ test-centos7-ppc64le:
 	cd testing; ./runtest.sh centos7_ppc64le
 	cd testing; ./check.sh centos7_ppc64le
 .PHONY: test-centos7-ppc64le
+
+test-centos8:
+	cd testing; ./runtest.sh centos8
+	cd testing; ./check.sh centos8
+.PHONY: test-centos8
+
+test-centos8-aarch64:
+	cd testing; ./runtest.sh centos8_aarch64
+	cd testing; ./check.sh centos8_aarch64
+.PHONY: test-centos8-aarch64
+
+test-centos8-ppc64le:
+	cd testing; ./runtest.sh centos8_ppc64le
+	cd testing; ./check.sh centos8_ppc64le
+.PHONY: test-centos8-ppc64le
 
 test-debian7:
 	cd testing; ./runtest.sh debian7

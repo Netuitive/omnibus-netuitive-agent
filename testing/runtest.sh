@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-RELEASE="centos6 centos7 centos7_aarch64 centos7_ppc64le debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
+RELEASE="centos6 centos7 centos7_aarch64 centos7_ppc64le centos8 centos8_aarch64 centos8_ppc64le debian7 debian8 ubuntu12 ubuntu14 ubuntu15 ubuntu16"
 
 runtest() {
     echo "Running ${OS} test..."
@@ -24,7 +24,7 @@ runtest() {
         fi
 
         echo "Creating docker container: ${OS}-test"
-        docker create --rm --privileged --name ${OS}-test -h ${OS} ${image}
+        docker create -it --rm --privileged --name ${OS}-test --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -h ${OS} ${image}
 
         echo "Copying local to ${OS}-test:/vagrant"
         docker cp . ${OS}-test:/vagrant/
@@ -35,7 +35,7 @@ runtest() {
         image=`echo "${OS}" | sed 's%\([0-9]\)%:\1%'`
 
         echo "Creating docker container: ${OS}-test"
-        docker create --rm --privileged --name ${OS}-test -h ${OS} ${image} /vagrant/docker/test.sh
+        docker create -it --rm --privileged --name ${OS}-test --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -h ${OS} ${image} /vagrant/docker/test.sh
 
         echo "Copying local to ${OS}-test:/vagrant"
         docker cp . ${OS}-test:/vagrant/
