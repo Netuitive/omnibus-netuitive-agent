@@ -21,8 +21,8 @@ $(if $(shell test -f ~/.docker/config.json && cat ~/.docker/config.json | jq -r 
 $(if $(shell docker buildx inspect | grep 'Platforms:' | grep 'linux/amd64' | grep 'linux/arm64' | grep 'linux/arm/v7' | grep 'linux/arm/v6'),,$(error $(E)[31mPlease ensure the activated \
 	Docker BuildX builder supports linux/amd64, linux/arm64, linux/arm/v7, and linux/arm/v6.$(E)[0m If QEMU is setup properly (e.g., if you are on a newer Docker for Mac), \
 	try $(E)[36mdocker buildx create --name cross && docker buildx use cross && docker buildx inspect --bootstrap$(E)[0m. \
-	In the future, you may be able to simply run $(E)[36mdocker buildx use cross$(E)[0m, if Docker resets the builder and you get this error message again. \
-	To set up QEMU, either install qemu-user-static on your Linux host or use this Docker command: $(E)[36mdocker run --privileged --rm tonistiigi/binfmt --install all$(E)[0m. \
+	In the future, you may be able to simply run $(E)[36mdocker buildx use cross && docker buildx inspect --bootstrap$(E)[0m, if Docker resets the builder and you get this error message again. \
+	To set up QEMU (if needed), either install qemu-user-static on your Linux host or use this Docker command: $(E)[36mdocker run --privileged --rm tonistiigi/binfmt --install all$(E)[0m. \
 	You can always $(E)[36mdocker buildx rm cross$(E)[0m (or whatever your multi-arch builder is called) if it takes a few tries to get binfmt_misc and QEMU working together (the flags in /etc/binfmt.d \
 	should be OCF, but your distro may install a qemu.conf that only sets OC, and the static binaries are mandatory). \
 	Mac details: https://docs.docker.com/docker-for-mac/multi-arch/. General details: https://www.docker.com/blog/multi-arch-images/))
