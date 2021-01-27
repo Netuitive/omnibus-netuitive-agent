@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Install omnibus
-gem 'omnibus', '~> 5.5.0'
+gem 'omnibus', '~> 5.6.8'
 
 # Install license_scout
 gem 'license_scout', '= 1.0.3'

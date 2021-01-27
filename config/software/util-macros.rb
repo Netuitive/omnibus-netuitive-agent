@@ -14,18 +14,18 @@
 # limitations under the License.
 #
 
-name "util-macros"
-default_version "1.19.0"
+name 'util-macros'
+default_version '1.19.2'
 
 source url: "https://www.x.org/archive/individual/util/util-macros-#{version}.tar.gz",
-       md5: "40e1caa49a71a26e0aa68ddd00203717"
+       md5: '5059b328fac086b733ffac6607164c41'
 
 relative_path "util-macros-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
-  command "./configure" \
+  command './configure' \
           " --prefix=#{install_dir}/embedded", env: env
 
   make "-j #{workers}", env: env

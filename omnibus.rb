@@ -28,9 +28,13 @@ package_dir   '/vagrant/dist'
 # ------------------------------
 # use_git_caching false
 
+@using_s3_caching = ENV['USE_S3_CACHING'].nil? ? true : ENV['USE_S3_CACHING'].to_i == 1
+
+puts "*** Use S3 caching? #{@using_s3_caching}"
+
 # Enable S3 asset caching
 # ------------------------------
-use_s3_caching true
+use_s3_caching @using_s3_caching
 s3_access_key  ENV['AWS_ACCESS_KEY_ID']
 s3_secret_key  ENV['AWS_SECRET_ACCESS_KEY']
 s3_bucket      ENV['AWS_S3_BUCKET']

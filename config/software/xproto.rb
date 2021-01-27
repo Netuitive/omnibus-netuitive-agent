@@ -15,15 +15,27 @@
 #
 
 name "xproto"
-default_version "7.0.31"
 
-source url: "https://www.x.org/archive/individual/proto/xproto-#{version}.tar.gz",
-       md5: "04b925bf9e472c80f9212615cd684f1e"
+dependency 'config_guess'
+
+default_version '7.0.31'
+
+version('7.0.31') { source md5: '04b925bf9e472c80f9212615cd684f1e' }
+version('7.0.28') { source md5: "0b42843b99aee3e4f6a9cc7710143f86" }
+version('7.0.25') { source md5: "a47db46cb117805bd6947aa5928a7436" }
+
+source url: "https://www.x.org/releases/individual/proto/xproto-#{version}.tar.gz"
+
+license "MIT"
+license_file "COPYING"
+skip_transitive_dependency_licensing true
 
 relative_path "xproto-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
+
+  update_config_guess
 
   command "./configure" \
           " --prefix=#{install_dir}/embedded", env: env

@@ -15,7 +15,7 @@
 #
 
 name "postgresql"
-default_version "9.4.10"
+default_version '9.6.19'
 
 dependency "zlib"
 dependency "openssl"
@@ -23,10 +23,8 @@ dependency "libedit"
 dependency "ncurses"
 dependency "libossp-uuid"
 
-
-version "9.4.10" do
-  source md5: "1171df0426fe4da5a29f6cdaf2e8b812"
-end
+version('9.4.10') { source md5: '1171df0426fe4da5a29f6cdaf2e8b812' }
+version('9.6.19') { source sha256: '61f93a94ccddbe0b2d1afaf03f04ba605d8af5b774ff9b830e5adeb50ab55cb0' }
 
 source url: "https://ftp.postgresql.org/pub/source/v#{version}/postgresql-#{version}.tar.bz2"
 
@@ -43,6 +41,7 @@ build do
           " --with-includes=#{install_dir}/embedded/include" \
           " --with-libraries=#{install_dir}/embedded/lib", env: env
 
-  make "world -j #{workers}", env: env
-  make "install-world", env: env
+  # Install minimal version of PG
+  make "all -j #{workers}", env: env
+  make 'install', env: env
 end
