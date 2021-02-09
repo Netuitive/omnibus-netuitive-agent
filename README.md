@@ -1,9 +1,9 @@
-Netuitive Linux Agent Omnibus
+CloudWisdom Linux Agent Omnibus
 ===============================
 
-The Omnibus creates full-stack platform-specific packages for use with the Netuitive Linux Agent. The agent itself provides a quick way deploy and collect metrics with a richer set of metadata out of the box. The agent also is compatible with a large number of collectors that help [Virtana](https://www.virtana.com/products/cloudwisdom/) integrate with many different products running on a Linux OS.
+The Omnibus creates full-stack platform-specific packages for use with the CloudWisdom Linux Agent. The agent itself provides a quick way deploy and collect metrics with a richer set of metadata out of the box. The agent also is compatible with a large number of collectors that help [Virtana](https://www.virtana.com/products/cloudwisdom/) integrate with many different products running on a Linux OS.
 
-For more information on the [Virtana Linux Agent](https://docs.virtana.com/en/linux-agent.html), see our help docs, or contact Netuitive support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
+For more information on the [Virtana Linux Agent](https://docs.virtana.com/en/linux-agent.html), see our help docs, or contact CloudWisdom support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
 
 Building the Omnibus<a name="build"></a>
 ---------------------
